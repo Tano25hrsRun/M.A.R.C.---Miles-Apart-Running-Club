@@ -1,11 +1,2337 @@
-<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Community — Miles Apart Running Club</title><link rel="stylesheet" href="style.css"></head>
-<body><div class="shell"><aside class="sidebar"><div class="brand"><a href="index.html"><img src="miles-apart-full-logo.png" alt="Miles Apart Running Club"></a></div><nav class="nav"><a class="" href="index.html">Home</a><a class="" href="challenges.html">Challenges</a><a class="active" href="community.html">Community</a><a class="" href="events.html">Events</a><a class="" href="training.html">Training</a><a class="" href="profile.html">My Run</a></nav><div class="side-bottom"><small>THIS WEEK</small><strong>23.4 / 30 KM</strong><div class="mini-progress"><i></i></div><p class="small" style="color:#aaa;margin-bottom:0">Nur 6.6 km bis zum Wochenziel.</p></div></aside><main class="main"><div class="top"><div class="crumb">MILES APART / COMMUNITY</div><div class="top-right"><span class="small muted">Guten Morgen, Alex</span><div class="avatar">A</div></div></div>
-<div class="hero"><div><h1>Community.</h1><p class="lead">Dein virtueller Lauftreff — offen, freundlich, jeder Pace.</p></div><a class="btn lime" href="#">+ Post erstellen</a></div>
-<div class="grid g2">
-<div class="card"><div class="row"><div class="person"><div class="pavatar">SK</div><div><b>Sarah K.</b><div class="small muted">vor 18 Min · Mainz</div></div></div><span class="badge">5 KM</span></div><p style="font-size:18px">Wer läuft morgen früh 6–8 km? Pace egal. Start 06:30 am Rhein. ☀️</p><span class="tag">RUN BUDDIES</span><span class="tag">MAINZ</span><div class="row small" style="margin-top:16px"><span>❤️ 18 Kudos · 7 Antworten</span><b>→ Mitlaufen</b></div></div>
-<div class="card"><div class="row"><div class="person"><div class="pavatar">TB</div><div><b>Tom B.</b><div class="small muted">vor 42 Min · Berlin</div></div></div><span class="badge lime">PB</span></div><p style="font-size:18px">Erster 5K unter 30 Minuten! 29:48. Vor einem Monat war ich noch bei 34:10. Danke für die Motivation hier. 🥹</p><span class="tag">BEGINNER</span><span class="tag">5 KM</span><div class="row small" style="margin-top:16px"><span>❤️ 46 Kudos · 12 Antworten</span><b>Gratulieren</b></div></div>
+<!doctype html>
+<html lang="de">
+
+<head>
+  <meta charset="utf-8">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1"
+  >
+
+  <title>Community — Miles Apart Running Club</title>
+
+  <link
+    rel="stylesheet"
+    href="style.css"
+  >
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <style>
+
+    /* =====================================================
+       COMMUNITY
+    ===================================================== */
+
+    .community-loading {
+      padding: 70px 20px;
+      text-align: center;
+      color: #777;
+    }
+
+    .community-error {
+      margin: 25px 0;
+      padding: 16px 18px;
+      border: 1px solid #e2bcbc;
+      background: #fff7f7;
+      color: #b22f2f;
+      font-weight: 700;
+    }
+
+    .post-form-card {
+      margin-bottom: 24px;
+    }
+
+    .post-form {
+      display: none;
+    }
+
+    .post-form textarea {
+      width: 100%;
+      min-height: 130px;
+      resize: vertical;
+      padding: 16px;
+
+      border: 1px solid #ddd;
+      background: #fff;
+
+      font: inherit;
+      line-height: 1.5;
+      outline: none;
+    }
+
+    .post-form textarea:focus {
+      border-color: #18b8c7;
+      box-shadow:
+        0 0 0 3px rgba(24,184,199,.12);
+    }
+
+    .post-form-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+      margin-top: 14px;
+    }
+
+    .post-form-message {
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .post-form-message.error {
+      color: #c83b3b;
+    }
+
+    .post-form-message.success {
+      color: #1199a6;
+    }
+
+    .post {
+      margin-bottom: 22px;
+    }
+
+    .post-content {
+      margin: 18px 0;
+
+      font-size: 18px;
+      line-height: 1.55;
+
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+    }
+
+    .post-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: 17px;
+      padding-top: 15px;
+
+      border-top: 1px solid #eee;
+    }
+
+    .post-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .post-action {
+      border: 0;
+      background: transparent;
+      padding: 7px 9px;
+
+      color: #555;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .post-action:hover {
+      color: #18b8c7;
+    }
+
+    .post-action.liked {
+      color: #18b8c7;
+    }
+
+    .delete-post {
+      color: #b44;
+    }
+
+    .delete-post:hover {
+      color: #c83b3b;
+    }
+
+    .post-comments {
+      margin-top: 18px;
+      padding-top: 18px;
+
+      border-top: 1px solid #eee;
+    }
+
+    .comments-list {
+      display: flex;
+      flex-direction: column;
+      gap: 13px;
+    }
+
+    .comment {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+    }
+
+    .comment-avatar {
+      width: 34px;
+      height: 34px;
+      flex: 0 0 34px;
+
+      border-radius: 50%;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      overflow: hidden;
+
+      background: #eefafa;
+      color: #18b8c7;
+
+      font-size: 11px;
+      font-weight: 800;
+    }
+
+    .comment-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .comment-body {
+      flex: 1;
+      min-width: 0;
+
+      padding: 10px 12px;
+      background: #f6f7f7;
+    }
+
+    .comment-name {
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .comment-time {
+      margin-left: 6px;
+      color: #888;
+      font-size: 11px;
+      font-weight: 400;
+    }
+
+    .comment-text {
+      margin-top: 5px;
+      font-size: 14px;
+      line-height: 1.45;
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+    }
+
+    .comment-form {
+      display: flex;
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .comment-form input {
+      flex: 1;
+      min-width: 0;
+
+      padding: 11px 12px;
+
+      border: 1px solid #ddd;
+      outline: none;
+      background: #fff;
+    }
+
+    .comment-form input:focus {
+      border-color: #18b8c7;
+    }
+
+    .comment-form button {
+      border: 0;
+      background: #111;
+      color: #fff;
+
+      padding: 0 16px;
+
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .comment-form button:hover {
+      background: #18b8c7;
+    }
+
+    .empty-community {
+      padding: 55px 20px;
+
+      border: 1px dashed #ccc;
+
+      text-align: center;
+      color: #777;
+    }
+
+    .empty-community strong {
+      display: block;
+      margin-bottom: 8px;
+
+      color: #111;
+      font-size: 20px;
+    }
+
+    .member-avatar {
+      width: 42px;
+      height: 42px;
+      flex: 0 0 42px;
+
+      border-radius: 50%;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      overflow: hidden;
+
+      background: #eefafa;
+      color: #18b8c7;
+
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    .member-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .person {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      min-width: 0;
+    }
+
+    .person-info {
+      min-width: 0;
+    }
+
+    .person-info b {
+      display: block;
+    }
+
+    .person-location {
+      color: #777;
+      font-size: 13px;
+    }
+
+    .no-buddies {
+      color: #777;
+      line-height: 1.5;
+    }
+
+    @media (max-width: 700px) {
+
+      .hero {
+        gap: 20px;
+      }
+
+      .post-form-actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .post-form-actions .btn {
+        width: 100%;
+      }
+
+      .post-meta {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .comment-form {
+        flex-direction: column;
+      }
+
+      .comment-form button {
+        min-height: 42px;
+      }
+    }
+
+  </style>
+</head>
+
+
+<body>
+
+<div class="shell">
+
+
+  <!-- =====================================================
+       SIDEBAR
+  ====================================================== -->
+
+  <aside class="sidebar">
+
+    <div class="brand">
+      <a href="index.html">
+        <img
+          src="miles-apart-full-logo.png"
+          alt="Miles Apart Running Club"
+        >
+      </a>
+    </div>
+
+
+    <nav class="nav">
+
+      <a href="index.html">
+        Home
+      </a>
+
+      <a href="challenges.html">
+        Challenges
+      </a>
+
+      <a
+        class="active"
+        href="community.html"
+      >
+        Community
+      </a>
+
+      <a href="events.html">
+        Events
+      </a>
+
+      <a href="training.html">
+        Training
+      </a>
+
+      <a href="profile.html">
+        My Run
+      </a>
+
+    </nav>
+
+
+    <div class="side-bottom">
+
+      <small>
+        THIS WEEK
+      </small>
+
+      <strong>
+        23.4 / 30 KM
+      </strong>
+
+      <div class="mini-progress">
+        <i></i>
+      </div>
+
+      <p
+        class="small"
+        style="color:#aaa;margin-bottom:0"
+      >
+        Nur 6.6 km bis zum Wochenziel.
+      </p>
+
+    </div>
+
+  </aside>
+
+
+  <!-- =====================================================
+       MAIN
+  ====================================================== -->
+
+  <main class="main">
+
+
+    <!-- TOP -->
+
+    <div class="top">
+
+      <div class="crumb">
+        MILES APART / COMMUNITY
+      </div>
+
+
+      <div class="top-right">
+
+        <span
+          class="small muted"
+          id="userGreeting"
+        >
+          Wird geladen …
+        </span>
+
+
+        <button
+          id="topAvatar"
+          class="avatar"
+          type="button"
+          style="border:0;cursor:pointer"
+          aria-label="Mein Profil"
+        >
+          M
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <!-- HERO -->
+
+    <div class="hero">
+
+      <div>
+
+        <h1>
+          Community.
+        </h1>
+
+        <p class="lead">
+          Dein virtueller Lauftreff —
+          offen, freundlich, jeder Pace.
+        </p>
+
+      </div>
+
+
+      <button
+        id="openPostButton"
+        class="btn lime"
+        type="button"
+      >
+        + Post erstellen
+      </button>
+
+    </div>
+
+
+    <!-- ===================================================
+         POST FORM
+    ==================================================== -->
+
+    <div
+      id="postFormCard"
+      class="card post-form-card"
+      style="display:none"
+    >
+
+      <div class="section-head">
+
+        <h2>
+          Neuer Post
+        </h2>
+
+        <span
+          class="small muted"
+          id="postAuthorName"
+        >
+          —
+        </span>
+
+      </div>
+
+
+      <form
+        id="postForm"
+        class="post-form"
+        style="display:block"
+      >
+
+        <textarea
+          id="postContent"
+          maxlength="2000"
+          placeholder="Was möchtest du mit der Community teilen?"
+          required
+        ></textarea>
+
+
+        <div class="post-form-actions">
+
+          <div
+            id="postFormMessage"
+            class="post-form-message"
+          ></div>
+
+
+          <div
+            style="display:flex;gap:8px"
+          >
+
+            <button
+              id="cancelPostButton"
+              type="button"
+              class="btn"
+            >
+              Abbrechen
+            </button>
+
+            <button
+              id="submitPostButton"
+              type="submit"
+              class="btn lime"
+            >
+              Post veröffentlichen
+            </button>
+
+          </div>
+
+        </div>
+
+      </form>
+
+    </div>
+
+
+    <!-- ===================================================
+         COMMUNITY POSTS
+    ==================================================== -->
+
+    <div
+      id="communityLoading"
+      class="community-loading"
+    >
+      Community wird geladen …
+    </div>
+
+
+    <div
+      id="communityError"
+      class="community-error"
+      style="display:none"
+    ></div>
+
+
+    <div
+      id="postsContainer"
+      class="grid g2"
+      style="display:none"
+    ></div>
+
+
+    <!-- ===================================================
+         LOWER COMMUNITY AREA
+    ==================================================== -->
+
+    <div
+      class="section grid g3"
+      id="communityLower"
+      style="display:none"
+    >
+
+
+      <!-- RUN BUDDIES -->
+
+      <div class="card">
+
+        <div class="section-head">
+
+          <h2>
+            Run Buddies
+          </h2>
+
+          <span class="badge">
+            Community
+          </span>
+
+        </div>
+
+
+        <div id="runBuddies">
+
+          <p class="no-buddies">
+            Weitere Mitglieder werden hier
+            angezeigt, sobald sie der Community
+            beitreten.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <!-- COMMUNITY PULSE -->
+
+      <div class="card dark">
+
+        <div class="label">
+          COMMUNITY PULSE
+        </div>
+
+        <div
+          class="kpi"
+          style="font-size:44px"
+          id="memberCount"
+        >
+          —
+        </div>
+
+        <p style="color:#aaa">
+          Miles Apart Mitglieder
+        </p>
+
+        <div class="row">
+
+          <span>
+            👟 Gemeinsam laufen
+          </span>
+
+          <span>
+            🔥 Gemeinsam wachsen
+          </span>
+
+        </div>
+
+      </div>
+
+
+      <!-- QUESTION -->
+
+      <div class="card lime">
+
+        <div class="label">
+          FRAGE DER WOCHE
+        </div>
+
+        <h2>
+          Was motiviert dich am meisten?
+        </h2>
+
+
+        <div class="stack">
+
+          <button
+            class="btn white"
+            type="button"
+            data-answer="Gemeinsam laufen"
+          >
+            👥 Gemeinsam laufen
+          </button>
+
+          <button
+            class="btn white"
+            type="button"
+            data-answer="Ziele & Challenges"
+          >
+            🎯 Ziele & Challenges
+          </button>
+
+          <button
+            class="btn white"
+            type="button"
+            data-answer="Streak halten"
+          >
+            🔥 Streak halten
+          </button>
+
+        </div>
+
+
+        <div
+          id="pollMessage"
+          style="
+            margin-top:12px;
+            font-size:13px;
+            font-weight:700;
+          "
+        ></div>
+
+      </div>
+
+    </div>
+
+
+  </main>
+
 </div>
-<div class="section grid g3"><div class="card"><div class="section-head"><h2>Run Buddies</h2><span class="badge">in deiner Nähe</span></div><div class="rank"><div class="pavatar">JL</div><div><b>Julia L.</b><div class="small muted">Mainz · 6:30–7:00</div></div><span>→</span></div><div class="rank"><div class="pavatar">MR</div><div><b>Marco R.</b><div class="small muted">Wiesbaden · 5:45–6:15</div></div><span>→</span></div><div class="rank"><div class="pavatar">AN</div><div><b>Anja N.</b><div class="small muted">Mainz · 7:00–7:30</div></div><span>→</span></div></div>
-<div class="card dark"><div class="label">COMMUNITY PULSE</div><div class="kpi" style="font-size:44px">12,847</div><p style="color:#aaa">Kilometer heute</p><div class="row"><span>👟 4,210 aktive Läufe</span><span>🔥 1,082 Streaks</span></div></div>
-<div class="card lime"><div class="label">FRAGE DER WOCHE</div><h2>Was motiviert dich am meisten?</h2><div class="stack"><button class="btn white">👥 Gemeinsam laufen</button><button class="btn white">🎯 Ziele & Challenges</button><button class="btn white">🔥 Streak halten</button></div></div></div>
-</main></div></body></html>
+
+
+<script>
+
+  /* =====================================================
+     SUPABASE
+  ====================================================== */
+
+  const SUPABASE_URL =
+    "https://orbrkdrsihsacsnprewf.supabase.co";
+
+  const SUPABASE_PUBLISHABLE_KEY =
+    "sb_publishable_wc3w2fSuj8ItwiF6XBoQgw_HeW5_rNW";
+
+  const {
+    createClient
+  } = window.supabase;
+
+  const supabaseClient =
+    createClient(
+      SUPABASE_URL,
+      SUPABASE_PUBLISHABLE_KEY
+    );
+
+
+  /* =====================================================
+     ELEMENTS
+  ====================================================== */
+
+  const userGreeting =
+    document.getElementById(
+      "userGreeting"
+    );
+
+  const topAvatar =
+    document.getElementById(
+      "topAvatar"
+    );
+
+  const openPostButton =
+    document.getElementById(
+      "openPostButton"
+    );
+
+  const postFormCard =
+    document.getElementById(
+      "postFormCard"
+    );
+
+  const postForm =
+    document.getElementById(
+      "postForm"
+    );
+
+  const postContent =
+    document.getElementById(
+      "postContent"
+    );
+
+  const postAuthorName =
+    document.getElementById(
+      "postAuthorName"
+    );
+
+  const submitPostButton =
+    document.getElementById(
+      "submitPostButton"
+    );
+
+  const cancelPostButton =
+    document.getElementById(
+      "cancelPostButton"
+    );
+
+  const postFormMessage =
+    document.getElementById(
+      "postFormMessage"
+    );
+
+  const communityLoading =
+    document.getElementById(
+      "communityLoading"
+    );
+
+  const communityError =
+    document.getElementById(
+      "communityError"
+    );
+
+  const postsContainer =
+    document.getElementById(
+      "postsContainer"
+    );
+
+  const communityLower =
+    document.getElementById(
+      "communityLower"
+    );
+
+  const runBuddies =
+    document.getElementById(
+      "runBuddies"
+    );
+
+  const memberCount =
+    document.getElementById(
+      "memberCount"
+    );
+
+
+  /* =====================================================
+     STATE
+  ====================================================== */
+
+  let currentUser = null;
+  let currentProfile = null;
+
+
+  /* =====================================================
+     HELPERS
+  ====================================================== */
+
+  function getInitials(
+    name
+  ) {
+
+    if (!name) {
+      return "M";
+    }
+
+    const parts =
+      name
+        .trim()
+        .split(/\s+/)
+        .filter(Boolean);
+
+
+    if (parts.length === 1) {
+
+      return parts[0]
+        .slice(0, 2)
+        .toUpperCase();
+
+    }
+
+
+    return (
+      parts[0][0] +
+      parts[parts.length - 1][0]
+    ).toUpperCase();
+  }
+
+
+  function escapeHtml(
+    value
+  ) {
+
+    if (
+      value === null ||
+      value === undefined
+    ) {
+      return "";
+    }
+
+
+    return String(value)
+      .replaceAll("&", "&amp;")
+      .replaceAll("<", "&lt;")
+      .replaceAll(">", "&gt;")
+      .replaceAll('"', "&quot;")
+      .replaceAll("'", "&#039;");
+  }
+
+
+  function formatTime(
+    dateString
+  ) {
+
+    const date =
+      new Date(dateString);
+
+
+    const now =
+      new Date();
+
+
+    const diff =
+      Math.floor(
+        (now - date) / 1000
+      );
+
+
+    if (diff < 60) {
+      return "gerade eben";
+    }
+
+
+    if (diff < 3600) {
+
+      const minutes =
+        Math.floor(diff / 60);
+
+      return `vor ${minutes} Min`;
+
+    }
+
+
+    if (diff < 86400) {
+
+      const hours =
+        Math.floor(diff / 3600);
+
+      return `vor ${hours} Std`;
+
+    }
+
+
+    if (diff < 172800) {
+      return "gestern";
+    }
+
+
+    return date.toLocaleDateString(
+      "de-DE",
+      {
+        day: "2-digit",
+        month: "2-digit",
+        year: "numeric"
+      }
+    );
+  }
+
+
+  function avatarHtml(
+    profile,
+    className = "member-avatar"
+  ) {
+
+    const name =
+      profile?.display_name ||
+      "Miles Apart Member";
+
+
+    const avatarUrl =
+      profile?.avatar_url;
+
+
+    if (avatarUrl) {
+
+      return `
+        <div class="${className}">
+          <img
+            src="${escapeHtml(avatarUrl)}"
+            alt="Profilbild"
+          >
+        </div>
+      `;
+
+    }
+
+
+    return `
+      <div class="${className}">
+        ${escapeHtml(
+          getInitials(name)
+        )}
+      </div>
+    `;
+  }
+
+
+  function showError(
+    message
+  ) {
+
+    communityError.textContent =
+      message;
+
+    communityError.style.display =
+      "block";
+  }
+
+
+  function clearError() {
+
+    communityError.textContent =
+      "";
+
+    communityError.style.display =
+      "none";
+  }
+
+
+  /* =====================================================
+     LOAD CURRENT USER
+  ====================================================== */
+
+  async function loadCurrentUser() {
+
+    const {
+      data,
+      error
+    } =
+      await supabaseClient.auth.getSession();
+
+
+    if (error) {
+      throw error;
+    }
+
+
+    if (!data.session) {
+
+      window.location.href =
+        "index.html";
+
+      return false;
+    }
+
+
+    currentUser =
+      data.session.user;
+
+
+    const {
+      data: profile,
+      error: profileError
+    } =
+      await supabaseClient
+        .from("profiles")
+        .select(
+          "display_name, username, avatar_url, bio, location"
+        )
+        .eq(
+          "id",
+          currentUser.id
+        )
+        .maybeSingle();
+
+
+    if (profileError) {
+      throw profileError;
+    }
+
+
+    currentProfile =
+      profile || {
+        display_name:
+          currentUser
+            .user_metadata
+            ?.display_name ||
+          "Miles Apart Member",
+
+        username: null,
+
+        avatar_url: null,
+
+        bio: null,
+
+        location: null
+      };
+
+
+    const name =
+      currentProfile.display_name ||
+      "Miles Apart Member";
+
+
+    const firstName =
+      name
+        .trim()
+        .split(/\s+/)[0];
+
+
+    userGreeting.textContent =
+      `Hallo, ${firstName}`;
+
+
+    topAvatar.innerHTML =
+      "";
+
+
+    if (
+      currentProfile.avatar_url
+    ) {
+
+      const image =
+        document.createElement("img");
+
+      image.src =
+        currentProfile.avatar_url;
+
+      image.alt =
+        "Mein Profilbild";
+
+      image.style.width =
+        "100%";
+
+      image.style.height =
+        "100%";
+
+      image.style.objectFit =
+        "cover";
+
+      topAvatar.appendChild(
+        image
+      );
+
+    } else {
+
+      topAvatar.textContent =
+        getInitials(name);
+
+    }
+
+
+    postAuthorName.textContent =
+      currentProfile.username
+        ? `@${currentProfile.username}`
+        : name;
+
+
+    return true;
+  }
+
+
+  /* =====================================================
+     LOAD POSTS
+  ====================================================== */
+
+  async function loadPosts() {
+
+    const {
+      data: posts,
+      error
+    } =
+      await supabaseClient
+        .from("community_posts")
+        .select(`
+          id,
+          author_id,
+          content,
+          created_at,
+          updated_at,
+          profiles:author_id (
+            display_name,
+            username,
+            avatar_url,
+            location
+          ),
+          community_post_likes (
+            user_id
+          ),
+          community_post_comments (
+            id,
+            author_id,
+            content,
+            created_at,
+            profiles:author_id (
+              display_name,
+              username,
+              avatar_url
+            )
+          )
+        `)
+        .order(
+          "created_at",
+          {
+            ascending: false
+          }
+        );
+
+
+    if (error) {
+      throw error;
+    }
+
+
+    renderPosts(
+      posts || []
+    );
+  }
+
+
+  /* =====================================================
+     RENDER POSTS
+  ====================================================== */
+
+  function renderPosts(
+    posts
+  ) {
+
+    postsContainer.innerHTML =
+      "";
+
+
+    if (!posts.length) {
+
+      postsContainer.innerHTML = `
+        <div
+          class="empty-community"
+          style="grid-column:1 / -1"
+        >
+          <strong>
+            Sei der Erste in der Community.
+          </strong>
+
+          Teile deinen ersten Lauf,
+          ein Ziel oder einfach ein paar Worte
+          mit Miles Apart.
+        </div>
+      `;
+
+
+      postsContainer.style.display =
+        "grid";
+
+      return;
+    }
+
+
+    posts.forEach(
+      post => {
+
+        const card =
+          createPostElement(
+            post
+          );
+
+        postsContainer.appendChild(
+          card
+        );
+
+      }
+    );
+
+
+    postsContainer.style.display =
+      "grid";
+  }
+
+
+  /* =====================================================
+     CREATE POST ELEMENT
+  ====================================================== */
+
+  function createPostElement(
+    post
+  ) {
+
+    const profile =
+      post.profiles || {};
+
+
+    const authorName =
+      profile.display_name ||
+      "Miles Apart Member";
+
+
+    const likes =
+      post.community_post_likes ||
+      [];
+
+
+    const comments =
+      post.community_post_comments ||
+      [];
+
+
+    const userLiked =
+      likes.some(
+        like =>
+          like.user_id ===
+          currentUser.id
+      );
+
+
+    const isOwner =
+      post.author_id ===
+      currentUser.id;
+
+
+    const wrapper =
+      document.createElement("div");
+
+
+    wrapper.className =
+      "card post";
+
+
+    wrapper.dataset.postId =
+      post.id;
+
+
+    wrapper.innerHTML = `
+
+      <div class="row">
+
+        <div class="person">
+
+          ${avatarHtml(
+            profile,
+            "pavatar"
+          )}
+
+          <div class="person-info">
+
+            <b>
+              ${escapeHtml(
+                authorName
+              )}
+            </b>
+
+            <div class="small muted">
+
+              ${formatTime(
+                post.created_at
+              )}
+
+              ${
+                profile.location
+                  ? ` · ${escapeHtml(
+                      profile.location
+                    )}`
+                  : ""
+              }
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="post-content">
+        ${escapeHtml(
+          post.content
+        )}
+      </div>
+
+
+      <div class="post-meta">
+
+        <div class="post-actions">
+
+          <button
+            class="post-action ${
+              userLiked
+                ? "liked"
+                : ""
+            }"
+            type="button"
+            data-action="like"
+            data-post-id="${post.id}"
+          >
+            ${
+              userLiked
+                ? "❤️"
+                : "♡"
+            }
+
+            ${likes.length}
+          </button>
+
+
+          <button
+            class="post-action"
+            type="button"
+            data-action="comments"
+            data-post-id="${post.id}"
+          >
+            💬 ${comments.length}
+          </button>
+
+        </div>
+
+
+        ${
+          isOwner
+            ? `
+              <button
+                class="post-action delete-post"
+                type="button"
+                data-action="delete"
+                data-post-id="${post.id}"
+              >
+                Löschen
+              </button>
+            `
+            : ""
+        }
+
+      </div>
+
+
+      <div
+        class="post-comments"
+        data-comments="${post.id}"
+        style="display:none"
+      >
+
+        <div class="comments-list">
+
+          ${
+            comments
+              .sort(
+                (a, b) =>
+                  new Date(a.created_at) -
+                  new Date(b.created_at)
+              )
+              .map(
+                comment =>
+                  createCommentHtml(
+                    comment
+                  )
+              )
+              .join("")
+          }
+
+        </div>
+
+
+        <form
+          class="comment-form"
+          data-comment-form="${post.id}"
+        >
+
+          <input
+            type="text"
+            maxlength="1000"
+            placeholder="Antwort schreiben …"
+            required
+          >
+
+          <button
+            type="submit"
+          >
+            Senden
+          </button>
+
+        </form>
+
+      </div>
+    `;
+
+
+    return wrapper;
+  }
+
+
+  /* =====================================================
+     COMMENT HTML
+  ====================================================== */
+
+  function createCommentHtml(
+    comment
+  ) {
+
+    const profile =
+      comment.profiles || {};
+
+
+    const name =
+      profile.display_name ||
+      "Miles Apart Member";
+
+
+    return `
+
+      <div class="comment">
+
+        ${avatarHtml(
+          profile,
+          "comment-avatar"
+        )}
+
+
+        <div class="comment-body">
+
+          <div>
+
+            <span class="comment-name">
+              ${escapeHtml(
+                name
+              )}
+            </span>
+
+            <span class="comment-time">
+              ${formatTime(
+                comment.created_at
+              )}
+            </span>
+
+          </div>
+
+
+          <div class="comment-text">
+            ${escapeHtml(
+              comment.content
+            )}
+          </div>
+
+        </div>
+
+      </div>
+    `;
+  }
+
+
+  /* =====================================================
+     LIKE
+  ====================================================== */
+
+  async function toggleLike(
+    postId,
+    button
+  ) {
+
+    button.disabled =
+      true;
+
+
+    try {
+
+      const {
+        data: existingLike,
+        error: findError
+      } =
+        await supabaseClient
+          .from(
+            "community_post_likes"
+          )
+          .select("post_id, user_id")
+          .eq(
+            "post_id",
+            postId
+          )
+          .eq(
+            "user_id",
+            currentUser.id
+          )
+          .maybeSingle();
+
+
+      if (findError) {
+        throw findError;
+      }
+
+
+      if (existingLike) {
+
+        const {
+          error
+        } =
+          await supabaseClient
+            .from(
+              "community_post_likes"
+            )
+            .delete()
+            .eq(
+              "post_id",
+              postId
+            )
+            .eq(
+              "user_id",
+              currentUser.id
+            );
+
+
+        if (error) {
+          throw error;
+        }
+
+      } else {
+
+        const {
+          error
+        } =
+          await supabaseClient
+            .from(
+              "community_post_likes"
+            )
+            .insert({
+              post_id:
+                postId,
+
+              user_id:
+                currentUser.id
+            });
+
+
+        if (error) {
+          throw error;
+        }
+      }
+
+
+      await loadPosts();
+
+    } catch (error) {
+
+      console.error(
+        error
+      );
+
+      showError(
+        "Kudos konnte nicht gespeichert werden."
+      );
+
+    } finally {
+
+      button.disabled =
+        false;
+    }
+  }
+
+
+  /* =====================================================
+     DELETE POST
+  ====================================================== */
+
+  async function deletePost(
+    postId
+  ) {
+
+    const confirmed =
+      window.confirm(
+        "Diesen Post wirklich löschen?"
+      );
+
+
+    if (!confirmed) {
+      return;
+    }
+
+
+    const {
+      error
+    } =
+      await supabaseClient
+        .from("community_posts")
+        .delete()
+        .eq(
+          "id",
+          postId
+        )
+        .eq(
+          "author_id",
+          currentUser.id
+        );
+
+
+    if (error) {
+
+      console.error(
+        error
+      );
+
+      showError(
+        "Der Post konnte nicht gelöscht werden."
+      );
+
+      return;
+    }
+
+
+    await loadPosts();
+  }
+
+
+  /* =====================================================
+     COMMENTS
+  ====================================================== */
+
+  async function submitComment(
+    postId,
+    input
+  ) {
+
+    const content =
+      input.value.trim();
+
+
+    if (!content) {
+      return;
+    }
+
+
+    input.disabled =
+      true;
+
+
+    const {
+      error
+    } =
+      await supabaseClient
+        .from(
+          "community_post_comments"
+        )
+        .insert({
+          post_id:
+            postId,
+
+          author_id:
+            currentUser.id,
+
+          content:
+            content
+        });
+
+
+    input.disabled =
+      false;
+
+
+    if (error) {
+
+      console.error(
+        error
+      );
+
+      showError(
+        "Die Antwort konnte nicht gespeichert werden."
+      );
+
+      return;
+    }
+
+
+    await loadPosts();
+
+
+    const postElement =
+      document.querySelector(
+        `[data-post-id="${postId}"]`
+      );
+
+
+    if (postElement) {
+
+      const commentsArea =
+        postElement.querySelector(
+          `[data-comments="${postId}"]`
+        );
+
+
+      if (commentsArea) {
+
+        commentsArea.style.display =
+          "block";
+
+      }
+
+    }
+  }
+
+
+  /* =====================================================
+     EVENT DELEGATION
+  ====================================================== */
+
+  postsContainer.addEventListener(
+    "click",
+    async event => {
+
+      const button =
+        event.target.closest(
+          "[data-action]"
+        );
+
+
+      if (!button) {
+        return;
+      }
+
+
+      const action =
+        button.dataset.action;
+
+
+      const postId =
+        button.dataset.postId;
+
+
+      if (
+        action === "like"
+      ) {
+
+        await toggleLike(
+          postId,
+          button
+        );
+
+        return;
+      }
+
+
+      if (
+        action === "delete"
+      ) {
+
+        await deletePost(
+          postId
+        );
+
+        return;
+      }
+
+
+      if (
+        action === "comments"
+      ) {
+
+        const postElement =
+          button.closest(".post");
+
+
+        if (!postElement) {
+          return;
+        }
+
+
+        const commentsArea =
+          postElement.querySelector(
+            `[data-comments="${postId}"]`
+          );
+
+
+        if (!commentsArea) {
+          return;
+        }
+
+
+        commentsArea.style.display =
+          commentsArea.style.display ===
+          "none"
+            ? "block"
+            : "none";
+
+      }
+
+    }
+  );
+
+
+  postsContainer.addEventListener(
+    "submit",
+    async event => {
+
+      const form =
+        event.target.closest(
+          "[data-comment-form]"
+        );
+
+
+      if (!form) {
+        return;
+      }
+
+
+      event.preventDefault();
+
+
+      const postId =
+        form.dataset.commentForm;
+
+
+      const input =
+        form.querySelector(
+          "input"
+        );
+
+
+      await submitComment(
+        postId,
+        input
+      );
+    }
+  );
+
+
+  /* =====================================================
+     CREATE POST
+  ====================================================== */
+
+  openPostButton.addEventListener(
+    "click",
+    () => {
+
+      postFormCard.style.display =
+        "block";
+
+      postContent.focus();
+
+      window.scrollTo({
+        top:
+          postFormCard.offsetTop -
+          90,
+
+        behavior:
+          "smooth"
+      });
+    }
+  );
+
+
+  cancelPostButton.addEventListener(
+    "click",
+    () => {
+
+      postContent.value =
+        "";
+
+      postFormCard.style.display =
+        "none";
+
+      postFormMessage.textContent =
+        "";
+
+      postFormMessage.className =
+        "post-form-message";
+    }
+  );
+
+
+  postForm.addEventListener(
+    "submit",
+    async event => {
+
+      event.preventDefault();
+
+
+      const content =
+        postContent.value.trim();
+
+
+      if (!content) {
+        return;
+      }
+
+
+      submitPostButton.disabled =
+        true;
+
+      submitPostButton.textContent =
+        "Wird veröffentlicht …";
+
+
+      postFormMessage.textContent =
+        "";
+
+      postFormMessage.className =
+        "post-form-message";
+
+
+      try {
+
+        const {
+          error
+        } =
+          await supabaseClient
+            .from(
+              "community_posts"
+            )
+            .insert({
+              author_id:
+                currentUser.id,
+
+              content:
+                content
+            });
+
+
+        if (error) {
+          throw error;
+        }
+
+
+        postContent.value =
+          "";
+
+        postFormCard.style.display =
+          "none";
+
+
+        postFormMessage.textContent =
+          "Post veröffentlicht.";
+
+        postFormMessage.className =
+          "post-form-message success";
+
+
+        await loadPosts();
+
+
+      } catch (error) {
+
+        console.error(
+          error
+        );
+
+        postFormMessage.textContent =
+          error.message ||
+          "Der Post konnte nicht veröffentlicht werden.";
+
+        postFormMessage.className =
+          "post-form-message error";
+
+      } finally {
+
+        submitPostButton.disabled =
+          false;
+
+        submitPostButton.textContent =
+          "Post veröffentlichen";
+      }
+    }
+  );
+
+
+  /* =====================================================
+     PROFILE BUTTON
+  ====================================================== */
+
+  topAvatar.addEventListener(
+    "click",
+    () => {
+
+      window.location.href =
+        "profile.html";
+    }
+  );
+
+
+  /* =====================================================
+     RUN BUDDIES
+  ====================================================== */
+
+  async function loadRunBuddies() {
+
+    const {
+      data: profiles,
+      error
+    } =
+      await supabaseClient
+        .from("profiles")
+        .select(
+          "id, display_name, username, avatar_url, location"
+        )
+        .neq(
+          "id",
+          currentUser.id
+        )
+        .order(
+          "created_at",
+          {
+            ascending: false
+          }
+        )
+        .limit(3);
+
+
+    if (error) {
+      throw error;
+    }
+
+
+    if (!profiles.length) {
+
+      runBuddies.innerHTML = `
+        <p class="no-buddies">
+          Du bist aktuell das erste Mitglied
+          mit einem vollständigen Profil.
+        </p>
+      `;
+
+      return;
+    }
+
+
+    runBuddies.innerHTML =
+      profiles
+        .map(
+          profile => `
+
+            <div
+              class="rank"
+              style="margin-bottom:14px"
+            >
+
+              ${avatarHtml(
+                profile,
+                "pavatar"
+              )}
+
+              <div>
+
+                <b>
+                  ${escapeHtml(
+                    profile.display_name ||
+                    "Miles Apart Member"
+                  )}
+                </b>
+
+                <div class="small muted">
+
+                  ${
+                    profile.location
+                      ? escapeHtml(
+                          profile.location
+                        )
+                      : profile.username
+                        ? `@${escapeHtml(
+                            profile.username
+                          )}`
+                        : "Miles Apart Member"
+                  }
+
+                </div>
+
+              </div>
+
+              <span>
+                →
+              </span>
+
+            </div>
+
+          `
+        )
+        .join("");
+  }
+
+
+  /* =====================================================
+     MEMBER COUNT
+  ====================================================== */
+
+  async function loadMemberCount() {
+
+    const {
+      count,
+      error
+    } =
+      await supabaseClient
+        .from("profiles")
+        .select(
+          "id",
+          {
+            count: "exact",
+            head: true
+          }
+        );
+
+
+    if (error) {
+      throw error;
+    }
+
+
+    memberCount.textContent =
+      count ?? 0;
+  }
+
+
+  /* =====================================================
+     WEEKLY POLL
+  ====================================================== */
+
+  document
+    .querySelectorAll(
+      "[data-answer]"
+    )
+    .forEach(
+      button => {
+
+        button.addEventListener(
+          "click",
+          () => {
+
+            const answer =
+              button.dataset.answer;
+
+
+            const message =
+              document.getElementById(
+                "pollMessage"
+              );
+
+
+            message.textContent =
+              `Deine Antwort: ${answer} ✓`;
+
+          }
+        );
+
+      }
+    );
+
+
+  /* =====================================================
+     INITIALIZE
+  ====================================================== */
+
+  async function initializeCommunity() {
+
+    try {
+
+      clearError();
+
+
+      const loggedIn =
+        await loadCurrentUser();
+
+
+      if (!loggedIn) {
+        return;
+      }
+
+
+      await Promise.all([
+        loadPosts(),
+        loadRunBuddies(),
+        loadMemberCount()
+      ]);
+
+
+      communityLoading.style.display =
+        "none";
+
+
+      communityLower.style.display =
+        "grid";
+
+
+    } catch (error) {
+
+      console.error(
+        "Community error:",
+        error
+      );
+
+
+      communityLoading.style.display =
+        "none";
+
+
+      showError(
+        error.message ||
+        "Die Community konnte nicht geladen werden."
+      );
+
+    }
+
+  }
+
+
+  /* =====================================================
+     AUTH STATE
+  ====================================================== */
+
+  supabaseClient.auth.onAuthStateChange(
+    (
+      event,
+      session
+    ) => {
+
+      if (
+        event === "SIGNED_OUT" ||
+        !session
+      ) {
+
+        window.location.href =
+          "index.html";
+
+      }
+
+    }
+  );
+
+
+  /* =====================================================
+     START
+  ====================================================== */
+
+  initializeCommunity();
+
+</script>
+
+</body>
+</html>
