@@ -86,18 +86,12 @@
 
     #postsContainer {
       display: grid !important;
-      min-width: 0;
       width: 100%;
+      min-width: 0;
     }
 
     #postsContainer .post {
-      /*
-        Der Post selbst ist garantiert ein normaler Block.
-        Keine Grid-/Flex-Anordnung innerhalb des Posts.
-      */
       display: block !important;
-
-      position: relative !important;
 
       width: 100% !important;
       min-width: 0 !important;
@@ -109,6 +103,8 @@
       box-sizing: border-box !important;
 
       overflow: hidden !important;
+
+      text-align: left !important;
     }
 
 
@@ -119,23 +115,18 @@
     .post-header {
       display: block !important;
 
-      position: relative !important;
-
       width: 100% !important;
-      height: auto !important;
 
       margin: 0 !important;
       padding: 0 !important;
 
-      box-sizing: border-box !important;
+      text-align: left !important;
 
-      clear: both !important;
+      box-sizing: border-box !important;
     }
 
     .post-header-inner {
       display: flex !important;
-
-      position: relative !important;
 
       width: 100% !important;
       min-width: 0 !important;
@@ -152,13 +143,16 @@
     .post-author {
       display: flex !important;
 
-      align-items: center !important;
-
       width: 100% !important;
       min-width: 0 !important;
 
+      align-items: center !important;
+      justify-content: flex-start !important;
+
       margin: 0 !important;
       padding: 0 !important;
+
+      text-align: left !important;
 
       box-sizing: border-box !important;
     }
@@ -170,6 +164,8 @@
 
       margin-left: 13px !important;
 
+      text-align: left !important;
+
       box-sizing: border-box !important;
     }
 
@@ -180,6 +176,8 @@
 
       font-size: 17px;
       line-height: 1.25;
+
+      text-align: left !important;
     }
 
     .post-author-meta {
@@ -188,6 +186,8 @@
       margin-top: 3px !important;
 
       line-height: 1.4;
+
+      text-align: left !important;
     }
 
 
@@ -262,45 +262,52 @@
 
 
     /* =====================================================
-       POST CONTENT
-
-       ABSICHTLICH EIGENES ELEMENT UNTER DEM HEADER
+       POST TEXT
+       
+       WICHTIG:
+       Der Text beginnt IMMER ganz links.
+       Keine Zentrierung und keine automatische
+       Einrückung durch das Profilbild.
     ===================================================== */
 
     .post-content-area {
       display: block !important;
 
-      position: relative !important;
-
       width: 100% !important;
+      max-width: none !important;
+
       min-width: 0 !important;
 
-      margin: 25px 0 26px 0 !important;
+      margin: 28px 0 28px 0 !important;
       padding: 0 !important;
+
+      position: static !important;
+
+      clear: both !important;
+      float: none !important;
 
       box-sizing: border-box !important;
 
-      clear: both !important;
-
-      float: none !important;
+      text-align: left !important;
     }
 
     .post-content {
       display: block !important;
 
-      position: static !important;
-
       width: 100% !important;
-      min-width: 0 !important;
       max-width: none !important;
+
+      min-width: 0 !important;
 
       margin: 0 !important;
       padding: 0 !important;
 
-      box-sizing: border-box !important;
+      position: static !important;
 
       clear: both !important;
       float: none !important;
+
+      box-sizing: border-box !important;
 
       font-size: 18px !important;
       line-height: 1.55 !important;
@@ -321,8 +328,6 @@
     .post-meta {
       display: flex !important;
 
-      position: relative !important;
-
       width: 100% !important;
       min-width: 0 !important;
 
@@ -337,7 +342,8 @@
       box-sizing: border-box !important;
 
       clear: both !important;
-      float: none !important;
+
+      text-align: left !important;
     }
 
     .post-actions {
@@ -388,12 +394,12 @@
 
     /* =====================================================
        COMMENTS
+       
+       Kein grauer Kasten mehr.
     ===================================================== */
 
     .post-comments {
       display: block !important;
-
-      position: relative !important;
 
       width: 100% !important;
       min-width: 0 !important;
@@ -413,7 +419,7 @@
 
       flex-direction: column !important;
 
-      gap: 13px;
+      gap: 18px;
 
       width: 100%;
 
@@ -425,22 +431,28 @@
 
       align-items: flex-start !important;
 
-      gap: 10px;
+      gap: 12px;
 
       width: 100%;
 
       min-width: 0;
+
+      margin: 0 !important;
+      padding: 0 !important;
+
+      background: transparent !important;
     }
 
     .comment-avatar {
-      width: 42px;
-      height: 42px;
+      width: 42px !important;
+      height: 42px !important;
 
-      min-width: 42px;
+      min-width: 42px !important;
+      min-height: 42px !important;
 
-      flex: 0 0 42px;
+      flex: 0 0 42px !important;
 
-      border-radius: 50%;
+      border-radius: 50% !important;
 
       display: flex !important;
 
@@ -458,14 +470,14 @@
     }
 
     .comment-avatar img {
-      display: block;
+      display: block !important;
 
-      width: 100%;
-      height: 100%;
+      width: 100% !important;
+      height: 100% !important;
 
-      object-fit: cover;
+      object-fit: cover !important;
 
-      border-radius: 50%;
+      border-radius: 50% !important;
     }
 
     .comment-body {
@@ -473,37 +485,63 @@
 
       min-width: 0;
 
-      padding: 10px 12px;
+      padding: 0 !important;
 
-      background: #f6f7f7;
+      background: transparent !important;
 
       box-sizing: border-box;
     }
 
+    .comment-head {
+      display: flex;
+
+      align-items: baseline;
+
+      gap: 8px;
+
+      margin: 0;
+
+      line-height: 1.3;
+    }
+
     .comment-name {
-      font-size: 13px;
+      font-size: 14px;
+
       font-weight: 800;
+
+      color: #111;
     }
 
     .comment-time {
-      margin-left: 6px;
+      margin: 0;
 
       color: #888;
 
-      font-size: 11px;
+      font-size: 12px;
+
       font-weight: 400;
     }
 
     .comment-text {
       margin-top: 5px;
 
-      font-size: 14px;
-      line-height: 1.45;
+      padding: 0 !important;
+
+      font-size: 15px;
+
+      line-height: 1.5;
+
+      color: #333;
 
       white-space: pre-wrap;
 
       overflow-wrap: anywhere;
+
       word-break: break-word;
+
+      background: transparent !important;
+
+      text-align: left !important;
     }
 
     .comment-form {
@@ -512,9 +550,10 @@
       gap: 8px;
 
       width: 100%;
+
       min-width: 0;
 
-      margin-top: 14px;
+      margin-top: 18px;
     }
 
     .comment-form input {
@@ -543,6 +582,7 @@
       border: 0;
 
       background: #111;
+
       color: #fff;
 
       padding: 0 16px;
@@ -635,10 +675,9 @@
 
 
     /* =====================================================
-       TOP PROFILE AVATAR
-
-       Gleiche saubere Darstellung:
-       Kreis -> Bild komplett innerhalb des Kreises
+       TOP PROFILE
+       
+       Rundes Bild wie auf der Startseite.
     ===================================================== */
 
     #topAvatar {
@@ -653,13 +692,9 @@
 
       padding: 0 !important;
 
-      border: 3px solid #18b8c7 !important;
-
       border-radius: 50% !important;
 
       overflow: hidden !important;
-
-      background: #18b8c7 !important;
 
       display: flex !important;
 
@@ -667,6 +702,8 @@
       justify-content: center !important;
 
       box-sizing: border-box !important;
+
+      cursor: pointer;
     }
 
     #topAvatar img {
@@ -715,10 +752,14 @@
         margin-bottom: 22px !important;
 
         box-sizing: border-box !important;
+
+        text-align: left !important;
       }
 
 
-      /* Header bleibt eine einzige Zeile */
+      /* -----------------------------------------------
+         POST HEADER
+      ------------------------------------------------ */
 
       .post-header {
         display: block !important;
@@ -727,8 +768,9 @@
 
         margin: 0 !important;
         padding: 0 !important;
-      }
 
+        text-align: left !important;
+      }
 
       .post-header-inner {
         display: flex !important;
@@ -738,13 +780,16 @@
         align-items: center !important;
       }
 
-
       .post-author {
         display: flex !important;
 
         width: 100% !important;
 
         align-items: center !important;
+
+        justify-content: flex-start !important;
+
+        text-align: left !important;
       }
 
 
@@ -762,20 +807,26 @@
       }
 
 
-      /* Der Text beginnt IMMER unterhalb des Headers */
+      /* -----------------------------------------------
+         POST TEXT
+      ------------------------------------------------ */
 
       .post-content-area {
         display: block !important;
 
         width: 100% !important;
 
-        margin: 24px 0 26px 0 !important;
+        max-width: none !important;
+
+        margin: 26px 0 26px 0 !important;
 
         padding: 0 !important;
 
         clear: both !important;
 
         float: none !important;
+
+        text-align: left !important;
       }
 
 
@@ -784,7 +835,10 @@
 
         width: 100% !important;
 
+        max-width: none !important;
+
         margin: 0 !important;
+
         padding: 0 !important;
 
         clear: both !important;
@@ -799,7 +853,9 @@
       }
 
 
-      /* Aktionen bleiben horizontal */
+      /* -----------------------------------------------
+         ACTIONS
+      ------------------------------------------------ */
 
       .post-meta {
         display: flex !important;
@@ -813,7 +869,6 @@
         justify-content: space-between !important;
       }
 
-
       .post-actions {
         display: flex !important;
 
@@ -824,7 +879,6 @@
         width: auto !important;
       }
 
-
       .delete-post {
         margin-left: auto !important;
 
@@ -832,14 +886,25 @@
       }
 
 
-      /* Kommentare */
+      /* -----------------------------------------------
+         COMMENTS
+      ------------------------------------------------ */
 
       .post-comments {
         display: block !important;
 
         width: 100% !important;
+
+        margin-top: 18px !important;
       }
 
+      .comment {
+        width: 100% !important;
+
+        display: flex !important;
+
+        align-items: flex-start !important;
+      }
 
       .comment-form {
         display: flex !important;
@@ -849,11 +914,9 @@
         width: 100% !important;
       }
 
-
       .comment-form input {
         width: 100% !important;
       }
-
 
       .comment-form button {
         width: 100% !important;
@@ -862,7 +925,9 @@
       }
 
 
-      /* Post erstellen */
+      /* -----------------------------------------------
+         POST FORM
+      ------------------------------------------------ */
 
       .post-form-actions {
         flex-direction: column;
@@ -870,16 +935,18 @@
         align-items: stretch;
       }
 
-
       .post-form-actions > div:last-child {
         width: 100%;
       }
-
 
       .post-form-actions .btn {
         flex: 1;
       }
 
+
+      /* -----------------------------------------------
+         TOP AVATAR
+      ------------------------------------------------ */
 
       #topAvatar {
         width: 52px !important;
@@ -1456,6 +1523,7 @@
         Math.floor(diff / 60);
 
       return `vor ${minutes} Min`;
+
     }
 
 
@@ -1465,6 +1533,7 @@
         Math.floor(diff / 3600);
 
       return `vor ${hours} Std`;
+
     }
 
 
@@ -1520,6 +1589,7 @@
         )}
       </div>
     `;
+
   }
 
 
@@ -1628,13 +1698,8 @@
       `Hallo, ${firstName}`;
 
 
-    /*
-      Profilbild genauso sauber wie auf der Startseite:
-      Das Bild selbst wird innerhalb eines runden Containers
-      mit object-fit: cover dargestellt.
-    */
-
-    topAvatar.innerHTML = "";
+    topAvatar.innerHTML =
+      "";
 
 
     if (
@@ -1730,6 +1795,7 @@
     renderPosts(
       posts || []
     );
+
   }
 
 
@@ -1746,9 +1812,8 @@
     if (!posts.length) {
 
       postsContainer.innerHTML = `
-        <div
-          class="empty-community"
-        >
+
+        <div class="empty-community">
 
           <strong>
             Sei der Erste in der Community.
@@ -1759,6 +1824,7 @@
           mit Miles Apart.
 
         </div>
+
       `;
 
 
@@ -1783,6 +1849,7 @@
 
     postsContainer.style.display =
       "grid";
+
   }
 
 
@@ -1825,7 +1892,9 @@
 
 
     const wrapper =
-      document.createElement("div");
+      document.createElement(
+        "div"
+      );
 
 
     wrapper.className =
@@ -1836,13 +1905,9 @@
       post.id;
 
 
-    /*
-      WICHTIG:
-      Header und Text sind jetzt strukturell
-      komplett voneinander getrennt.
-    */
-
     wrapper.innerHTML = `
+
+      <!-- POST HEADER -->
 
       <div class="post-header">
 
@@ -1868,9 +1933,11 @@
                   <div class="post-avatar">
 
                     <div class="post-avatar-initials">
+
                       ${escapeHtml(
                         getInitials(authorName)
                       )}
+
                     </div>
 
                   </div>
@@ -1912,6 +1979,8 @@
       </div>
 
 
+      <!-- POST TEXT -->
+
       <div class="post-content-area">
 
         <div class="post-content">
@@ -1924,6 +1993,8 @@
 
       </div>
 
+
+      <!-- POST ACTIONS -->
 
       <div class="post-meta">
 
@@ -1983,6 +2054,8 @@
       </div>
 
 
+      <!-- COMMENTS -->
+
       <div
         class="post-comments"
         data-comments="${post.id}"
@@ -2035,12 +2108,13 @@
 
 
     return wrapper;
+
   }
 
 
   /* =====================================================
      COMMENT HTML
-  ====================================================== */
+    ===================================================== */
 
   function createCommentHtml(comment) {
 
@@ -2065,7 +2139,7 @@
 
         <div class="comment-body">
 
-          <div>
+          <div class="comment-head">
 
             <span class="comment-name">
 
@@ -2100,6 +2174,7 @@
       </div>
 
     `;
+
   }
 
 
@@ -2260,6 +2335,7 @@
 
 
     await loadPosts();
+
   }
 
 
@@ -2773,6 +2849,7 @@
 
     memberCount.textContent =
       count ?? 0;
+
   }
 
 
