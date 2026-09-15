@@ -1,8 +1,1379 @@
-<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>My Run — Miles Apart Running Club</title><link rel="stylesheet" href="style.css"></head>
-<body><div class="shell"><aside class="sidebar"><div class="brand"><a href="index.html"><img src="miles-apart-full-logo.png" alt="Miles Apart Running Club"></a></div><nav class="nav"><a class="" href="index.html">Home</a><a class="" href="challenges.html">Challenges</a><a class="" href="community.html">Community</a><a class="" href="events.html">Events</a><a class="" href="training.html">Training</a><a class="active" href="profile.html">My Run</a></nav><div class="side-bottom"><small>THIS WEEK</small><strong>23.4 / 30 KM</strong><div class="mini-progress"><i></i></div><p class="small" style="color:#aaa;margin-bottom:0">Nur 6.6 km bis zum Wochenziel.</p></div></aside><main class="main"><div class="top"><div class="crumb">MILES APART / MY RUN</div><div class="top-right"><span class="small muted">Guten Morgen, Alex</span><div class="avatar">A</div></div></div>
-<div class="hero"><div><h1>My Run.</h1><p class="lead">Deine Läufe. Deine Entwicklung. Dein Platz in der Community.</p></div><a class="btn ghost" href="#">Profil bearbeiten</a></div>
-<div class="grid g3"><div class="card lime"><div class="label">TOTAL</div><div class="kpi">1,284 km</div><div class="small">seit deinem Start</div></div><div class="card"><div class="label">LÄUFE</div><div class="kpi">147</div><div class="small muted">Ø 8.7 km</div></div><div class="card dark"><div class="label">BESTER STREAK</div><div class="kpi">19 Tage 🔥</div><div class="small">Dein Ziel: 30</div></div></div>
-<div class="section grid g2"><div class="card"><div class="section-head"><h2>September</h2><span class="badge">92 / 120 km</span></div><div class="bar"><i style="height:32%"></i><i style="height:49%"></i><i style="height:68%"></i><i style="height:43%"></i><i style="height:77%"></i><i style="height:52%"></i><i style="height:91%"></i><i style="height:63%"></i><i style="height:74%"></i><i style="height:45%"></i><i style="height:84%"></i><i style="height:70%"></i></div><div class="row small muted"><span>01</span><span>07</span><span>14</span><span>21</span><span>30</span></div></div>
-<div class="card"><div class="section-head"><h2>Badges</h2><span class="badge">7 / 20</span></div><div class="grid g3"><div class="card lime" style="padding:13px;text-align:center">🔥<br><b>7 DAY</b></div><div class="card" style="padding:13px;text-align:center">🌅<br><b>EARLY</b></div><div class="card" style="padding:13px;text-align:center">🏅<br><b>FIRST 10K</b></div><div class="card" style="padding:13px;text-align:center">👥<br><b>TEAM</b></div><div class="card" style="padding:13px;text-align:center">🌙<br><b>NIGHT</b></div><div class="card" style="padding:13px;text-align:center">🔒<br><b>LOCKED</b></div></div></div></div>
-<div class="section card"><div class="section-head"><h2>Letzte Läufe</h2><span class="badge">Privat by default</span></div><div class="rank"><span>14.09</span><div><b>7.2 km · Mainz</b><div class="small muted">6:02 /km · Easy</div></div><span>43:26</span></div><div class="rank"><span>12.09</span><div><b>5.0 km · Mainz</b><div class="small muted">5:38 /km · Tempo</div></div><span>28:10</span></div><div class="rank"><span>10.09</span><div><b>8.4 km · Wiesbaden</b><div class="small muted">6:14 /km · Long</div></div><span>52:21</span></div></div>
-</main></div></body></html>
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  />
+
+  <title>Mein Profil – Miles Apart Running Club</title>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <style>
+    :root {
+      --miles-blue: #18b8c7;
+      --miles-blue-dark: #1199a6;
+      --text: #111111;
+      --muted: #6f7779;
+      --line: #dddddd;
+      --soft: #f5f7f7;
+      --white: #ffffff;
+      --danger: #c83b3b;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Helvetica,
+        Arial,
+        sans-serif;
+      background: #ffffff;
+      color: var(--text);
+    }
+
+    button,
+    input,
+    textarea {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      min-height: 100vh;
+    }
+
+    /* --------------------------------------------------
+       HEADER
+    -------------------------------------------------- */
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      height: 78px;
+      padding: 0 28px;
+
+      background: rgba(255, 255, 255, 0.96);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(10px);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+    }
+
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      border: 2px solid var(--miles-blue);
+      border-radius: 50%;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      color: var(--miles-blue);
+      font-size: 17px;
+      font-weight: 800;
+    }
+
+    .brand-text {
+      font-size: 18px;
+    }
+
+    .back-link {
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .back-link:hover {
+      color: var(--miles-blue-dark);
+    }
+
+    /* --------------------------------------------------
+       MAIN
+    -------------------------------------------------- */
+
+    main {
+      width: min(960px, calc(100% - 36px));
+      margin: 0 auto;
+      padding: 70px 0 100px;
+    }
+
+    .eyebrow {
+      margin: 0 0 14px;
+
+      color: var(--miles-blue);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(42px, 7vw, 76px);
+      line-height: 0.95;
+      letter-spacing: -0.055em;
+    }
+
+    .intro {
+      max-width: 680px;
+      margin: 22px 0 55px;
+
+      color: var(--muted);
+      font-size: 19px;
+      line-height: 1.6;
+    }
+
+    /* --------------------------------------------------
+       PROFILE CARD
+    -------------------------------------------------- */
+
+    .profile-card {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 45px;
+
+      padding: 42px;
+
+      border: 1px solid var(--line);
+      background: var(--white);
+    }
+
+    .profile-side {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .avatar {
+      width: 150px;
+      height: 150px;
+
+      border-radius: 50%;
+      border: 4px solid var(--miles-blue);
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      overflow: hidden;
+
+      background: #eefafa;
+      color: var(--miles-blue);
+
+      font-size: 48px;
+      font-weight: 800;
+    }
+
+    .avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .profile-side-name {
+      margin-top: 20px;
+      font-size: 23px;
+      font-weight: 800;
+    }
+
+    .profile-side-username {
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    /* --------------------------------------------------
+       FORM
+    -------------------------------------------------- */
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+    }
+
+    .field.full {
+      grid-column: 1 / -1;
+    }
+
+    label {
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+
+      border: 1px solid #cfcfcf;
+      border-radius: 0;
+
+      padding: 14px 15px;
+
+      background: #ffffff;
+      color: var(--text);
+
+      outline: none;
+
+      transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+    }
+
+    input:focus,
+    textarea:focus {
+      border-color: var(--miles-blue);
+      box-shadow: 0 0 0 3px rgba(24, 184, 199, 0.12);
+    }
+
+    textarea {
+      min-height: 130px;
+      resize: vertical;
+      line-height: 1.5;
+    }
+
+    .field-help {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.4;
+    }
+
+    .email-box {
+      padding: 14px 15px;
+      background: var(--soft);
+      border: 1px solid var(--line);
+      color: var(--muted);
+    }
+
+    /* --------------------------------------------------
+       BUTTONS
+    -------------------------------------------------- */
+
+    .actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+
+      margin-top: 30px;
+    }
+
+    .button {
+      border: 1px solid var(--text);
+      border-radius: 0;
+
+      padding: 13px 20px;
+
+      background: var(--text);
+      color: #ffffff;
+
+      font-weight: 800;
+    }
+
+    .button:hover {
+      opacity: 0.88;
+    }
+
+    .button.primary {
+      border-color: var(--miles-blue);
+      background: var(--miles-blue);
+      color: #ffffff;
+    }
+
+    .button.primary:hover {
+      background: var(--miles-blue-dark);
+      border-color: var(--miles-blue-dark);
+    }
+
+    .button.secondary {
+      background: #ffffff;
+      color: var(--text);
+      border-color: var(--line);
+    }
+
+    .button.danger {
+      background: #ffffff;
+      color: var(--danger);
+      border-color: #e2bcbc;
+    }
+
+    .button:disabled {
+      cursor: default;
+      opacity: 0.55;
+    }
+
+    /* --------------------------------------------------
+       STATUS
+    -------------------------------------------------- */
+
+    .status {
+      min-height: 22px;
+      margin-top: 16px;
+
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .status.success {
+      color: var(--miles-blue-dark);
+    }
+
+    .status.error {
+      color: var(--danger);
+    }
+
+    .loading {
+      padding: 80px 0;
+      text-align: center;
+      color: var(--muted);
+    }
+
+    /* --------------------------------------------------
+       PASSWORD SECTION
+    -------------------------------------------------- */
+
+    .section {
+      margin-top: 70px;
+    }
+
+    .section-header {
+      margin-bottom: 24px;
+    }
+
+    .section-header h2 {
+      margin: 0;
+      font-size: 32px;
+      letter-spacing: -0.04em;
+    }
+
+    .section-header p {
+      margin: 10px 0 0;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .password-card {
+      padding: 32px;
+      border: 1px solid var(--line);
+      background: #ffffff;
+    }
+
+    /* --------------------------------------------------
+       MOBILE
+    -------------------------------------------------- */
+
+    @media (max-width: 760px) {
+      .topbar {
+        height: 68px;
+        padding: 0 17px;
+      }
+
+      .brand-text {
+        font-size: 15px;
+      }
+
+      .brand-mark {
+        width: 38px;
+        height: 38px;
+        font-size: 15px;
+      }
+
+      main {
+        width: min(100% - 28px, 960px);
+        padding: 45px 0 70px;
+      }
+
+      .intro {
+        font-size: 17px;
+        margin-bottom: 35px;
+      }
+
+      .profile-card {
+        grid-template-columns: 1fr;
+        gap: 35px;
+        padding: 25px 20px;
+      }
+
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .field.full {
+        grid-column: auto;
+      }
+
+      .actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .button {
+        width: 100%;
+      }
+
+      .password-card {
+        padding: 24px 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="page">
+
+    <header class="topbar">
+      <a href="index.html" class="brand">
+        <div class="brand-mark">M</div>
+        <div class="brand-text">Miles Apart Running Club</div>
+      </a>
+
+      <a href="index.html" class="back-link">
+        ← Home
+      </a>
+    </header>
+
+    <main>
+
+      <div id="loadingState" class="loading">
+        Profil wird geladen …
+      </div>
+
+      <div id="profileContent" style="display: none;">
+
+        <p class="eyebrow">Miles Apart / Mein Profil</p>
+
+        <h1>Mein Profil.</h1>
+
+        <p class="intro">
+          Deine persönlichen Daten für die Miles Apart Community.
+          Änderungen werden direkt in deinem Account gespeichert.
+        </p>
+
+        <!-- PROFILE -->
+        <section class="profile-card">
+
+          <aside class="profile-side">
+
+            <div class="avatar" id="avatarPreview">
+              M
+            </div>
+
+            <div class="profile-side-name" id="sideName">
+              —
+            </div>
+
+            <div class="profile-side-username" id="sideUsername">
+              —
+            </div>
+
+          </aside>
+
+          <div>
+
+            <form id="profileForm">
+
+              <div class="form-grid">
+
+                <div class="field">
+                  <label for="displayName">
+                    Name
+                  </label>
+
+                  <input
+                    id="displayName"
+                    type="text"
+                    maxlength="80"
+                    placeholder="Dein Name"
+                    required
+                  />
+                </div>
+
+                <div class="field">
+                  <label for="username">
+                    Username
+                  </label>
+
+                  <input
+                    id="username"
+                    type="text"
+                    maxlength="30"
+                    placeholder="z. B. tano"
+                  />
+
+                  <div class="field-help">
+                    3–30 Zeichen. Der Username kann später
+                    in der Community verwendet werden.
+                  </div>
+                </div>
+
+                <div class="field full">
+                  <label>
+                    E-Mail
+                  </label>
+
+                  <div class="email-box" id="email">
+                    —
+                  </div>
+
+                  <div class="field-help">
+                    Die E-Mail-Adresse wird momentan über
+                    deinen Login-Account verwaltet.
+                  </div>
+                </div>
+
+                <div class="field">
+                  <label for="location">
+                    Standort
+                  </label>
+
+                  <input
+                    id="location"
+                    type="text"
+                    maxlength="100"
+                    placeholder="z. B. Düsseldorf"
+                  />
+                </div>
+
+                <div class="field">
+                  <label for="avatarUrl">
+                    Profilbild URL
+                  </label>
+
+                  <input
+                    id="avatarUrl"
+                    type="url"
+                    placeholder="https://..."
+                  />
+
+                  <div class="field-help">
+                    Vorerst kannst du hier eine Bild-URL
+                    hinterlegen. Den direkten Upload bauen
+                    wir anschließend über Supabase Storage.
+                  </div>
+                </div>
+
+                <div class="field full">
+                  <label for="bio">
+                    Bio
+                  </label>
+
+                  <textarea
+                    id="bio"
+                    maxlength="500"
+                    placeholder="Erzähl der Community etwas über dich, dein Laufen oder deine Ziele …"
+                  ></textarea>
+                </div>
+
+              </div>
+
+              <div class="actions">
+                <button
+                  type="submit"
+                  class="button primary"
+                  id="saveProfileButton"
+                >
+                  Änderungen speichern
+                </button>
+              </div>
+
+              <div
+                id="profileStatus"
+                class="status"
+                aria-live="polite"
+              ></div>
+
+            </form>
+
+          </div>
+
+        </section>
+
+
+        <!-- PASSWORD -->
+        <section class="section">
+
+          <div class="section-header">
+            <h2>Passwort ändern</h2>
+
+            <p>
+              Du kannst dein Passwort jederzeit direkt
+              über deinen Miles Apart Account ändern.
+            </p>
+          </div>
+
+          <div class="password-card">
+
+            <form id="passwordForm">
+
+              <div class="field">
+                <label for="newPassword">
+                  Neues Passwort
+                </label>
+
+                <input
+                  id="newPassword"
+                  type="password"
+                  minlength="8"
+                  placeholder="Mindestens 8 Zeichen"
+                  required
+                />
+              </div>
+
+              <div class="field" style="margin-top: 20px;">
+                <label for="newPasswordConfirm">
+                  Neues Passwort wiederholen
+                </label>
+
+                <input
+                  id="newPasswordConfirm"
+                  type="password"
+                  minlength="8"
+                  placeholder="Passwort wiederholen"
+                  required
+                />
+              </div>
+
+              <div class="actions">
+                <button
+                  type="submit"
+                  class="button primary"
+                  id="changePasswordButton"
+                >
+                  Passwort ändern
+                </button>
+              </div>
+
+              <div
+                id="passwordStatus"
+                class="status"
+                aria-live="polite"
+              ></div>
+
+            </form>
+
+          </div>
+
+        </section>
+
+
+        <!-- LOGOUT -->
+        <section class="section">
+
+          <div class="section-header">
+            <h2>Account</h2>
+
+            <p>
+              Du kannst dich hier von diesem Gerät abmelden.
+            </p>
+          </div>
+
+          <button
+            type="button"
+            class="button danger"
+            id="logoutButton"
+          >
+            Abmelden
+          </button>
+
+        </section>
+
+      </div>
+
+    </main>
+
+  </div>
+
+
+  <script>
+    /* ==================================================
+       SUPABASE
+    ================================================== */
+
+    const SUPABASE_URL =
+      "https://orbrkdrsihsacsnprewf.supabase.co";
+
+    const SUPABASE_PUBLISHABLE_KEY =
+      "sb_publishable_wc3w2fSuj8ItwiF6XBoQgw_HeW5_rNW";
+
+    const { createClient } = window.supabase;
+
+    const supabaseClient = createClient(
+      SUPABASE_URL,
+      SUPABASE_PUBLISHABLE_KEY
+    );
+
+
+    /* ==================================================
+       ELEMENTS
+    ================================================== */
+
+    const loadingState =
+      document.getElementById("loadingState");
+
+    const profileContent =
+      document.getElementById("profileContent");
+
+    const profileForm =
+      document.getElementById("profileForm");
+
+    const displayNameInput =
+      document.getElementById("displayName");
+
+    const usernameInput =
+      document.getElementById("username");
+
+    const locationInput =
+      document.getElementById("location");
+
+    const avatarUrlInput =
+      document.getElementById("avatarUrl");
+
+    const bioInput =
+      document.getElementById("bio");
+
+    const emailElement =
+      document.getElementById("email");
+
+    const avatarPreview =
+      document.getElementById("avatarPreview");
+
+    const sideName =
+      document.getElementById("sideName");
+
+    const sideUsername =
+      document.getElementById("sideUsername");
+
+    const profileStatus =
+      document.getElementById("profileStatus");
+
+    const saveProfileButton =
+      document.getElementById("saveProfileButton");
+
+    const passwordForm =
+      document.getElementById("passwordForm");
+
+    const newPasswordInput =
+      document.getElementById("newPassword");
+
+    const newPasswordConfirmInput =
+      document.getElementById("newPasswordConfirm");
+
+    const passwordStatus =
+      document.getElementById("passwordStatus");
+
+    const changePasswordButton =
+      document.getElementById("changePasswordButton");
+
+    const logoutButton =
+      document.getElementById("logoutButton");
+
+
+    /* ==================================================
+       HELPERS
+    ================================================== */
+
+    function getInitials(name) {
+      if (!name) return "M";
+
+      const parts = name
+        .trim()
+        .split(/\s+/)
+        .filter(Boolean);
+
+      if (parts.length === 1) {
+        return parts[0].slice(0, 2).toUpperCase();
+      }
+
+      return (
+        parts[0][0] +
+        parts[parts.length - 1][0]
+      ).toUpperCase();
+    }
+
+
+    function setProfileStatus(message, type = "") {
+      profileStatus.textContent = message;
+      profileStatus.className = "status " + type;
+    }
+
+
+    function setPasswordStatus(message, type = "") {
+      passwordStatus.textContent = message;
+      passwordStatus.className = "status " + type;
+    }
+
+
+    function renderAvatar(name, avatarUrl) {
+
+      avatarPreview.innerHTML = "";
+
+      if (avatarUrl) {
+
+        const image =
+          document.createElement("img");
+
+        image.src = avatarUrl;
+        image.alt = "Profilbild";
+
+        image.onerror = () => {
+          avatarPreview.innerHTML =
+            getInitials(name);
+        };
+
+        avatarPreview.appendChild(image);
+
+      } else {
+
+        avatarPreview.textContent =
+          getInitials(name);
+      }
+    }
+
+
+    function translateProfileError(error) {
+
+      if (!error) {
+        return "Es ist ein unbekannter Fehler aufgetreten.";
+      }
+
+      const message =
+        error.message || "";
+
+      if (
+        message.includes("duplicate key") ||
+        message.includes("profiles_username_key")
+      ) {
+        return "Dieser Username ist bereits vergeben.";
+      }
+
+      if (
+        message.includes("violates check constraint")
+      ) {
+        return "Der Username muss zwischen 3 und 30 Zeichen lang sein.";
+      }
+
+      return message;
+    }
+
+
+    /* ==================================================
+       LOAD PROFILE
+    ================================================== */
+
+    async function loadProfile() {
+
+      const {
+        data: sessionData,
+        error: sessionError
+      } = await supabaseClient.auth.getSession();
+
+      if (sessionError) {
+        console.error(sessionError);
+
+        loadingState.textContent =
+          "Deine Sitzung konnte nicht geladen werden.";
+
+        return;
+      }
+
+      const session =
+        sessionData.session;
+
+      if (!session) {
+
+        window.location.href =
+          "index.html";
+
+        return;
+      }
+
+      const user =
+        session.user;
+
+      emailElement.textContent =
+        user.email || "—";
+
+
+      const {
+        data: profile,
+        error: profileError
+      } = await supabaseClient
+        .from("profiles")
+        .select(
+          "display_name, username, avatar_url, bio, location"
+        )
+        .eq("id", user.id)
+        .maybeSingle();
+
+
+      if (profileError) {
+
+        console.error(profileError);
+
+        loadingState.textContent =
+          "Das Profil konnte nicht geladen werden.";
+
+        return;
+      }
+
+
+      const displayName =
+        profile?.display_name ||
+        user.user_metadata?.display_name ||
+        "Miles Apart Member";
+
+      const username =
+        profile?.username || "";
+
+      const avatarUrl =
+        profile?.avatar_url || "";
+
+      const bio =
+        profile?.bio || "";
+
+      const location =
+        profile?.location || "";
+
+
+      displayNameInput.value =
+        displayName;
+
+      usernameInput.value =
+        username;
+
+      avatarUrlInput.value =
+        avatarUrl;
+
+      bioInput.value =
+        bio;
+
+      locationInput.value =
+        location;
+
+
+      sideName.textContent =
+        displayName;
+
+      sideUsername.textContent =
+        username
+          ? "@" + username
+          : "Miles Apart Member";
+
+
+      renderAvatar(
+        displayName,
+        avatarUrl
+      );
+
+
+      loadingState.style.display =
+        "none";
+
+      profileContent.style.display =
+        "block";
+    }
+
+
+    /* ==================================================
+       LIVE AVATAR PREVIEW
+    ================================================== */
+
+    avatarUrlInput.addEventListener(
+      "input",
+      () => {
+
+        renderAvatar(
+          displayNameInput.value,
+          avatarUrlInput.value.trim()
+        );
+
+      }
+    );
+
+
+    displayNameInput.addEventListener(
+      "input",
+      () => {
+
+        sideName.textContent =
+          displayNameInput.value ||
+          "—";
+
+        renderAvatar(
+          displayNameInput.value,
+          avatarUrlInput.value.trim()
+        );
+
+      }
+    );
+
+
+    usernameInput.addEventListener(
+      "input",
+      () => {
+
+        sideUsername.textContent =
+          usernameInput.value.trim()
+            ? "@" + usernameInput.value.trim()
+            : "Miles Apart Member";
+
+      }
+    );
+
+
+    /* ==================================================
+       SAVE PROFILE
+    ================================================== */
+
+    profileForm.addEventListener(
+      "submit",
+      async (event) => {
+
+        event.preventDefault();
+
+        setProfileStatus("");
+
+        const {
+          data: sessionData
+        } =
+          await supabaseClient.auth.getSession();
+
+        const session =
+          sessionData.session;
+
+        if (!session) {
+
+          window.location.href =
+            "index.html";
+
+          return;
+        }
+
+
+        const displayName =
+          displayNameInput.value.trim();
+
+        const username =
+          usernameInput.value.trim()
+            .toLowerCase();
+
+        const avatarUrl =
+          avatarUrlInput.value.trim();
+
+        const bio =
+          bioInput.value.trim();
+
+        const location =
+          locationInput.value.trim();
+
+
+        if (!displayName) {
+
+          setProfileStatus(
+            "Bitte gib deinen Namen ein.",
+            "error"
+          );
+
+          return;
+        }
+
+
+        if (
+          username &&
+          (username.length < 3 ||
+           username.length > 30)
+        ) {
+
+          setProfileStatus(
+            "Der Username muss zwischen 3 und 30 Zeichen lang sein.",
+            "error"
+          );
+
+          return;
+        }
+
+
+        saveProfileButton.disabled =
+          true;
+
+        saveProfileButton.textContent =
+          "Wird gespeichert …";
+
+
+        const {
+          error
+        } = await supabaseClient
+          .from("profiles")
+          .update({
+            display_name:
+              displayName,
+
+            username:
+              username || null,
+
+            avatar_url:
+              avatarUrl || null,
+
+            bio:
+              bio || null,
+
+            location:
+              location || null
+          })
+          .eq(
+            "id",
+            session.user.id
+          );
+
+
+        saveProfileButton.disabled =
+          false;
+
+        saveProfileButton.textContent =
+          "Änderungen speichern";
+
+
+        if (error) {
+
+          console.error(error);
+
+          setProfileStatus(
+            translateProfileError(error),
+            "error"
+          );
+
+          return;
+        }
+
+
+        sideName.textContent =
+          displayName;
+
+        sideUsername.textContent =
+          username
+            ? "@" + username
+            : "Miles Apart Member";
+
+
+        renderAvatar(
+          displayName,
+          avatarUrl
+        );
+
+
+        setProfileStatus(
+          "Dein Profil wurde gespeichert.",
+          "success"
+        );
+      }
+    );
+
+
+    /* ==================================================
+       CHANGE PASSWORD
+    ================================================== */
+
+    passwordForm.addEventListener(
+      "submit",
+      async (event) => {
+
+        event.preventDefault();
+
+        setPasswordStatus("");
+
+        const password =
+          newPasswordInput.value;
+
+        const confirmation =
+          newPasswordConfirmInput.value;
+
+
+        if (password.length < 8) {
+
+          setPasswordStatus(
+            "Das Passwort muss mindestens 8 Zeichen lang sein.",
+            "error"
+          );
+
+          return;
+        }
+
+
+        if (password !== confirmation) {
+
+          setPasswordStatus(
+            "Die beiden Passwörter stimmen nicht überein.",
+            "error"
+          );
+
+          return;
+        }
+
+
+        changePasswordButton.disabled =
+          true;
+
+        changePasswordButton.textContent =
+          "Wird geändert …";
+
+
+        const {
+          error
+        } =
+          await supabaseClient.auth.updateUser({
+            password: password
+          });
+
+
+        changePasswordButton.disabled =
+          false;
+
+        changePasswordButton.textContent =
+          "Passwort ändern";
+
+
+        if (error) {
+
+          console.error(error);
+
+          setPasswordStatus(
+            error.message ||
+            "Das Passwort konnte nicht geändert werden.",
+            "error"
+          );
+
+          return;
+        }
+
+
+        newPasswordInput.value =
+          "";
+
+        newPasswordConfirmInput.value =
+          "";
+
+
+        setPasswordStatus(
+          "Dein Passwort wurde erfolgreich geändert.",
+          "success"
+        );
+      }
+    );
+
+
+    /* ==================================================
+       LOGOUT
+    ================================================== */
+
+    logoutButton.addEventListener(
+      "click",
+      async () => {
+
+        logoutButton.disabled =
+          true;
+
+        logoutButton.textContent =
+          "Wird abgemeldet …";
+
+
+        const {
+          error
+        } =
+          await supabaseClient.auth.signOut();
+
+
+        if (error) {
+
+          console.error(error);
+
+          logoutButton.disabled =
+            false;
+
+          logoutButton.textContent =
+            "Abmelden";
+
+          return;
+        }
+
+
+        window.location.href =
+          "index.html";
+      }
+    );
+
+
+    /* ==================================================
+       AUTH STATE
+    ================================================== */
+
+    supabaseClient.auth.onAuthStateChange(
+      (event, session) => {
+
+        if (
+          event === "SIGNED_OUT" ||
+          !session
+        ) {
+
+          if (
+            !window.location.pathname.endsWith(
+              "index.html"
+            )
+          ) {
+            window.location.href =
+              "index.html";
+          }
+        }
+      }
+    );
+
+
+    /* ==================================================
+       START
+    ================================================== */
+
+    loadProfile();
+  </script>
+
+</body>
+</html>
