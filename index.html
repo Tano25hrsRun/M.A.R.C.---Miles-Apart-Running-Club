@@ -9,86 +9,62 @@
   <style>
 
     /* =========================================================
-       MILES APART
-       COLOR SYSTEM
-       Schwarz / Weiß / Türkisblau
+       MILES APART — ACCENT COLOR
+       Einzige Änderung: Lime/Grün wird durch Türkisblau ersetzt.
        ========================================================= */
 
     :root {
-      --accent: #16b8c8;
-      --accent-dark: #0d8996;
-      --black: #080909;
-      --black-soft: #101111;
-      --black-card: #131414;
-      --white: #f5f5f2;
-      --grey-light: #b5b6b1;
-      --grey: #858681;
-      --grey-dark: #292a28;
-      --border: #242624;
+      --miles-blue: #18b8c7;
     }
 
-
-    /* =========================================================
-       GLOBAL OVERRIDES
-       ========================================================= */
-
-    body {
-      background: var(--black);
-      color: var(--white);
+    .lime {
+      background-color: var(--miles-blue) !important;
+      border-color: var(--miles-blue) !important;
+      color: #ffffff !important;
     }
 
-    a {
-      color: inherit;
+    .lime:hover {
+      background-color: #1199a6 !important;
+      border-color: #1199a6 !important;
     }
 
-    .muted {
-      color: var(--grey) !important;
+    .label {
+      color: var(--miles-blue);
     }
 
-
-    /* =========================================================
-       SIDEBAR
-       ========================================================= */
-
-    .sidebar {
-      background: #080909;
-      border-right-color: var(--border);
-    }
-
-    .nav a.active,
-    .nav a:hover {
-      color: var(--accent);
-    }
-
-    .side-bottom strong {
-      color: var(--white);
-    }
-
-    .mini-progress {
-      background: var(--grey-dark);
+    .progress i {
+      background-color: var(--miles-blue);
     }
 
     .mini-progress i {
-      background: var(--accent);
+      background-color: var(--miles-blue);
+    }
+
+    .bar i {
+      background-color: var(--miles-blue);
+    }
+
+    .badge.lime {
+      background-color: var(--miles-blue) !important;
+      border-color: var(--miles-blue) !important;
+      color: #ffffff !important;
+    }
+
+    .intro-eyebrow {
+      color: var(--miles-blue);
+    }
+
+    .founder-kicker {
+      color: var(--miles-blue);
+    }
+
+    .principle-number {
+      color: var(--miles-blue);
     }
 
 
     /* =========================================================
-       TOP BAR
-       ========================================================= */
-
-    .crumb {
-      color: var(--accent);
-    }
-
-    .avatar {
-      border-color: var(--accent);
-      color: var(--accent);
-    }
-
-
-    /* =========================================================
-       INTRO / HERO
+       HOME INTRO
        ========================================================= */
 
     .home-intro {
@@ -100,28 +76,27 @@
       font-weight: 800;
       letter-spacing: 2px;
       text-transform: uppercase;
-      color: var(--accent);
       margin-bottom: 18px;
     }
 
     .intro-title {
-      max-width: 1000px;
-      font-size: clamp(48px, 7vw, 94px);
-      line-height: .91;
+      max-width: 920px;
+      font-size: clamp(48px, 7vw, 92px);
+      line-height: .92;
       letter-spacing: -4px;
       margin: 0;
     }
 
     .intro-title span {
-      color: var(--accent);
+      color: var(--miles-blue);
     }
 
     .intro-copy {
       max-width: 680px;
-      margin-top: 30px;
+      margin-top: 28px;
       font-size: 18px;
       line-height: 1.65;
-      color: var(--grey-light);
+      color: #777;
     }
 
     .intro-actions {
@@ -129,33 +104,6 @@
       gap: 12px;
       flex-wrap: wrap;
       margin-top: 28px;
-    }
-
-
-    /* =========================================================
-       BUTTONS
-       ========================================================= */
-
-    .btn.lime {
-      background: var(--accent) !important;
-      border-color: var(--accent) !important;
-      color: #050707 !important;
-    }
-
-    .btn.lime:hover {
-      background: var(--white) !important;
-      border-color: var(--white) !important;
-    }
-
-    .btn.ghost {
-      background: transparent;
-      border-color: #3a3c39;
-      color: var(--white);
-    }
-
-    .btn.ghost:hover {
-      border-color: var(--accent);
-      color: var(--accent);
     }
 
 
@@ -187,8 +135,8 @@
       background:
         linear-gradient(
           to top,
-          rgba(0,0,0,.78) 0%,
-          rgba(0,0,0,.16) 48%,
+          rgba(0,0,0,.72) 0%,
+          rgba(0,0,0,.08) 50%,
           rgba(0,0,0,.02) 100%
         );
       pointer-events: none;
@@ -204,6 +152,7 @@
       align-items: flex-end;
       justify-content: space-between;
       gap: 20px;
+      color: #fff;
     }
 
     .photo-caption strong {
@@ -216,17 +165,17 @@
       font-size: 11px;
       letter-spacing: 1.5px;
       text-transform: uppercase;
-      color: #c5c6c1;
+      color: #bbb;
       text-align: right;
     }
 
 
     /* =========================================================
-       ABOUT PROJECT
+       WHAT IS MILES APART
        ========================================================= */
 
     .about-project {
-      margin-top: 90px;
+      margin-top: 85px;
     }
 
     .about-project-grid {
@@ -246,7 +195,7 @@
     .about-project-text {
       font-size: 18px;
       line-height: 1.75;
-      color: var(--grey-light);
+      color: #777;
       max-width: 760px;
     }
 
@@ -255,12 +204,12 @@
     }
 
     .about-project-text strong {
-      color: var(--white);
+      color: #222;
     }
 
 
     /* =========================================================
-       PRINCIPLES
+       THREE PRINCIPLES
        ========================================================= */
 
     .principles {
@@ -273,15 +222,14 @@
     .principle {
       padding: 28px;
       min-height: 190px;
-      background: var(--black-card);
-      border: 1px solid var(--border);
+      background: #f7f7f5;
+      border: 1px solid #e4e4e0;
     }
 
     .principle-number {
       font-size: 11px;
       font-weight: 800;
       letter-spacing: 2px;
-      color: var(--accent);
     }
 
     .principle h3 {
@@ -291,7 +239,7 @@
 
     .principle p {
       margin: 0;
-      color: var(--grey);
+      color: #777;
       line-height: 1.55;
       font-size: 14px;
     }
@@ -314,7 +262,6 @@
     }
 
     .founder-kicker {
-      color: var(--accent);
       font-size: 11px;
       font-weight: 800;
       letter-spacing: 2px;
@@ -333,8 +280,8 @@
       display: grid;
       grid-template-columns: 1.15fr .85fr;
       min-height: 590px;
-      background: var(--black-card);
-      border: 1px solid var(--border);
+      background: #f5f5f3;
+      border: 1px solid #e2e2de;
     }
 
     .founder-image {
@@ -364,14 +311,14 @@
     }
 
     .founder-content p {
-      color: var(--grey-light);
+      color: #777;
       font-size: 16px;
       line-height: 1.7;
       margin: 0 0 20px;
     }
 
     .founder-content p strong {
-      color: var(--white);
+      color: #222;
     }
 
     .founder-tags {
@@ -383,23 +330,23 @@
     }
 
     .founder-tag {
-      border: 1px solid #383a37;
+      border: 1px solid #d7d7d3;
       padding: 8px 11px;
       font-size: 10px;
       letter-spacing: 1px;
       font-weight: 700;
       text-transform: uppercase;
-      color: var(--grey-light);
+      color: #666;
     }
 
     .founder-tag:hover {
-      border-color: var(--accent);
-      color: var(--accent);
+      border-color: var(--miles-blue);
+      color: var(--miles-blue);
     }
 
 
     /* =========================================================
-       PHOTO STORY
+       PHOTO STRIP
        ========================================================= */
 
     .visual-story {
@@ -423,7 +370,7 @@
 
     .visual-story-head p {
       max-width: 420px;
-      color: var(--grey);
+      color: #777;
       line-height: 1.5;
       margin: 0;
       font-size: 14px;
@@ -459,14 +406,14 @@
 
 
     /* =========================================================
-       BIG STATEMENT
+       COMMUNITY STATEMENT
        ========================================================= */
 
     .statement {
       margin-top: 100px;
       padding: 70px 50px;
-      background: var(--accent);
-      color: #050707;
+      background: var(--miles-blue);
+      color: #fff;
     }
 
     .statement-label {
@@ -494,70 +441,51 @@
 
     .statement .btn {
       margin-top: 28px;
-      background: #050707 !important;
+      background: #111 !important;
       color: #fff !important;
-      border-color: #050707 !important;
+      border-color: #111 !important;
     }
 
     .statement .btn:hover {
       background: #fff !important;
-      color: #050707 !important;
+      color: #111 !important;
       border-color: #fff !important;
     }
 
 
     /* =========================================================
-       GENERAL CARDS
+       CARDS / ACCENT ELEMENTS
        ========================================================= */
 
-    .card {
-      background: var(--black-card);
-      border-color: var(--border);
-    }
-
     .card.lime {
-      background: var(--accent);
-      color: #050707;
+      background: var(--miles-blue) !important;
+      color: #fff !important;
     }
 
     .card.lime .label,
     .card.lime .small,
     .card.lime .kpi {
-      color: #050707 !important;
-    }
-
-    .card.dark {
-      background: #0d0e0e;
-      border-color: var(--border);
-    }
-
-    .label {
-      color: var(--accent);
-    }
-
-    .badge.lime {
-      background: var(--accent) !important;
-      color: #050707 !important;
-    }
-
-    .tag {
-      border-color: #3a3c39;
+      color: #fff !important;
     }
 
     .progress {
-      background: #292b29;
+      background: #ddd;
     }
 
     .progress i {
-      background: var(--accent);
+      background: var(--miles-blue);
     }
 
     .bar i {
-      background: var(--accent);
+      background: var(--miles-blue);
     }
 
-    .date b {
-      color: var(--accent);
+    .mini-progress {
+      background: #ddd;
+    }
+
+    .mini-progress i {
+      background: var(--miles-blue);
     }
 
 
@@ -635,10 +563,6 @@
         font-size: 26px;
       }
 
-      .photo-caption span {
-        display: none;
-      }
-
       .about-project,
       .founder,
       .visual-story,
@@ -664,10 +588,6 @@
 
       .statement {
         padding: 42px 24px;
-      }
-
-      .statement h2 {
-        letter-spacing: -2px;
       }
     }
 
@@ -958,8 +878,8 @@
 
 
           <p>
-            Finde andere Runner, tausche dich aus und werde
-            Teil einer Community, die deine Leidenschaft versteht.
+            Finde andere Runner, tausche dich aus und werde Teil
+            einer Community, die deine Leidenschaft versteht.
           </p>
 
         </div>
