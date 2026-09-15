@@ -7,8 +7,88 @@
   <link rel="stylesheet" href="style.css">
 
   <style>
+
     /* =========================================================
-       MILES APART — HOME INTRO
+       MILES APART
+       COLOR SYSTEM
+       Schwarz / Weiß / Türkisblau
+       ========================================================= */
+
+    :root {
+      --accent: #16b8c8;
+      --accent-dark: #0d8996;
+      --black: #080909;
+      --black-soft: #101111;
+      --black-card: #131414;
+      --white: #f5f5f2;
+      --grey-light: #b5b6b1;
+      --grey: #858681;
+      --grey-dark: #292a28;
+      --border: #242624;
+    }
+
+
+    /* =========================================================
+       GLOBAL OVERRIDES
+       ========================================================= */
+
+    body {
+      background: var(--black);
+      color: var(--white);
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .muted {
+      color: var(--grey) !important;
+    }
+
+
+    /* =========================================================
+       SIDEBAR
+       ========================================================= */
+
+    .sidebar {
+      background: #080909;
+      border-right-color: var(--border);
+    }
+
+    .nav a.active,
+    .nav a:hover {
+      color: var(--accent);
+    }
+
+    .side-bottom strong {
+      color: var(--white);
+    }
+
+    .mini-progress {
+      background: var(--grey-dark);
+    }
+
+    .mini-progress i {
+      background: var(--accent);
+    }
+
+
+    /* =========================================================
+       TOP BAR
+       ========================================================= */
+
+    .crumb {
+      color: var(--accent);
+    }
+
+    .avatar {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+
+    /* =========================================================
+       INTRO / HERO
        ========================================================= */
 
     .home-intro {
@@ -20,28 +100,28 @@
       font-weight: 800;
       letter-spacing: 2px;
       text-transform: uppercase;
-      color: #9cff00;
+      color: var(--accent);
       margin-bottom: 18px;
     }
 
     .intro-title {
-      max-width: 920px;
-      font-size: clamp(48px, 7vw, 92px);
-      line-height: .92;
+      max-width: 1000px;
+      font-size: clamp(48px, 7vw, 94px);
+      line-height: .91;
       letter-spacing: -4px;
       margin: 0;
     }
 
     .intro-title span {
-      color: #9cff00;
+      color: var(--accent);
     }
 
     .intro-copy {
       max-width: 680px;
-      margin-top: 28px;
+      margin-top: 30px;
       font-size: 18px;
       line-height: 1.65;
-      color: #8f8f89;
+      color: var(--grey-light);
     }
 
     .intro-actions {
@@ -49,6 +129,33 @@
       gap: 12px;
       flex-wrap: wrap;
       margin-top: 28px;
+    }
+
+
+    /* =========================================================
+       BUTTONS
+       ========================================================= */
+
+    .btn.lime {
+      background: var(--accent) !important;
+      border-color: var(--accent) !important;
+      color: #050707 !important;
+    }
+
+    .btn.lime:hover {
+      background: var(--white) !important;
+      border-color: var(--white) !important;
+    }
+
+    .btn.ghost {
+      background: transparent;
+      border-color: #3a3c39;
+      color: var(--white);
+    }
+
+    .btn.ghost:hover {
+      border-color: var(--accent);
+      color: var(--accent);
     }
 
 
@@ -80,8 +187,8 @@
       background:
         linear-gradient(
           to top,
-          rgba(0,0,0,.72) 0%,
-          rgba(0,0,0,.08) 50%,
+          rgba(0,0,0,.78) 0%,
+          rgba(0,0,0,.16) 48%,
           rgba(0,0,0,.02) 100%
         );
       pointer-events: none;
@@ -109,16 +216,17 @@
       font-size: 11px;
       letter-spacing: 1.5px;
       text-transform: uppercase;
-      color: #bbb;
+      color: #c5c6c1;
+      text-align: right;
     }
 
 
     /* =========================================================
-       WHAT IS MILES APART
+       ABOUT PROJECT
        ========================================================= */
 
     .about-project {
-      margin-top: 85px;
+      margin-top: 90px;
     }
 
     .about-project-grid {
@@ -138,7 +246,7 @@
     .about-project-text {
       font-size: 18px;
       line-height: 1.75;
-      color: #898983;
+      color: var(--grey-light);
       max-width: 760px;
     }
 
@@ -147,12 +255,12 @@
     }
 
     .about-project-text strong {
-      color: #f2f2ed;
+      color: var(--white);
     }
 
 
     /* =========================================================
-       THREE PRINCIPLES
+       PRINCIPLES
        ========================================================= */
 
     .principles {
@@ -165,15 +273,15 @@
     .principle {
       padding: 28px;
       min-height: 190px;
-      background: #111;
-      border: 1px solid #1d1d1b;
+      background: var(--black-card);
+      border: 1px solid var(--border);
     }
 
     .principle-number {
       font-size: 11px;
       font-weight: 800;
       letter-spacing: 2px;
-      color: #9cff00;
+      color: var(--accent);
     }
 
     .principle h3 {
@@ -183,7 +291,7 @@
 
     .principle p {
       margin: 0;
-      color: #777;
+      color: var(--grey);
       line-height: 1.55;
       font-size: 14px;
     }
@@ -206,7 +314,7 @@
     }
 
     .founder-kicker {
-      color: #9cff00;
+      color: var(--accent);
       font-size: 11px;
       font-weight: 800;
       letter-spacing: 2px;
@@ -225,7 +333,8 @@
       display: grid;
       grid-template-columns: 1.15fr .85fr;
       min-height: 590px;
-      background: #111;
+      background: var(--black-card);
+      border: 1px solid var(--border);
     }
 
     .founder-image {
@@ -255,14 +364,14 @@
     }
 
     .founder-content p {
-      color: #92928c;
+      color: var(--grey-light);
       font-size: 16px;
       line-height: 1.7;
       margin: 0 0 20px;
     }
 
     .founder-content p strong {
-      color: #f0f0eb;
+      color: var(--white);
     }
 
     .founder-tags {
@@ -274,18 +383,23 @@
     }
 
     .founder-tag {
-      border: 1px solid #30302d;
+      border: 1px solid #383a37;
       padding: 8px 11px;
       font-size: 10px;
       letter-spacing: 1px;
       font-weight: 700;
       text-transform: uppercase;
-      color: #aaa;
+      color: var(--grey-light);
+    }
+
+    .founder-tag:hover {
+      border-color: var(--accent);
+      color: var(--accent);
     }
 
 
     /* =========================================================
-       PHOTO STRIP
+       PHOTO STORY
        ========================================================= */
 
     .visual-story {
@@ -309,7 +423,7 @@
 
     .visual-story-head p {
       max-width: 420px;
-      color: #777;
+      color: var(--grey);
       line-height: 1.5;
       margin: 0;
       font-size: 14px;
@@ -345,14 +459,14 @@
 
 
     /* =========================================================
-       COMMUNITY STATEMENT
+       BIG STATEMENT
        ========================================================= */
 
     .statement {
       margin-top: 100px;
       padding: 70px 50px;
-      background: #9cff00;
-      color: #0b0b0b;
+      background: var(--accent);
+      color: #050707;
     }
 
     .statement-label {
@@ -380,9 +494,70 @@
 
     .statement .btn {
       margin-top: 28px;
-      background: #0b0b0b;
-      color: #fff;
-      border-color: #0b0b0b;
+      background: #050707 !important;
+      color: #fff !important;
+      border-color: #050707 !important;
+    }
+
+    .statement .btn:hover {
+      background: #fff !important;
+      color: #050707 !important;
+      border-color: #fff !important;
+    }
+
+
+    /* =========================================================
+       GENERAL CARDS
+       ========================================================= */
+
+    .card {
+      background: var(--black-card);
+      border-color: var(--border);
+    }
+
+    .card.lime {
+      background: var(--accent);
+      color: #050707;
+    }
+
+    .card.lime .label,
+    .card.lime .small,
+    .card.lime .kpi {
+      color: #050707 !important;
+    }
+
+    .card.dark {
+      background: #0d0e0e;
+      border-color: var(--border);
+    }
+
+    .label {
+      color: var(--accent);
+    }
+
+    .badge.lime {
+      background: var(--accent) !important;
+      color: #050707 !important;
+    }
+
+    .tag {
+      border-color: #3a3c39;
+    }
+
+    .progress {
+      background: #292b29;
+    }
+
+    .progress i {
+      background: var(--accent);
+    }
+
+    .bar i {
+      background: var(--accent);
+    }
+
+    .date b {
+      color: var(--accent);
     }
 
 
@@ -435,6 +610,7 @@
       }
     }
 
+
     @media (max-width: 600px) {
 
       .intro-title {
@@ -457,6 +633,10 @@
 
       .photo-caption strong {
         font-size: 26px;
+      }
+
+      .photo-caption span {
+        display: none;
       }
 
       .about-project,
@@ -485,7 +665,12 @@
       .statement {
         padding: 42px 24px;
       }
+
+      .statement h2 {
+        letter-spacing: -2px;
+      }
     }
+
   </style>
 </head>
 
@@ -494,6 +679,7 @@
 
 <div class="shell">
 
+
   <!-- =======================================================
        SIDEBAR
        ======================================================= -->
@@ -501,41 +687,78 @@
   <aside class="sidebar">
 
     <div class="brand">
+
       <a href="index.html">
+
         <img
           src="miles-apart-wordmark.png"
           alt="Miles Apart Running Club"
         >
+
       </a>
+
     </div>
 
+
     <nav class="nav">
-      <a class="active" href="index.html">Home</a>
-      <a href="challenges.html">Challenges</a>
-      <a href="community.html">Community</a>
-      <a href="events.html">Events</a>
-      <a href="training.html">Training</a>
-      <a href="profile.html">My Run</a>
+
+      <a class="active" href="index.html">
+        Home
+      </a>
+
+      <a href="challenges.html">
+        Challenges
+      </a>
+
+      <a href="community.html">
+        Community
+      </a>
+
+      <a href="events.html">
+        Events
+      </a>
+
+      <a href="training.html">
+        Training
+      </a>
+
+      <a href="profile.html">
+        My Run
+      </a>
+
     </nav>
 
+
     <div class="side-bottom">
-      <small>THIS WEEK</small>
-      <strong>23.4 / 30 KM</strong>
+
+      <small>
+        THIS WEEK
+      </small>
+
+      <strong>
+        23.4 / 30 KM
+      </strong>
+
 
       <div class="mini-progress">
         <i></i>
       </div>
 
-      <p class="small" style="color:#aaa;margin-bottom:0">
+
+      <p
+        class="small"
+        style="color:#aaa;margin-bottom:0"
+      >
         Nur 6.6 km bis zum Wochenziel.
       </p>
+
     </div>
 
   </aside>
 
 
   <!-- =======================================================
-       MAIN
+       MAIN CONTENT
        ======================================================= -->
 
   <main class="main">
@@ -549,11 +772,13 @@
         MILES APART / HOME
       </div>
 
+
       <div class="top-right">
 
         <span class="small muted">
           Guten Morgen, Alex
         </span>
+
 
         <div class="avatar">
           A
@@ -574,16 +799,26 @@
         MILES APART RUNNING CLUB
       </div>
 
+
       <h1 class="intro-title">
+
         Laufen verbindet.<br>
-        <span>Auch wenn wir miles apart sind.</span>
+
+        <span>
+          Auch wenn wir miles apart sind.
+        </span>
+
       </h1>
 
+
       <p class="intro-copy">
+
         Miles Apart ist eine virtuelle Running-Community für alle,
         die laufen, trainieren und gemeinsam besser werden wollen.
         Egal, wo du gerade bist.
+
       </p>
+
 
       <div class="intro-actions">
 
@@ -593,6 +828,7 @@
         >
           Community entdecken →
         </a>
+
 
         <a
           class="btn ghost"
@@ -617,11 +853,18 @@
         alt="Läufer beim Zieleinlauf"
       >
 
+
       <div class="photo-caption">
 
         <div>
-          <strong>ONE COMMUNITY.<br>COUNTLESS MILES.</strong>
+
+          <strong>
+            ONE COMMUNITY.<br>
+            COUNTLESS MILES.
+          </strong>
+
         </div>
+
 
         <span>
           Run together<br>
@@ -639,7 +882,9 @@
 
     <section class="about-project">
 
+
       <div class="about-project-grid">
+
 
         <div>
 
@@ -647,9 +892,12 @@
             WAS IST MILES APART?
           </div>
 
+
           <h2>
+
             Ein Run Club.<br>
             Nur ohne Grenzen.
+
           </h2>
 
         </div>
@@ -658,23 +906,29 @@
         <div class="about-project-text">
 
           <p>
-            Überall entstehen neue <strong>Run Clubs</strong>.
-            Menschen treffen sich nach Feierabend, laufen gemeinsam
-            durch ihre Stadt und motivieren sich gegenseitig.
+            Überall entstehen neue
+            <strong>Run Clubs.</strong>
+            Menschen treffen sich nach Feierabend,
+            laufen gemeinsam durch ihre Stadt und
+            motivieren sich gegenseitig.
           </p>
 
+
           <p>
-            Wir glauben: Dieses Gefühl sollte nicht davon abhängen,
+            Wir glauben:
+            Dieses Gefühl sollte nicht davon abhängen,
             <strong>wo du gerade wohnst.</strong>
           </p>
 
+
           <p>
-            Miles Apart verbindet Läuferinnen und Läufer über
-            Städte und Länder hinweg. Hier kannst du dich mit anderen
-            austauschen, an Challenges teilnehmen, deine Läufe teilen,
-            Fragen stellen, neue Trainingspartner finden und dich
-            gegenseitig pushen.
+            Miles Apart verbindet Läuferinnen und Läufer
+            über Städte und Länder hinweg. Hier kannst du
+            dich mit anderen austauschen, an Challenges
+            teilnehmen, deine Läufe teilen, Fragen stellen,
+            neue Trainingspartner finden und dich gegenseitig pushen.
           </p>
+
 
           <p>
             Du läufst alleine los.
@@ -686,7 +940,10 @@
       </div>
 
 
+      <!-- PRINCIPLES -->
+
       <div class="principles">
+
 
         <div class="principle">
 
@@ -694,13 +951,15 @@
             01 / CONNECT
           </div>
 
+
           <h3>
             Menschen verbinden
           </h3>
 
+
           <p>
-            Finde andere Runner, tausche dich aus und werde Teil
-            einer Community, die deine Leidenschaft versteht.
+            Finde andere Runner, tausche dich aus und werde
+            Teil einer Community, die deine Leidenschaft versteht.
           </p>
 
         </div>
@@ -712,9 +971,11 @@
             02 / CHALLENGE
           </div>
 
+
           <h3>
             Gemeinsam herausfordern
           </h3>
+
 
           <p>
             Challenges machen aus einzelnen Läufen gemeinsame Ziele.
@@ -730,9 +991,11 @@
             03 / SUPPORT
           </div>
 
+
           <h3>
             Gegenseitig pushen
           </h3>
+
 
           <p>
             Gute Läufe feiern. Schlechte Tage teilen.
@@ -752,7 +1015,9 @@
 
     <section class="founder">
 
+
       <div class="founder-head">
+
 
         <div>
 
@@ -760,11 +1025,13 @@
             WER STECKT DAHINTER?
           </div>
 
+
           <h2>
             Meet Tano.
           </h2>
 
         </div>
+
 
         <span class="badge lime">
           FOUNDER / ATHLETE
@@ -774,6 +1041,7 @@
 
 
       <div class="founder-layout">
+
 
         <div class="founder-image">
 
@@ -787,21 +1055,27 @@
 
         <div class="founder-content">
 
+
           <h3>
             Tano Loew
           </h3>
 
-          <p>
-            Ich bin Tano – <strong>Läufer, Athlet und Gründer von
-            Miles Apart.</strong>
-          </p>
 
           <p>
-            Ich liebe es zu laufen, ins Gym zu gehen und meinen Körper
-            immer wieder vor neue Herausforderungen zu stellen.
-            Von klassischen Running-Events über Ultra-Running bis hin
-            zu Hyrox und Hybrid Training.
+            Ich bin Tano –
+            <strong>
+              Läufer, Athlet und Gründer von Miles Apart.
+            </strong>
           </p>
+
+
+          <p>
+            Ich liebe es zu laufen, ins Gym zu gehen und
+            meinen Körper immer wieder vor neue Herausforderungen
+            zu stellen. Von klassischen Running-Events über
+            Ultra-Running bis hin zu Hyrox und Hybrid Training.
+          </p>
+
 
           <p>
             Dabei habe ich gemerkt, wie stark Sport Menschen
@@ -810,10 +1084,13 @@
             wenn man gerade nicht am selben Ort ist.
           </p>
 
+
           <p>
             Genau daraus ist Miles Apart entstanden:
-            <strong>eine Community, die Menschen überall auf der Welt
-            miteinander verbindet.</strong>
+            <strong>
+              eine Community, die Menschen überall auf der Welt
+              miteinander verbindet.
+            </strong>
           </p>
 
 
@@ -862,7 +1139,9 @@
 
     <section class="visual-story">
 
+
       <div class="visual-story-head">
+
 
         <div>
 
@@ -870,12 +1149,14 @@
             THE ATHLETE LIFE
           </div>
 
+
           <h2>
             Mehr als nur<br>
             Kilometer.
           </h2>
 
         </div>
+
 
         <p>
           Laufen ist ein Teil des Ganzen.
@@ -887,6 +1168,7 @@
 
 
       <div class="photo-grid">
+
 
         <div class="photo-grid-item">
 
@@ -928,9 +1210,11 @@
 
     <section class="statement">
 
+
       <div class="statement-label">
         THE IDEA
       </div>
+
 
       <h2>
         Du bist vielleicht alleine
@@ -938,12 +1222,14 @@
         nicht allein unterwegs.
       </h2>
 
+
       <p>
         Miles Apart soll der virtuelle Ort für Läufer sein,
         die mehr wollen als nur ihre Kilometer aufzeichnen.
         Eine Community, in der wir uns gegenseitig motivieren,
         unterstützen und gemeinsam neue Ziele erreichen.
       </p>
+
 
       <a
         class="btn"
@@ -956,10 +1242,11 @@
 
 
     <!-- =====================================================
-         CURRENT COMMUNITY / STATS
+         COMMUNITY STATS
          ===================================================== -->
 
     <div class="section grid g4">
+
 
       <div class="card lime">
 
@@ -967,9 +1254,11 @@
           Community
         </div>
 
+
         <div class="kpi">
           18,742
         </div>
+
 
         <div class="small">
           Runner in Deutschland
@@ -984,9 +1273,11 @@
           Diese Woche
         </div>
 
+
         <div class="kpi">
           23.4 km
         </div>
+
 
         <div class="small muted">
           +18% vs. letzte Woche
@@ -1001,9 +1292,11 @@
           Streak
         </div>
 
+
         <div class="kpi">
           12 Tage 🔥
         </div>
+
 
         <div class="small muted">
           Dein längster: 19 Tage
@@ -1018,9 +1311,11 @@
           Heute
         </div>
 
+
         <div class="kpi">
           1,284 km
         </div>
+
 
         <div class="small">
           von der Community gelaufen
@@ -1040,7 +1335,9 @@
 
       <div class="card dark">
 
+
         <div class="row">
+
 
           <div>
 
@@ -1048,12 +1345,16 @@
               THE COMMUNITY RUN
             </div>
 
+
             <h2 style="font-size:29px;margin:8px 0">
+
               10K. Ein Ziel.<br>
               Ganz Deutschland.
+
             </h2>
 
           </div>
+
 
           <span class="badge lime">
             SAM 19.09.
@@ -1063,8 +1364,10 @@
 
 
         <p style="color:#bdbdb7">
+
           Lauf deine 10 Kilometer dort, wo du gerade bist.
           Wir machen aus 10.000 einzelnen Läufen einen gemeinsamen Lauf.
+
         </p>
 
 
@@ -1081,6 +1384,7 @@
           <span>
             6,740 / 10,000 Runner
           </span>
+
 
           <b>
             67%
@@ -1102,11 +1406,14 @@
 
       <div class="card">
 
+
         <div class="section-head">
+
 
           <h2>
             Dein Wochenziel
           </h2>
+
 
           <span class="badge">
             30 KM
@@ -1136,7 +1443,9 @@
           class="progress"
           style="margin:15px 0"
         >
+
           <i style="width:78%"></i>
+
         </div>
 
 
@@ -1145,6 +1454,7 @@
           <span>
             6.6 km fehlen
           </span>
+
 
           <b>
             78%
@@ -1184,11 +1494,14 @@
 
       <div class="card">
 
+
         <div class="section-head">
+
 
           <h2>
             Early Birds
           </h2>
+
 
           <span class="badge lime">
             vor 08:00
@@ -1199,21 +1512,26 @@
 
         <div class="rank">
 
+
           <span class="ranknum">
             01
           </span>
 
+
           <div class="person">
+
 
             <div class="pavatar">
               LM
             </div>
+
 
             <div>
 
               <b>
                 Laura M.
               </b>
+
 
               <div class="small muted">
                 06:12 heute
@@ -1222,6 +1540,7 @@
             </div>
 
           </div>
+
 
           <b>
             11.8 km
@@ -1232,21 +1551,26 @@
 
         <div class="rank">
 
+
           <span class="ranknum">
             02
           </span>
 
+
           <div class="person">
+
 
             <div class="pavatar">
               JS
             </div>
+
 
             <div>
 
               <b>
                 Jonas S.
               </b>
+
 
               <div class="small muted">
                 06:41 heute
@@ -1255,6 +1579,7 @@
             </div>
 
           </div>
+
 
           <b>
             9.4 km
@@ -1265,21 +1590,26 @@
 
         <div class="rank">
 
+
           <span class="ranknum">
             03
           </span>
 
+
           <div class="person">
+
 
             <div class="pavatar">
               NK
             </div>
+
 
             <div>
 
               <b>
                 Nina K.
               </b>
+
 
               <div class="small muted">
                 07:05 heute
@@ -1288,6 +1618,7 @@
             </div>
 
           </div>
+
 
           <b>
             7.2 km
@@ -1302,11 +1633,14 @@
 
       <div class="card">
 
+
         <div class="section-head">
+
 
           <h2>
             Heute in der Community
           </h2>
+
 
           <span class="badge">
             LIVE
@@ -1317,9 +1651,11 @@
 
         <div class="post">
 
+
           <div class="pavatar">
             TB
           </div>
+
 
           <div>
 
@@ -1327,13 +1663,16 @@
               Tom B.
             </b>
 
+
             <p style="margin:5px 0">
               „Erster 5K unter 30 Minuten! 😭🔥“
             </p>
 
+
             <span class="tag">
               5 KM
             </span>
+
 
             <span class="tag">
               PB
@@ -1346,9 +1685,11 @@
 
         <div class="post">
 
+
           <div class="pavatar">
             SK
           </div>
+
 
           <div>
 
@@ -1356,13 +1697,16 @@
               Sarah K.
             </b>
 
+
             <p style="margin:5px 0">
               „Wer läuft morgen früh in Mainz?“
             </p>
 
+
             <span class="tag">
               MAINZ
             </span>
+
 
             <span class="tag">
               PARTNER
@@ -1379,11 +1723,14 @@
 
       <div class="card">
 
+
         <div class="section-head">
+
 
           <h2>
             Nächstes Event
           </h2>
+
 
           <span class="badge">
             34 Plätze
@@ -1393,6 +1740,7 @@
 
 
         <div class="event">
+
 
           <div class="date">
 
@@ -1412,6 +1760,7 @@
             <b>
               THE COMMUNITY 10K
             </b>
+
 
             <div class="small muted">
               Virtuell · überall in DE
@@ -1435,6 +1784,7 @@
           style="margin-top:18px"
         >
 
+
           <div class="date">
 
             <b>
@@ -1453,6 +1803,7 @@
             <b>
               HALF MARATHON DAY
             </b>
+
 
             <div class="small muted">
               21.1 km · gemeinsam
