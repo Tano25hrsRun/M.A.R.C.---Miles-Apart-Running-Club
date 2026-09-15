@@ -25,115 +25,23 @@
   <style>
 
     /* =====================================================
-       COMMUNITY
+       MILES APART COMMUNITY
     ===================================================== */
 
-    .community-loading {
+    .ma-community-loading {
       padding: 70px 20px;
       text-align: center;
       color: #777;
     }
 
 
-    .community-error {
+    .ma-community-error {
       margin: 25px 0;
       padding: 16px 18px;
-
       border: 1px solid #e2bcbc;
-
       background: #fff7f7;
-
       color: #b22f2f;
-
       font-weight: 700;
-    }
-
-
-    /* =====================================================
-       POST FORM
-    ===================================================== */
-
-    .post-form-card {
-      margin-bottom: 24px;
-    }
-
-
-    .post-form {
-      display: block;
-    }
-
-
-    .post-form textarea {
-      width: 100%;
-      min-height: 130px;
-
-      resize: vertical;
-
-      padding: 16px;
-
-      border: 1px solid #ddd;
-
-      background: #fff;
-
-      font: inherit;
-
-      line-height: 1.5;
-
-      outline: none;
-
-      box-sizing: border-box;
-    }
-
-
-    .post-form textarea:focus {
-      border-color: #18b8c7;
-
-      box-shadow:
-        0 0 0 3px
-        rgba(24,184,199,.12);
-    }
-
-
-    .post-form-actions {
-      display: flex;
-
-      justify-content: space-between;
-
-      align-items: center;
-
-      gap: 15px;
-
-      margin-top: 14px;
-    }
-
-
-    .post-form-message {
-      font-size: 14px;
-
-      font-weight: 700;
-    }
-
-
-    .post-form-message.error {
-      color: #c83b3b;
-    }
-
-
-    .post-form-message.success {
-      color: #1199a6;
-    }
-
-
-    /* =====================================================
-       POSTS CONTAINER
-    ===================================================== */
-
-    #postsContainer {
-      display: block !important;
-
-      width: 100% !important;
-
-      min-width: 0 !important;
     }
 
 
@@ -141,22 +49,18 @@
        POST CARD
     ===================================================== */
 
-    #postsContainer .post {
-      display: block !important;
-
+    .ma-post {
       width: 100% !important;
-
-      min-width: 0 !important;
-
-      margin: 0 0 22px 0 !important;
-
-      padding: 28px !important;
-
       box-sizing: border-box !important;
 
-      overflow: hidden !important;
+      display: block !important;
+
+      margin: 0 0 22px 0 !important;
+      padding: 28px !important;
 
       text-align: left !important;
+
+      overflow: hidden !important;
     }
 
 
@@ -164,72 +68,80 @@
        POST HEADER
     ===================================================== */
 
-    .post-header {
-      display: flex !important;
-
+    .ma-post-header {
       width: 100% !important;
 
-      align-items: center !important;
-
-      margin: 0 !important;
-
-      padding: 0 !important;
-
-      text-align: left !important;
-    }
-
-
-    .post-author {
       display: flex !important;
 
       align-items: center !important;
-
-      width: 100% !important;
-
-      min-width: 0 !important;
+      justify-content: flex-start !important;
 
       margin: 0 !important;
-
       padding: 0 !important;
 
       text-align: left !important;
-    }
-
-
-    /* =====================================================
-       PROFILE IMAGE
-       HELLBLAUER RING
-    ===================================================== */
-
-    .post-avatar {
-      width: 58px !important;
-      height: 58px !important;
-
-      min-width: 58px !important;
-      min-height: 58px !important;
-
-      max-width: 58px !important;
-      max-height: 58px !important;
-
-      flex: 0 0 58px !important;
-
-      position: relative !important;
-
-      display: block !important;
-
-      overflow: hidden !important;
-
-      border-radius: 50% !important;
-
-      border: 4px solid #63d6e5 !important;
-
-      background: #63d6e5 !important;
 
       box-sizing: border-box !important;
     }
 
 
-    .post-avatar img {
+    .ma-post-author {
+      width: 100% !important;
+
+      display: flex !important;
+
+      align-items: center !important;
+      justify-content: flex-start !important;
+
+      margin: 0 !important;
+      padding: 0 !important;
+
+      text-align: left !important;
+
+      box-sizing: border-box !important;
+    }
+
+
+    /* =====================================================
+       POST PROFILE IMAGE
+       
+       SEHR ZARTER RING
+    ===================================================== */
+
+    .ma-post-avatar {
+      width: 56px !important;
+      height: 56px !important;
+
+      min-width: 56px !important;
+      min-height: 56px !important;
+
+      max-width: 56px !important;
+      max-height: 56px !important;
+
+      flex: 0 0 56px !important;
+
+      display: flex !important;
+
+      align-items: center !important;
+      justify-content: center !important;
+
+      overflow: hidden !important;
+
+      border-radius: 50% !important;
+
+      border: 2px solid #63d6e5 !important;
+
+      background: #63d6e5 !important;
+
+      box-sizing: border-box !important;
+
+      padding: 0 !important;
+
+      margin: 0 !important;
+    }
+
+
+    .ma-post-avatar img {
       display: block !important;
 
       width: 100% !important;
@@ -244,10 +156,13 @@
       object-fit: cover !important;
 
       border-radius: 50% !important;
+
+      margin: 0 !important;
+      padding: 0 !important;
     }
 
 
-    .post-avatar-initials {
+    .ma-post-avatar-initials {
       width: 100%;
       height: 100%;
 
@@ -269,72 +184,139 @@
 
 
     /* =====================================================
-       AUTHOR TEXT
+       AUTHOR INFORMATION
     ===================================================== */
 
-    .post-author-info {
+    .ma-post-author-info {
       display: block !important;
+
+      margin: 0 0 0 13px !important;
+      padding: 0 !important;
 
       min-width: 0 !important;
 
-      margin-left: 14px !important;
-
       text-align: left !important;
+
+      box-sizing: border-box !important;
     }
 
 
-    .post-author-info b {
+    .ma-post-author-name {
       display: block !important;
 
       margin: 0 !important;
+      padding: 0 !important;
 
-      color: #111;
+      color: #111 !important;
 
-      font-size: 19px;
+      font-size: 19px !important;
 
-      line-height: 1.25;
+      line-height: 1.25 !important;
+
+      font-weight: 800 !important;
 
       text-align: left !important;
     }
 
 
-    .post-author-meta {
+    .ma-post-author-meta {
       display: block !important;
 
-      margin-top: 4px !important;
+      margin: 3px 0 0 0 !important;
+      padding: 0 !important;
 
-      color: #777;
+      color: #777 !important;
 
-      font-size: 14px;
+      font-size: 15px !important;
 
-      line-height: 1.35;
+      line-height: 1.35 !important;
+
+      font-weight: 400 !important;
 
       text-align: left !important;
     }
 
 
     /* =====================================================
-       POST CONTENT
+       POST TEXT
+       
+       DAS IST DER ENTSCHEIDENDE BEREICH.
 
-       WICHTIG:
-       Der komplette Text startet links unterhalb
-       des Headers und NICHT neben dem Profilbild.
+       Der Text hat:
+       - volle Kartenbreite
+       - keine Einrückung
+       - keine Zentrierung
+       - keine Grid-Struktur
+       - keine Positionierung neben dem Avatar
     ===================================================== */
 
-    .post-content-area {
+    .ma-post-copy {
       display: block !important;
 
       width: 100% !important;
+      max-width: 100% !important;
 
       min-width: 0 !important;
 
-      margin: 25px 0 27px 0 !important;
-
+      margin: 25px 0 26px 0 !important;
       padding: 0 !important;
+
+      position: static !important;
+
+      left: auto !important;
+      right: auto !important;
+      top: auto !important;
+      bottom: auto !important;
+
+      transform: none !important;
+
+      float: none !important;
 
       clear: both !important;
 
-      float: none !important;
+      box-sizing: border-box !important;
+
+      text-align: left !important;
+
+      font-size: 20px !important;
+
+      line-height: 1.45 !important;
+
+      font-weight: 400 !important;
+
+      color: #111 !important;
+
+      white-space: pre-wrap !important;
+
+      overflow-wrap: anywhere !important;
+
+      word-break: normal !important;
+    }
+
+
+    .ma-post-copy * {
+      text-align: left !important;
+    }
+
+
+    /* =====================================================
+       ACTION BAR
+    ===================================================== */
+
+    .ma-post-actions {
+      width: 100% !important;
+
+      display: flex !important;
+
+      align-items: center !important;
+
+      justify-content: space-between !important;
+
+      margin: 0 !important;
+
+      padding: 15px 0 0 0 !important;
+
+      border-top: 1px solid #eee;
 
       box-sizing: border-box !important;
 
@@ -342,28 +324,295 @@
     }
 
 
-    .post-content {
+    .ma-post-action-left {
+      display: flex !important;
+
+      align-items: center !important;
+
+      justify-content: flex-start !important;
+
+      gap: 8px !important;
+
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+
+
+    .ma-post-action {
+      border: 0 !important;
+
+      background: transparent !important;
+
+      padding: 7px 8px !important;
+
+      margin: 0 !important;
+
+      color: #555 !important;
+
+      font: inherit !important;
+
+      font-size: 18px !important;
+
+      font-weight: 700 !important;
+
+      cursor: pointer !important;
+
+      text-align: left !important;
+    }
+
+
+    .ma-post-action.liked {
+      color: #18b8c7 !important;
+    }
+
+
+    .ma-delete {
+      color: #b44 !important;
+
+      font-size: 17px !important;
+
+      padding-right: 0 !important;
+    }
+
+
+    /* =====================================================
+       COMMENTS
+       
+       KEIN GRAUER KASTEN
+    ===================================================== */
+
+    .ma-comments {
+      width: 100% !important;
+
+      display: block !important;
+
+      margin: 18px 0 0 0 !important;
+
+      padding: 18px 0 0 0 !important;
+
+      border-top: 1px solid #eee;
+
+      box-sizing: border-box !important;
+
+      text-align: left !important;
+    }
+
+
+    .ma-comments-list {
+      width: 100% !important;
+
+      display: flex !important;
+
+      flex-direction: column !important;
+
+      gap: 18px !important;
+
+      margin: 0 !important;
+      padding: 0 !important;
+
+      text-align: left !important;
+    }
+
+
+    .ma-comment {
+      width: 100% !important;
+
+      display: flex !important;
+
+      align-items: flex-start !important;
+
+      justify-content: flex-start !important;
+
+      gap: 11px !important;
+
+      margin: 0 !important;
+      padding: 0 !important;
+
+      background: transparent !important;
+
+      text-align: left !important;
+
+      box-sizing: border-box !important;
+    }
+
+
+    /* =====================================================
+       COMMENT AVATAR
+       
+       EBENFALLS ZARTER RING
+    ===================================================== */
+
+    .ma-comment-avatar {
+      width: 46px !important;
+      height: 46px !important;
+
+      min-width: 46px !important;
+      min-height: 46px !important;
+
+      max-width: 46px !important;
+      max-height: 46px !important;
+
+      flex: 0 0 46px !important;
+
+      display: flex !important;
+
+      align-items: center !important;
+      justify-content: center !important;
+
+      overflow: hidden !important;
+
+      border-radius: 50% !important;
+
+      border: 2px solid #63d6e5 !important;
+
+      background: #63d6e5 !important;
+
+      box-sizing: border-box !important;
+
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+
+
+    .ma-comment-avatar img {
+      display: block !important;
+
+      width: 100% !important;
+      height: 100% !important;
+
+      object-fit: cover !important;
+
+      border-radius: 50% !important;
+
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+
+
+    .ma-comment-avatar-initials {
+      width: 100%;
+      height: 100%;
+
+      display: flex;
+
+      align-items: center;
+      justify-content: center;
+
+      border-radius: 50%;
+
+      background: #eefafa;
+
+      color: #18b8c7;
+
+      font-size: 12px;
+
+      font-weight: 800;
+    }
+
+
+    /* =====================================================
+       COMMENT CONTENT
+    ===================================================== */
+
+    .ma-comment-content {
+      flex: 1 1 auto !important;
+
+      min-width: 0 !important;
+
+      margin: 0 !important;
+      padding: 0 !important;
+
+      background: transparent !important;
+
+      text-align: left !important;
+
+      box-sizing: border-box !important;
+    }
+
+
+    .ma-comment-header {
+      display: flex !important;
+
+      align-items: baseline !important;
+
+      justify-content: flex-start !important;
+
+      flex-wrap: wrap !important;
+
+      gap: 8px !important;
+
+      margin: 0 !important;
+      padding: 0 !important;
+
+      text-align: left !important;
+    }
+
+
+    .ma-comment-name {
+      margin: 0 !important;
+      padding: 0 !important;
+
+      color: #111 !important;
+
+      font-size: 16px !important;
+
+      line-height: 1.3 !important;
+
+      font-weight: 800 !important;
+
+      text-align: left !important;
+    }
+
+
+    .ma-comment-time {
+      margin: 0 !important;
+      padding: 0 !important;
+
+      color: #888 !important;
+
+      font-size: 13px !important;
+
+      line-height: 1.3 !important;
+
+      font-weight: 400 !important;
+
+      text-align: left !important;
+    }
+
+
+    /* =====================================================
+       „TOP!“
+       
+       DIREKT UNTER TANO.
+       KEIN KASTEN.
+       KEINE ZENTRIERUNG.
+    ===================================================== */
+
+    .ma-comment-text {
       display: block !important;
 
       width: 100% !important;
 
-      min-width: 0 !important;
-
-      max-width: none !important;
-
-      margin: 0 !important;
-
+      margin: 5px 0 0 0 !important;
       padding: 0 !important;
 
-      clear: both !important;
+      position: static !important;
+
+      transform: none !important;
 
       float: none !important;
 
-      box-sizing: border-box !important;
+      clear: both !important;
 
-      color: #111;
+      background: transparent !important;
 
-      font-size: 20px !important;
+      border: 0 !important;
+
+      box-shadow: none !important;
+
+      color: #111 !important;
+
+      font-size: 18px !important;
 
       line-height: 1.45 !important;
 
@@ -375,283 +624,7 @@
 
       overflow-wrap: anywhere !important;
 
-      word-break: normal !important;
-    }
-
-
-    /* =====================================================
-       POST META
-    ===================================================== */
-
-    .post-meta {
-      display: flex !important;
-
-      align-items: center !important;
-
-      justify-content: space-between !important;
-
-      width: 100% !important;
-
-      margin: 0 !important;
-
-      padding: 16px 0 0 0 !important;
-
-      border-top: 1px solid #eee;
-
       box-sizing: border-box !important;
-    }
-
-
-    .post-actions {
-      display: flex !important;
-
-      align-items: center !important;
-
-      gap: 10px;
-
-      margin: 0;
-
-      padding: 0;
-    }
-
-
-    .post-action {
-      border: 0;
-
-      background: transparent;
-
-      padding: 7px 9px;
-
-      color: #555;
-
-      font: inherit;
-
-      font-size: 18px;
-
-      font-weight: 700;
-
-      cursor: pointer;
-    }
-
-
-    .post-action:hover {
-      color: #18b8c7;
-    }
-
-
-    .post-action.liked {
-      color: #18b8c7;
-    }
-
-
-    .delete-post {
-      color: #b44;
-
-      font-size: 17px;
-    }
-
-
-    .delete-post:hover {
-      color: #c83b3b;
-    }
-
-
-    /* =====================================================
-       COMMENTS
-    ===================================================== */
-
-    .post-comments {
-      display: block !important;
-
-      width: 100% !important;
-
-      margin: 18px 0 0 0 !important;
-
-      padding: 18px 0 0 0 !important;
-
-      border-top: 1px solid #eee;
-
-      box-sizing: border-box !important;
-    }
-
-
-    .comments-list {
-      display: flex !important;
-
-      flex-direction: column !important;
-
-      gap: 18px;
-
-      width: 100%;
-
-      margin: 0;
-
-      padding: 0;
-    }
-
-
-    .comment {
-      display: flex !important;
-
-      align-items: flex-start !important;
-
-      gap: 12px;
-
-      width: 100%;
-
-      min-width: 0;
-
-      margin: 0 !important;
-
-      padding: 0 !important;
-
-      background: transparent !important;
-    }
-
-
-    /* =====================================================
-       COMMENT PROFILE IMAGE
-    ===================================================== */
-
-    .comment-avatar {
-      width: 48px !important;
-      height: 48px !important;
-
-      min-width: 48px !important;
-      min-height: 48px !important;
-
-      max-width: 48px !important;
-      max-height: 48px !important;
-
-      flex: 0 0 48px !important;
-
-      display: flex !important;
-
-      align-items: center;
-
-      justify-content: center;
-
-      overflow: hidden;
-
-      border-radius: 50% !important;
-
-      border: 3px solid #63d6e5 !important;
-
-      background: #63d6e5;
-
-      color: #18b8c7;
-
-      font-size: 12px;
-
-      font-weight: 800;
-
-      box-sizing: border-box !important;
-    }
-
-
-    .comment-avatar img {
-      display: block !important;
-
-      width: 100% !important;
-
-      height: 100% !important;
-
-      min-width: 100% !important;
-
-      min-height: 100% !important;
-
-      max-width: none !important;
-
-      max-height: none !important;
-
-      object-fit: cover !important;
-
-      border-radius: 50% !important;
-    }
-
-
-    /* =====================================================
-       COMMENT BODY
-       
-       KEIN GRAUER KASTEN
-    ===================================================== */
-
-    .comment-body {
-      flex: 1;
-
-      min-width: 0;
-
-      margin: 0;
-
-      padding: 0 !important;
-
-      background: transparent !important;
-
-      box-sizing: border-box !important;
-
-      text-align: left !important;
-    }
-
-
-    .comment-head {
-      display: flex;
-
-      align-items: baseline;
-
-      flex-wrap: wrap;
-
-      gap: 8px;
-
-      margin: 0;
-
-      padding: 0;
-
-      line-height: 1.3;
-
-      text-align: left;
-    }
-
-
-    .comment-name {
-      color: #111;
-
-      font-size: 16px;
-
-      font-weight: 800;
-    }
-
-
-    .comment-time {
-      color: #888;
-
-      font-size: 13px;
-
-      font-weight: 400;
-    }
-
-
-    .comment-text {
-      display: block;
-
-      margin: 5px 0 0 0;
-
-      padding: 0 !important;
-
-      color: #111;
-
-      background: transparent !important;
-
-      font-size: 18px;
-
-      line-height: 1.45;
-
-      text-align: left !important;
-
-      white-space: pre-wrap;
-
-      overflow-wrap: anywhere;
-
-      word-break: break-word;
     }
 
 
@@ -659,97 +632,97 @@
        COMMENT FORM
     ===================================================== */
 
-    .comment-form {
+    .ma-comment-form {
+      width: 100% !important;
+
       display: flex !important;
 
-      gap: 8px;
+      gap: 8px !important;
 
-      width: 100%;
+      margin: 20px 0 0 0 !important;
 
-      margin-top: 20px;
+      padding: 0 !important;
 
-      padding: 0;
+      box-sizing: border-box !important;
     }
 
 
-    .comment-form input {
-      flex: 1;
+    .ma-comment-input {
+      flex: 1 1 auto !important;
 
-      min-width: 0;
+      min-width: 0 !important;
 
-      width: 100%;
+      height: 52px !important;
 
-      height: 52px;
+      padding: 0 14px !important;
 
-      padding: 0 14px;
+      border: 1px solid #d8d8d8 !important;
 
-      border: 1px solid #d8d8d8;
+      outline: none !important;
 
-      outline: none;
+      background: #fff !important;
 
-      background: #fff;
+      color: #111 !important;
 
-      color: #111;
+      font: inherit !important;
 
-      font: inherit;
+      font-size: 16px !important;
 
-      font-size: 16px;
-
-      box-sizing: border-box;
+      box-sizing: border-box !important;
     }
 
 
-    .comment-form input:focus {
-      border-color: #18b8c7;
+    .ma-comment-input:focus {
+      border-color: #18b8c7 !important;
     }
 
 
-    .comment-form button {
-      min-width: 105px;
+    .ma-comment-submit {
+      min-width: 105px !important;
 
-      border: 0;
+      height: 52px !important;
 
-      background: #111;
+      border: 0 !important;
 
-      color: #fff;
+      background: #111 !important;
 
-      padding: 0 18px;
+      color: #fff !important;
 
-      font-size: 16px;
+      padding: 0 18px !important;
 
-      font-weight: 800;
+      font-size: 16px !important;
 
-      cursor: pointer;
+      font-weight: 800 !important;
+
+      cursor: pointer !important;
     }
 
 
-    .comment-form button:hover {
-      background: #18b8c7;
+    .ma-comment-submit:hover {
+      background: #18b8c7 !important;
     }
 
 
     /* =====================================================
-       EMPTY STATE
+       EMPTY
     ===================================================== */
 
-    .empty-community {
-      display: block !important;
+    .ma-empty {
+      width: 100% !important;
 
-      width: 100%;
+      padding: 55px 20px !important;
 
-      padding: 55px 20px;
+      border: 1px dashed #ccc !important;
 
-      border: 1px dashed #ccc;
+      box-sizing: border-box !important;
 
-      box-sizing: border-box;
+      text-align: center !important;
 
-      text-align: center;
-
-      color: #777;
+      color: #777 !important;
     }
 
 
-    .empty-community strong {
+    .ma-empty strong {
       display: block;
 
       margin-bottom: 8px;
@@ -761,82 +734,24 @@
 
 
     /* =====================================================
-       RUN BUDDIES
-    ===================================================== */
-
-    .member-avatar {
-      width: 42px;
-
-      height: 42px;
-
-      flex: 0 0 42px;
-
-      border-radius: 50%;
-
-      display: flex;
-
-      align-items: center;
-
-      justify-content: center;
-
-      overflow: hidden;
-
-      border: 3px solid #63d6e5;
-
-      background: #eefafa;
-
-      color: #18b8c7;
-
-      font-size: 13px;
-
-      font-weight: 800;
-
-      box-sizing: border-box;
-    }
-
-
-    .member-avatar img {
-      width: 100%;
-
-      height: 100%;
-
-      display: block;
-
-      object-fit: cover;
-
-      border-radius: 50%;
-    }
-
-
-    .no-buddies {
-      color: #777;
-
-      line-height: 1.5;
-    }
-
-
-    /* =====================================================
        TOP AVATAR
        
-       HELLBLAUER RING WIE GEWÜNSCHT
+       SEHR FEINER RING
     ===================================================== */
 
     #topAvatar {
-      width: 58px !important;
+      width: 56px !important;
+      height: 56px !important;
 
-      height: 58px !important;
+      min-width: 56px !important;
+      min-height: 56px !important;
 
-      min-width: 58px !important;
+      max-width: 56px !important;
+      max-height: 56px !important;
 
-      min-height: 58px !important;
+      padding: 2px !important;
 
-      max-width: 58px !important;
-
-      max-height: 58px !important;
-
-      padding: 3px !important;
-
-      border: 4px solid #63d6e5 !important;
+      border: 2px solid #63d6e5 !important;
 
       border-radius: 50% !important;
 
@@ -847,12 +762,11 @@
       display: flex !important;
 
       align-items: center !important;
-
       justify-content: center !important;
 
       box-sizing: border-box !important;
 
-      cursor: pointer;
+      cursor: pointer !important;
     }
 
 
@@ -860,20 +774,20 @@
       display: block !important;
 
       width: 100% !important;
-
       height: 100% !important;
 
       min-width: 100% !important;
-
       min-height: 100% !important;
 
       max-width: none !important;
-
       max-height: none !important;
 
       object-fit: cover !important;
 
       border-radius: 50% !important;
+
+      margin: 0 !important;
+      padding: 0 !important;
     }
 
 
@@ -883,11 +797,6 @@
 
     @media (max-width: 700px) {
 
-      .hero {
-        gap: 20px;
-      }
-
-
       #postsContainer {
         display: block !important;
 
@@ -895,172 +804,91 @@
       }
 
 
-      #postsContainer .post {
-        display: block !important;
-
+      #postsContainer .ma-post {
         width: 100% !important;
 
-        padding: 24px !important;
+        display: block !important;
 
-        margin-bottom: 22px !important;
+        margin: 0 0 22px 0 !important;
+
+        padding: 24px !important;
 
         box-sizing: border-box !important;
       }
 
 
-      /* ---------------------------------------------------
-         POST HEADER
-      --------------------------------------------------- */
+      .ma-post-avatar {
+        width: 54px !important;
+        height: 54px !important;
 
-      .post-header {
-        display: flex !important;
+        min-width: 54px !important;
+        min-height: 54px !important;
 
-        width: 100% !important;
+        max-width: 54px !important;
+        max-height: 54px !important;
 
-        align-items: center !important;
+        flex-basis: 54px !important;
 
-        margin: 0 !important;
-
-        padding: 0 !important;
+        border-width: 2px !important;
       }
 
 
-      .post-author {
-        display: flex !important;
-
-        align-items: center !important;
-
-        width: 100% !important;
-
-        min-width: 0 !important;
+      .ma-post-author-info {
+        margin-left: 12px !important;
       }
 
 
-      .post-avatar {
-        width: 56px !important;
-
-        height: 56px !important;
-
-        min-width: 56px !important;
-
-        min-height: 56px !important;
-
-        max-width: 56px !important;
-
-        max-height: 56px !important;
-
-        flex: 0 0 56px !important;
-
-        border-width: 4px !important;
-      }
-
-
-      .post-author-info {
-        margin-left: 13px !important;
-      }
-
-
-      .post-author-info b {
+      .ma-post-author-name {
         font-size: 19px !important;
       }
 
 
-      .post-author-meta {
+      .ma-post-author-meta {
         font-size: 15px !important;
       }
 
 
-      /* ---------------------------------------------------
-         POST TEXT
-         
-         DIREKT UNTER DEM HEADER
-      --------------------------------------------------- */
-
-      .post-content-area {
-        display: block !important;
-
+      .ma-post-copy {
         width: 100% !important;
 
-        margin: 25px 0 26px 0 !important;
+        margin: 24px 0 25px 0 !important;
 
         padding: 0 !important;
-
-        clear: both !important;
-
-        float: none !important;
 
         text-align: left !important;
-      }
-
-
-      .post-content {
-        display: block !important;
-
-        width: 100% !important;
-
-        margin: 0 !important;
-
-        padding: 0 !important;
 
         font-size: 20px !important;
 
         line-height: 1.45 !important;
-
-        text-align: left !important;
       }
 
 
-      /* ---------------------------------------------------
-         POST ACTIONS
-      --------------------------------------------------- */
-
-      .post-meta {
-        display: flex !important;
+      .ma-post-actions {
+        width: 100% !important;
 
         flex-direction: row !important;
 
         align-items: center !important;
 
         justify-content: space-between !important;
-
-        width: 100% !important;
       }
 
 
-      .post-actions {
-        display: flex !important;
-
+      .ma-post-action-left {
         flex-direction: row !important;
 
-        align-items: center !important;
-
-        gap: 8px !important;
+        gap: 6px !important;
       }
 
 
-      .post-action {
-        padding: 7px 8px !important;
-
+      .ma-post-action {
         font-size: 18px !important;
+
+        padding: 7px 8px !important;
       }
 
 
-      .delete-post {
-        margin-left: auto !important;
-
-        padding-right: 0 !important;
-
-        font-size: 17px !important;
-      }
-
-
-      /* ---------------------------------------------------
-         COMMENTS
-      --------------------------------------------------- */
-
-      .post-comments {
-        display: block !important;
-
+      .ma-comments {
         width: 100% !important;
 
         margin-top: 18px !important;
@@ -1069,130 +897,80 @@
       }
 
 
-      .comments-list {
-        gap: 18px !important;
+      .ma-comment {
+        gap: 10px !important;
       }
 
 
-      .comment {
-        display: flex !important;
+      .ma-comment-avatar {
+        width: 44px !important;
+        height: 44px !important;
 
-        align-items: flex-start !important;
+        min-width: 44px !important;
+        min-height: 44px !important;
 
-        gap: 11px !important;
+        max-width: 44px !important;
+        max-height: 44px !important;
 
-        width: 100% !important;
+        flex-basis: 44px !important;
+
+        border-width: 2px !important;
       }
 
 
-      .comment-avatar {
-        width: 46px !important;
-
-        height: 46px !important;
-
-        min-width: 46px !important;
-
-        min-height: 46px !important;
-
-        max-width: 46px !important;
-
-        max-height: 46px !important;
-
-        flex: 0 0 46px !important;
-
-        border-width: 3px !important;
-      }
-
-
-      .comment-name {
+      .ma-comment-name {
         font-size: 16px !important;
       }
 
 
-      .comment-time {
+      .ma-comment-time {
         font-size: 13px !important;
       }
 
 
-      .comment-text {
+      .ma-comment-text {
         font-size: 18px !important;
 
-        line-height: 1.45 !important;
+        margin-top: 5px !important;
 
-        margin-top: 4px !important;
+        text-align: left !important;
       }
 
 
-      /* ---------------------------------------------------
-         COMMENT FORM
-      --------------------------------------------------- */
-
-      .comment-form {
-        display: flex !important;
-
+      .ma-comment-form {
         flex-direction: column !important;
 
         width: 100% !important;
 
         gap: 8px !important;
-
-        margin-top: 20px !important;
       }
 
 
-      .comment-form input {
+      .ma-comment-input {
         width: 100% !important;
 
         height: 54px !important;
       }
 
 
-      .comment-form button {
+      .ma-comment-submit {
         width: 100% !important;
 
         height: 54px !important;
       }
 
-
-      /* ---------------------------------------------------
-         POST FORM
-      --------------------------------------------------- */
-
-      .post-form-actions {
-        flex-direction: column;
-
-        align-items: stretch;
-      }
-
-
-      .post-form-actions > div:last-child {
-        width: 100%;
-      }
-
-
-      .post-form-actions .btn {
-        flex: 1;
-      }
-
-
-      /* ---------------------------------------------------
-         TOP AVATAR
-      --------------------------------------------------- */
 
       #topAvatar {
         width: 54px !important;
-
         height: 54px !important;
 
         min-width: 54px !important;
-
         min-height: 54px !important;
 
         max-width: 54px !important;
-
         max-height: 54px !important;
 
-        border-width: 4px !important;
+        border-width: 2px !important;
       }
 
     }
@@ -1235,11 +1013,9 @@
         Home
       </a>
 
-
       <a href="challenges.html">
         Challenges
       </a>
-
 
       <a
         class="active"
@@ -1248,16 +1024,13 @@
         Community
       </a>
 
-
       <a href="events.html">
         Events
       </a>
 
-
       <a href="training.html">
         Training
       </a>
-
 
       <a href="profile.html">
         My Run
@@ -1272,18 +1045,13 @@
         THIS WEEK
       </small>
 
-
       <strong>
         23.4 / 30 KM
       </strong>
 
-
       <div class="mini-progress">
-
         <i></i>
-
       </div>
-
 
       <p
         class="small"
@@ -1327,7 +1095,6 @@
 
         <button
           id="topAvatar"
-          class="avatar"
           type="button"
           aria-label="Mein Profil"
         >
@@ -1340,9 +1107,7 @@
     </div>
 
 
-    <!-- =================================================
-         HERO
-    ================================================== -->
+    <!-- HERO -->
 
     <div class="hero">
 
@@ -1374,9 +1139,7 @@
     </div>
 
 
-    <!-- =================================================
-         NEW POST
-    ================================================== -->
+    <!-- NEW POST -->
 
     <div
       id="postFormCard"
@@ -1386,7 +1149,6 @@
 
 
       <div class="section-head">
-
 
         <h2>
           Neuer Post
@@ -1400,14 +1162,10 @@
           —
         </span>
 
-
       </div>
 
 
-      <form
-        id="postForm"
-        class="post-form"
-      >
+      <form id="postForm">
 
 
         <textarea
@@ -1415,10 +1173,28 @@
           maxlength="2000"
           placeholder="Was möchtest du mit der Community teilen?"
           required
+          style="
+            width:100%;
+            min-height:130px;
+            padding:16px;
+            border:1px solid #ddd;
+            box-sizing:border-box;
+            font:inherit;
+            resize:vertical;
+          "
         ></textarea>
 
 
-        <div class="post-form-actions">
+        <div
+          class="post-form-actions"
+          style="
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            gap:15px;
+            margin-top:14px;
+          "
+        >
 
 
           <div
@@ -1428,9 +1204,11 @@
 
 
           <div
-            style="display:flex;gap:8px"
+            style="
+              display:flex;
+              gap:8px;
+            "
           >
-
 
             <button
               id="cancelPostButton"
@@ -1449,7 +1227,6 @@
               Post veröffentlichen
             </button>
 
-
           </div>
 
 
@@ -1462,13 +1239,11 @@
     </div>
 
 
-    <!-- =================================================
-         LOADING
-    ================================================== -->
+    <!-- LOADING -->
 
     <div
       id="communityLoading"
-      class="community-loading"
+      class="ma-community-loading"
     >
       Community wird geladen …
     </div>
@@ -1476,24 +1251,23 @@
 
     <div
       id="communityError"
-      class="community-error"
+      class="ma-community-error"
       style="display:none"
     ></div>
 
 
-    <!-- =================================================
-         POSTS
-    ================================================== -->
+    <!-- POSTS -->
 
     <div
       id="postsContainer"
-      style="display:none"
+      style="
+        display:block;
+        width:100%;
+      "
     ></div>
 
 
-    <!-- =================================================
-         LOWER AREA
-    ================================================== -->
+    <!-- LOWER AREA -->
 
     <div
       class="section grid g3"
@@ -1509,7 +1283,6 @@
 
         <div class="section-head">
 
-
           <h2>
             Run Buddies
           </h2>
@@ -1519,19 +1292,21 @@
             Community
           </span>
 
-
         </div>
 
 
         <div id="runBuddies">
 
-
-          <p class="no-buddies">
+          <p
+            style="
+              color:#777;
+              line-height:1.5;
+            "
+          >
             Weitere Mitglieder werden hier
             angezeigt, sobald sie der Community
             beitreten.
           </p>
-
 
         </div>
 
@@ -1565,16 +1340,13 @@
 
         <div class="row">
 
-
           <span>
             👟 Gemeinsam laufen
           </span>
 
-
           <span>
             🔥 Gemeinsam wachsen
           </span>
-
 
         </div>
 
@@ -1647,7 +1419,6 @@
 
 
   </main>
-
 
 </div>
 
@@ -1901,47 +1672,6 @@
   }
 
 
-  function avatarHtml(
-    profile,
-    className = "member-avatar"
-  ) {
-
-    const name =
-      profile?.display_name ||
-      "Miles Apart Member";
-
-
-    const avatarUrl =
-      profile?.avatar_url;
-
-
-    if (avatarUrl) {
-
-      return `
-        <div class="${className}">
-
-          <img
-            src="${escapeHtml(avatarUrl)}"
-            alt="Profilbild"
-          >
-
-        </div>
-      `;
-
-    }
-
-
-    return `
-      <div class="${className}">
-        ${escapeHtml(
-          getInitials(name)
-        )}
-      </div>
-    `;
-
-  }
-
-
   function showError(message) {
 
     communityError.textContent =
@@ -2159,6 +1889,118 @@
 
 
   /* =====================================================
+     AVATAR
+  ===================================================== */
+
+  function createPostAvatar(profile) {
+
+    const name =
+      profile?.display_name ||
+      "Miles Apart Member";
+
+
+    if (
+      profile?.avatar_url
+    ) {
+
+      return `
+
+        <div
+          class="ma-post-avatar"
+        >
+
+          <img
+            src="${escapeHtml(
+              profile.avatar_url
+            )}"
+            alt="Profilbild"
+          >
+
+        </div>
+
+      `;
+
+    }
+
+
+    return `
+
+      <div
+        class="ma-post-avatar"
+      >
+
+        <div
+          class="ma-post-avatar-initials"
+        >
+
+          ${escapeHtml(
+            getInitials(name)
+          )}
+
+        </div>
+
+      </div>
+
+    `;
+
+  }
+
+
+  function createCommentAvatar(profile) {
+
+    const name =
+      profile?.display_name ||
+      "Miles Apart Member";
+
+
+    if (
+      profile?.avatar_url
+    ) {
+
+      return `
+
+        <div
+          class="ma-comment-avatar"
+        >
+
+          <img
+            src="${escapeHtml(
+              profile.avatar_url
+            )}"
+            alt="Profilbild"
+          >
+
+        </div>
+
+      `;
+
+    }
+
+
+    return `
+
+      <div
+        class="ma-comment-avatar"
+      >
+
+        <div
+          class="ma-comment-avatar-initials"
+        >
+
+          ${escapeHtml(
+            getInitials(name)
+          )}
+
+        </div>
+
+      </div>
+
+    `;
+
+  }
+
+
+  /* =====================================================
      RENDER POSTS
   ===================================================== */
 
@@ -2172,7 +2014,9 @@
 
       postsContainer.innerHTML = `
 
-        <div class="empty-community">
+        <div
+          class="ma-empty"
+        >
 
           <strong>
             Sei der Erste in der Community.
@@ -2185,10 +2029,6 @@
         </div>
 
       `;
-
-
-      postsContainer.style.display =
-        "block";
 
 
       return;
@@ -2206,15 +2046,11 @@
       }
     );
 
-
-    postsContainer.style.display =
-      "block";
-
   }
 
 
   /* =====================================================
-     CREATE POST
+     POST ELEMENT
   ===================================================== */
 
   function createPostElement(post) {
@@ -2258,7 +2094,7 @@
 
 
     wrapper.className =
-      "card post";
+      "card ma-post";
 
 
     wrapper.dataset.postId =
@@ -2267,63 +2103,37 @@
 
     wrapper.innerHTML = `
 
-      <!-- ===============================================
-           POST HEADER
-      ================================================ -->
+      <!-- POST HEADER -->
 
-      <div class="post-header">
+      <div
+        class="ma-post-header"
+      >
 
+        <div
+          class="ma-post-author"
+        >
 
-        <div class="post-author">
-
-
-          ${
-            profile.avatar_url
-
-              ? `
-
-                <div class="post-avatar">
-
-                  <img
-                    src="${escapeHtml(
-                      profile.avatar_url
-                    )}"
-                    alt="Profilbild"
-                  >
-
-                </div>
-
-              `
-
-              : `
-
-                <div class="post-avatar">
-
-                  <div class="post-avatar-initials">
-
-                    ${escapeHtml(
-                      getInitials(authorName)
-                    )}
-
-                  </div>
-
-                </div>
-
-              `
-          }
+          ${createPostAvatar(
+            profile
+          )}
 
 
-          <div class="post-author-info">
+          <div
+            class="ma-post-author-info"
+          >
 
-
-            <b>
+            <div
+              class="ma-post-author-name"
+            >
               ${escapeHtml(
                 authorName
               )}
-            </b>
+            </div>
 
 
-            <div class="post-author-meta">
+            <div
+              class="ma-post-author-meta"
+            >
 
               ${formatTime(
                 post.created_at
@@ -2339,47 +2149,36 @@
 
             </div>
 
-
           </div>
 
-
         </div>
-
 
       </div>
 
 
-      <!-- ===============================================
-           POST TEXT
-      ================================================ -->
+      <!-- POST TEXT -->
 
-      <div class="post-content-area">
-
-
-        <div class="post-content">
-
-          ${escapeHtml(
-            post.content
-          )}
-
-        </div>
-
-
+      <div
+        class="ma-post-copy"
+      >
+        ${escapeHtml(
+          post.content
+        )}
       </div>
 
 
-      <!-- ===============================================
-           ACTIONS
-      ================================================ -->
+      <!-- ACTIONS -->
 
-      <div class="post-meta">
+      <div
+        class="ma-post-actions"
+      >
 
-
-        <div class="post-actions">
-
+        <div
+          class="ma-post-action-left"
+        >
 
           <button
-            class="post-action ${
+            class="ma-post-action ${
               userLiked
                 ? "liked"
                 : ""
@@ -2401,7 +2200,7 @@
 
 
           <button
-            class="post-action"
+            class="ma-post-action"
             type="button"
             data-action="comments"
             data-post-id="${post.id}"
@@ -2411,17 +2210,15 @@
 
           </button>
 
-
         </div>
 
 
         ${
           isOwner
-
             ? `
 
               <button
-                class="post-action delete-post"
+                class="ma-post-action ma-delete"
                 type="button"
                 data-action="delete"
                 data-post-id="${post.id}"
@@ -2430,27 +2227,23 @@
               </button>
 
             `
-
             : ""
         }
-
 
       </div>
 
 
-      <!-- ===============================================
-           COMMENTS
-      ================================================ -->
+      <!-- COMMENTS -->
 
       <div
-        class="post-comments"
+        class="ma-comments"
         data-comments="${post.id}"
         style="display:none"
       >
 
-
-        <div class="comments-list">
-
+        <div
+          class="ma-comments-list"
+        >
 
           ${
             comments
@@ -2468,17 +2261,16 @@
               .join("")
           }
 
-
         </div>
 
 
         <form
-          class="comment-form"
+          class="ma-comment-form"
           data-comment-form="${post.id}"
         >
 
-
           <input
+            class="ma-comment-input"
             type="text"
             maxlength="1000"
             placeholder="Antwort schreiben …"
@@ -2487,14 +2279,13 @@
 
 
           <button
+            class="ma-comment-submit"
             type="submit"
           >
             Senden
           </button>
 
-
         </form>
-
 
       </div>
 
@@ -2523,48 +2314,51 @@
 
     return `
 
-      <div class="comment">
+      <div
+        class="ma-comment"
+      >
 
 
-        ${avatarHtml(
-          profile,
-          "comment-avatar"
+        ${createCommentAvatar(
+          profile
         )}
 
 
-        <div class="comment-body">
+        <div
+          class="ma-comment-content"
+        >
 
 
-          <div class="comment-head">
+          <div
+            class="ma-comment-header"
+          >
 
-
-            <span class="comment-name">
-
+            <span
+              class="ma-comment-name"
+            >
               ${escapeHtml(
                 name
               )}
-
             </span>
 
 
-            <span class="comment-time">
-
+            <span
+              class="ma-comment-time"
+            >
               ${formatTime(
                 comment.created_at
               )}
-
             </span>
-
 
           </div>
 
 
-          <div class="comment-text">
-
+          <div
+            class="ma-comment-text"
+          >
             ${escapeHtml(
               comment.content
             )}
-
           </div>
 
 
@@ -2693,7 +2487,7 @@
 
 
   /* =====================================================
-     DELETE POST
+     DELETE
   ===================================================== */
 
   async function deletePost(postId) {
@@ -2745,7 +2539,7 @@
 
 
   /* =====================================================
-     SUBMIT COMMENT
+     COMMENT SUBMIT
   ===================================================== */
 
   async function submitComment(
@@ -2835,7 +2629,7 @@
 
 
   /* =====================================================
-     POST CLICK EVENTS
+     POST EVENTS
   ===================================================== */
 
   postsContainer.addEventListener(
@@ -2894,7 +2688,7 @@
 
         const postElement =
           button.closest(
-            ".post"
+            ".ma-post"
           );
 
 
@@ -2927,7 +2721,7 @@
 
 
   /* =====================================================
-     COMMENT SUBMIT
+     COMMENT FORM
   ===================================================== */
 
   postsContainer.addEventListener(
@@ -3047,10 +2841,6 @@
         "";
 
 
-      postFormMessage.className =
-        "post-form-message";
-
-
       try {
 
         const {
@@ -3166,17 +2956,21 @@
 
       runBuddies.innerHTML = `
 
-        <p class="no-buddies">
-
+        <p
+          style="
+            color:#777;
+            line-height:1.5;
+          "
+        >
           Du bist aktuell das erste Mitglied
           mit einem vollständigen Profil.
-
         </p>
 
       `;
 
 
       return;
+
     }
 
 
@@ -3187,24 +2981,23 @@
 
             <div
               class="rank"
-              style="margin-bottom:14px"
+              style="
+                margin-bottom:14px;
+              "
             >
 
-              ${avatarHtml(
-                profile,
-                "member-avatar"
+              ${createPostAvatar(
+                profile
               )}
 
 
               <div>
 
                 <b>
-
                   ${escapeHtml(
                     profile.display_name ||
                     "Miles Apart Member"
                   )}
-
                 </b>
 
 
@@ -3345,6 +3138,7 @@
       communityLower.style.display =
         "grid";
 
+
     } catch (error) {
 
       console.error(
@@ -3368,7 +3162,7 @@
 
 
   /* =====================================================
-     AUTH STATE
+     AUTH
   ===================================================== */
 
   supabaseClient.auth.onAuthStateChange(
