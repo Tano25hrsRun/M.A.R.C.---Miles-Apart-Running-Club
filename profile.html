@@ -2,10 +2,7 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8" />
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>Mein Profil – Miles Apart Running Club</title>
 
@@ -89,6 +86,7 @@
       display: flex;
       align-items: center;
       gap: 14px;
+
       font-weight: 800;
       letter-spacing: -0.03em;
     }
@@ -96,12 +94,13 @@
     .brand-mark {
       width: 42px;
       height: 42px;
-      border: 2px solid var(--miles-blue);
-      border-radius: 50%;
 
       display: flex;
       align-items: center;
       justify-content: center;
+
+      border: 2px solid var(--miles-blue);
+      border-radius: 50%;
 
       color: var(--miles-blue);
       font-size: 17px;
@@ -143,6 +142,7 @@
 
     h1 {
       margin: 0;
+
       font-size: clamp(42px, 7vw, 76px);
       line-height: 0.95;
       letter-spacing: -0.055em;
@@ -183,14 +183,14 @@
       width: 150px;
       height: 150px;
 
-      border-radius: 50%;
-      border: 4px solid var(--miles-blue);
-
       display: flex;
       align-items: center;
       justify-content: center;
 
       overflow: hidden;
+
+      border: 4px solid var(--miles-blue);
+      border-radius: 50%;
 
       background: #eefafa;
       color: var(--miles-blue);
@@ -207,14 +207,58 @@
 
     .profile-side-name {
       margin-top: 20px;
+
       font-size: 23px;
       font-weight: 800;
     }
 
     .profile-side-username {
       margin-top: 6px;
+
       color: var(--muted);
       font-size: 15px;
+    }
+
+    /* --------------------------------------------------
+       PHOTO UPLOAD
+    -------------------------------------------------- */
+
+    .avatar-upload {
+      width: 100%;
+      margin-top: 25px;
+    }
+
+    .file-input {
+      display: none;
+    }
+
+    .upload-button {
+      display: block;
+      width: 100%;
+
+      padding: 12px 14px;
+
+      border: 1px solid var(--line);
+      background: #ffffff;
+
+      color: var(--text);
+      font-size: 14px;
+      font-weight: 800;
+
+      text-align: center;
+    }
+
+    .upload-button:hover {
+      border-color: var(--miles-blue);
+      color: var(--miles-blue-dark);
+    }
+
+    .upload-info {
+      margin-top: 9px;
+
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.45;
     }
 
     /* --------------------------------------------------
@@ -246,10 +290,10 @@
     textarea {
       width: 100%;
 
+      padding: 14px 15px;
+
       border: 1px solid #cfcfcf;
       border-radius: 0;
-
-      padding: 14px 15px;
 
       background: #ffffff;
       color: var(--text);
@@ -281,8 +325,10 @@
 
     .email-box {
       padding: 14px 15px;
-      background: var(--soft);
+
       border: 1px solid var(--line);
+      background: var(--soft);
+
       color: var(--muted);
     }
 
@@ -299,10 +345,10 @@
     }
 
     .button {
+      padding: 13px 20px;
+
       border: 1px solid var(--text);
       border-radius: 0;
-
-      padding: 13px 20px;
 
       background: var(--text);
       color: #ffffff;
@@ -321,20 +367,20 @@
     }
 
     .button.primary:hover {
-      background: var(--miles-blue-dark);
       border-color: var(--miles-blue-dark);
+      background: var(--miles-blue-dark);
     }
 
     .button.secondary {
+      border-color: var(--line);
       background: #ffffff;
       color: var(--text);
-      border-color: var(--line);
     }
 
     .button.danger {
+      border-color: #e2bcbc;
       background: #ffffff;
       color: var(--danger);
-      border-color: #e2bcbc;
     }
 
     .button:disabled {
@@ -364,12 +410,13 @@
 
     .loading {
       padding: 80px 0;
-      text-align: center;
+
       color: var(--muted);
+      text-align: center;
     }
 
     /* --------------------------------------------------
-       PASSWORD SECTION
+       PASSWORD
     -------------------------------------------------- */
 
     .section {
@@ -382,18 +429,21 @@
 
     .section-header h2 {
       margin: 0;
+
       font-size: 32px;
       letter-spacing: -0.04em;
     }
 
     .section-header p {
       margin: 10px 0 0;
+
       color: var(--muted);
       line-height: 1.5;
     }
 
     .password-card {
       padding: 32px;
+
       border: 1px solid var(--line);
       background: #ffffff;
     }
@@ -403,6 +453,7 @@
     -------------------------------------------------- */
 
     @media (max-width: 760px) {
+
       .topbar {
         height: 68px;
         padding: 0 17px;
@@ -424,13 +475,14 @@
       }
 
       .intro {
-        font-size: 17px;
         margin-bottom: 35px;
+        font-size: 17px;
       }
 
       .profile-card {
         grid-template-columns: 1fr;
         gap: 35px;
+
         padding: 25px 20px;
       }
 
@@ -454,6 +506,10 @@
       .password-card {
         padding: 24px 20px;
       }
+
+      .avatar-upload {
+        max-width: 230px;
+      }
     }
   </style>
 </head>
@@ -463,15 +519,20 @@
   <div class="page">
 
     <header class="topbar">
+
       <a href="index.html" class="brand">
         <div class="brand-mark">M</div>
-        <div class="brand-text">Miles Apart Running Club</div>
+        <div class="brand-text">
+          Miles Apart Running Club
+        </div>
       </a>
 
       <a href="index.html" class="back-link">
         ← Home
       </a>
+
     </header>
+
 
     <main>
 
@@ -479,35 +540,83 @@
         Profil wird geladen …
       </div>
 
-      <div id="profileContent" style="display: none;">
 
-        <p class="eyebrow">Miles Apart / Mein Profil</p>
+      <div
+        id="profileContent"
+        style="display: none;"
+      >
 
-        <h1>Mein Profil.</h1>
-
-        <p class="intro">
-          Deine persönlichen Daten für die Miles Apart Community.
-          Änderungen werden direkt in deinem Account gespeichert.
+        <p class="eyebrow">
+          Miles Apart / Mein Profil
         </p>
 
-        <!-- PROFILE -->
+        <h1>
+          Mein Profil.
+        </h1>
+
+        <p class="intro">
+          Deine persönlichen Daten für die
+          Miles Apart Community.
+          Änderungen werden direkt in deinem
+          Account gespeichert.
+        </p>
+
+
+        <!-- ==========================================
+             PROFILE
+        =========================================== -->
+
         <section class="profile-card">
 
           <aside class="profile-side">
 
-            <div class="avatar" id="avatarPreview">
+            <div
+              class="avatar"
+              id="avatarPreview"
+            >
               M
             </div>
+
 
             <div class="profile-side-name" id="sideName">
               —
             </div>
 
-            <div class="profile-side-username" id="sideUsername">
+
+            <div
+              class="profile-side-username"
+              id="sideUsername"
+            >
               —
             </div>
 
+
+            <!-- PHOTO UPLOAD -->
+
+            <div class="avatar-upload">
+
+              <input
+                id="avatarFile"
+                class="file-input"
+                type="file"
+                accept="image/jpeg,image/png,image/webp"
+              />
+
+              <label
+                for="avatarFile"
+                class="upload-button"
+              >
+                Profilbild auswählen
+              </label>
+
+              <div class="upload-info">
+                JPG, PNG oder WebP · maximal 5 MB
+              </div>
+
+            </div>
+
           </aside>
+
 
           <div>
 
@@ -515,7 +624,10 @@
 
               <div class="form-grid">
 
+                <!-- NAME -->
+
                 <div class="field">
+
                   <label for="displayName">
                     Name
                   </label>
@@ -527,9 +639,14 @@
                     placeholder="Dein Name"
                     required
                   />
+
                 </div>
 
+
+                <!-- USERNAME -->
+
                 <div class="field">
+
                   <label for="username">
                     Username
                   </label>
@@ -542,27 +659,40 @@
                   />
 
                   <div class="field-help">
-                    3–30 Zeichen. Der Username kann später
-                    in der Community verwendet werden.
+                    3–30 Zeichen. Der Username kann
+                    später in der Community verwendet werden.
                   </div>
+
                 </div>
 
+
+                <!-- EMAIL -->
+
                 <div class="field full">
+
                   <label>
                     E-Mail
                   </label>
 
-                  <div class="email-box" id="email">
+                  <div
+                    class="email-box"
+                    id="email"
+                  >
                     —
                   </div>
 
                   <div class="field-help">
-                    Die E-Mail-Adresse wird momentan über
+                    Die E-Mail-Adresse wird über
                     deinen Login-Account verwaltet.
                   </div>
+
                 </div>
 
+
+                <!-- LOCATION -->
+
                 <div class="field">
+
                   <label for="location">
                     Standort
                   </label>
@@ -573,27 +703,14 @@
                     maxlength="100"
                     placeholder="z. B. Düsseldorf"
                   />
+
                 </div>
 
-                <div class="field">
-                  <label for="avatarUrl">
-                    Profilbild URL
-                  </label>
 
-                  <input
-                    id="avatarUrl"
-                    type="url"
-                    placeholder="https://..."
-                  />
-
-                  <div class="field-help">
-                    Vorerst kannst du hier eine Bild-URL
-                    hinterlegen. Den direkten Upload bauen
-                    wir anschließend über Supabase Storage.
-                  </div>
-                </div>
+                <!-- BIO -->
 
                 <div class="field full">
+
                   <label for="bio">
                     Bio
                   </label>
@@ -603,11 +720,14 @@
                     maxlength="500"
                     placeholder="Erzähl der Community etwas über dich, dein Laufen oder deine Ziele …"
                   ></textarea>
+
                 </div>
 
               </div>
 
+
               <div class="actions">
+
                 <button
                   type="submit"
                   class="button primary"
@@ -615,7 +735,9 @@
                 >
                   Änderungen speichern
                 </button>
+
               </div>
+
 
               <div
                 id="profileStatus"
@@ -630,23 +752,32 @@
         </section>
 
 
-        <!-- PASSWORD -->
+        <!-- ==========================================
+             PASSWORD
+        =========================================== -->
+
         <section class="section">
 
           <div class="section-header">
-            <h2>Passwort ändern</h2>
+
+            <h2>
+              Passwort ändern
+            </h2>
 
             <p>
-              Du kannst dein Passwort jederzeit direkt
-              über deinen Miles Apart Account ändern.
+              Du kannst dein Passwort jederzeit
+              direkt über deinen Miles Apart Account ändern.
             </p>
+
           </div>
+
 
           <div class="password-card">
 
             <form id="passwordForm">
 
               <div class="field">
+
                 <label for="newPassword">
                   Neues Passwort
                 </label>
@@ -658,9 +789,15 @@
                   placeholder="Mindestens 8 Zeichen"
                   required
                 />
+
               </div>
 
-              <div class="field" style="margin-top: 20px;">
+
+              <div
+                class="field"
+                style="margin-top: 20px;"
+              >
+
                 <label for="newPasswordConfirm">
                   Neues Passwort wiederholen
                 </label>
@@ -672,9 +809,12 @@
                   placeholder="Passwort wiederholen"
                   required
                 />
+
               </div>
 
+
               <div class="actions">
+
                 <button
                   type="submit"
                   class="button primary"
@@ -682,7 +822,9 @@
                 >
                   Passwort ändern
                 </button>
+
               </div>
+
 
               <div
                 id="passwordStatus"
@@ -697,16 +839,24 @@
         </section>
 
 
-        <!-- LOGOUT -->
+        <!-- ==========================================
+             ACCOUNT
+        =========================================== -->
+
         <section class="section">
 
           <div class="section-header">
-            <h2>Account</h2>
+
+            <h2>
+              Account
+            </h2>
 
             <p>
               Du kannst dich hier von diesem Gerät abmelden.
             </p>
+
           </div>
+
 
           <button
             type="button"
@@ -726,6 +876,7 @@
 
 
   <script>
+
     /* ==================================================
        SUPABASE
     ================================================== */
@@ -736,12 +887,14 @@
     const SUPABASE_PUBLISHABLE_KEY =
       "sb_publishable_wc3w2fSuj8ItwiF6XBoQgw_HeW5_rNW";
 
-    const { createClient } = window.supabase;
+    const { createClient } =
+      window.supabase;
 
-    const supabaseClient = createClient(
-      SUPABASE_URL,
-      SUPABASE_PUBLISHABLE_KEY
-    );
+    const supabaseClient =
+      createClient(
+        SUPABASE_URL,
+        SUPABASE_PUBLISHABLE_KEY
+      );
 
 
     /* ==================================================
@@ -749,64 +902,112 @@
     ================================================== */
 
     const loadingState =
-      document.getElementById("loadingState");
+      document.getElementById(
+        "loadingState"
+      );
 
     const profileContent =
-      document.getElementById("profileContent");
+      document.getElementById(
+        "profileContent"
+      );
 
     const profileForm =
-      document.getElementById("profileForm");
+      document.getElementById(
+        "profileForm"
+      );
 
     const displayNameInput =
-      document.getElementById("displayName");
+      document.getElementById(
+        "displayName"
+      );
 
     const usernameInput =
-      document.getElementById("username");
+      document.getElementById(
+        "username"
+      );
 
     const locationInput =
-      document.getElementById("location");
-
-    const avatarUrlInput =
-      document.getElementById("avatarUrl");
+      document.getElementById(
+        "location"
+      );
 
     const bioInput =
-      document.getElementById("bio");
+      document.getElementById(
+        "bio"
+      );
 
     const emailElement =
-      document.getElementById("email");
+      document.getElementById(
+        "email"
+      );
 
     const avatarPreview =
-      document.getElementById("avatarPreview");
+      document.getElementById(
+        "avatarPreview"
+      );
+
+    const avatarFileInput =
+      document.getElementById(
+        "avatarFile"
+      );
 
     const sideName =
-      document.getElementById("sideName");
+      document.getElementById(
+        "sideName"
+      );
 
     const sideUsername =
-      document.getElementById("sideUsername");
+      document.getElementById(
+        "sideUsername"
+      );
 
     const profileStatus =
-      document.getElementById("profileStatus");
+      document.getElementById(
+        "profileStatus"
+      );
 
     const saveProfileButton =
-      document.getElementById("saveProfileButton");
+      document.getElementById(
+        "saveProfileButton"
+      );
 
     const passwordForm =
-      document.getElementById("passwordForm");
+      document.getElementById(
+        "passwordForm"
+      );
 
     const newPasswordInput =
-      document.getElementById("newPassword");
+      document.getElementById(
+        "newPassword"
+      );
 
     const newPasswordConfirmInput =
-      document.getElementById("newPasswordConfirm");
+      document.getElementById(
+        "newPasswordConfirm"
+      );
 
     const passwordStatus =
-      document.getElementById("passwordStatus");
+      document.getElementById(
+        "passwordStatus"
+      );
 
     const changePasswordButton =
-      document.getElementById("changePasswordButton");
+      document.getElementById(
+        "changePasswordButton"
+      );
 
     const logoutButton =
-      document.getElementById("logoutButton");
+      document.getElementById(
+        "logoutButton"
+      );
+
+
+    /* ==================================================
+       STATE
+    ================================================== */
+
+    let currentUser = null;
+    let currentAvatarUrl = null;
 
 
     /* ==================================================
@@ -814,15 +1015,21 @@
     ================================================== */
 
     function getInitials(name) {
-      if (!name) return "M";
 
-      const parts = name
-        .trim()
-        .split(/\s+/)
-        .filter(Boolean);
+      if (!name) {
+        return "M";
+      }
+
+      const parts =
+        name
+          .trim()
+          .split(/\s+/)
+          .filter(Boolean);
 
       if (parts.length === 1) {
-        return parts[0].slice(0, 2).toUpperCase();
+        return parts[0]
+          .slice(0, 2)
+          .toUpperCase();
       }
 
       return (
@@ -832,19 +1039,36 @@
     }
 
 
-    function setProfileStatus(message, type = "") {
-      profileStatus.textContent = message;
-      profileStatus.className = "status " + type;
+    function setProfileStatus(
+      message,
+      type = ""
+    ) {
+
+      profileStatus.textContent =
+        message;
+
+      profileStatus.className =
+        "status " + type;
     }
 
 
-    function setPasswordStatus(message, type = "") {
-      passwordStatus.textContent = message;
-      passwordStatus.className = "status " + type;
+    function setPasswordStatus(
+      message,
+      type = ""
+    ) {
+
+      passwordStatus.textContent =
+        message;
+
+      passwordStatus.className =
+        "status " + type;
     }
 
 
-    function renderAvatar(name, avatarUrl) {
+    function renderAvatar(
+      name,
+      avatarUrl
+    ) {
 
       avatarPreview.innerHTML = "";
 
@@ -853,25 +1077,36 @@
         const image =
           document.createElement("img");
 
-        image.src = avatarUrl;
-        image.alt = "Profilbild";
+        image.src =
+          avatarUrl;
 
-        image.onerror = () => {
-          avatarPreview.innerHTML =
-            getInitials(name);
-        };
+        image.alt =
+          "Profilbild";
 
-        avatarPreview.appendChild(image);
+        image.onerror =
+          () => {
+
+            avatarPreview.innerHTML =
+              getInitials(name);
+
+          };
+
+        avatarPreview.appendChild(
+          image
+        );
 
       } else {
 
         avatarPreview.textContent =
           getInitials(name);
+
       }
     }
 
 
-    function translateProfileError(error) {
+    function translateProfileError(
+      error
+    ) {
 
       if (!error) {
         return "Es ist ein unbekannter Fehler aufgetreten.";
@@ -882,18 +1117,47 @@
 
       if (
         message.includes("duplicate key") ||
-        message.includes("profiles_username_key")
+        message.includes(
+          "profiles_username_key"
+        )
       ) {
+
         return "Dieser Username ist bereits vergeben.";
+
       }
 
       if (
-        message.includes("violates check constraint")
+        message.includes(
+          "violates check constraint"
+        )
       ) {
+
         return "Der Username muss zwischen 3 und 30 Zeichen lang sein.";
+
       }
 
       return message;
+    }
+
+
+    function getFileExtension(
+      file
+    ) {
+
+      const name =
+        file.name || "";
+
+      const parts =
+        name.split(".");
+
+      if (parts.length < 2) {
+        return "jpg";
+      }
+
+      return parts
+        .pop()
+        .toLowerCase()
+        .replace(/[^a-z0-9]/g, "");
     }
 
 
@@ -906,10 +1170,15 @@
       const {
         data: sessionData,
         error: sessionError
-      } = await supabaseClient.auth.getSession();
+      } =
+        await supabaseClient.auth.getSession();
+
 
       if (sessionError) {
-        console.error(sessionError);
+
+        console.error(
+          sessionError
+        );
 
         loadingState.textContent =
           "Deine Sitzung konnte nicht geladen werden.";
@@ -917,8 +1186,10 @@
         return;
       }
 
+
       const session =
         sessionData.session;
+
 
       if (!session) {
 
@@ -928,28 +1199,36 @@
         return;
       }
 
-      const user =
+
+      currentUser =
         session.user;
 
+
       emailElement.textContent =
-        user.email || "—";
+        currentUser.email || "—";
 
 
       const {
         data: profile,
         error: profileError
-      } = await supabaseClient
-        .from("profiles")
-        .select(
-          "display_name, username, avatar_url, bio, location"
-        )
-        .eq("id", user.id)
-        .maybeSingle();
+      } =
+        await supabaseClient
+          .from("profiles")
+          .select(
+            "display_name, username, avatar_url, bio, location"
+          )
+          .eq(
+            "id",
+            currentUser.id
+          )
+          .maybeSingle();
 
 
       if (profileError) {
 
-        console.error(profileError);
+        console.error(
+          profileError
+        );
 
         loadingState.textContent =
           "Das Profil konnte nicht geladen werden.";
@@ -960,20 +1239,30 @@
 
       const displayName =
         profile?.display_name ||
-        user.user_metadata?.display_name ||
+        currentUser
+          .user_metadata
+          ?.display_name ||
         "Miles Apart Member";
+
 
       const username =
         profile?.username || "";
 
+
       const avatarUrl =
         profile?.avatar_url || "";
+
 
       const bio =
         profile?.bio || "";
 
+
       const location =
         profile?.location || "";
+
+
+      currentAvatarUrl =
+        avatarUrl || null;
 
 
       displayNameInput.value =
@@ -981,9 +1270,6 @@
 
       usernameInput.value =
         username;
-
-      avatarUrlInput.value =
-        avatarUrl;
 
       bioInput.value =
         bio;
@@ -994,6 +1280,7 @@
 
       sideName.textContent =
         displayName;
+
 
       sideUsername.textContent =
         username
@@ -1016,50 +1303,248 @@
 
 
     /* ==================================================
-       LIVE AVATAR PREVIEW
+       SELECT PHOTO
     ================================================== */
 
-    avatarUrlInput.addEventListener(
-      "input",
+    avatarFileInput.addEventListener(
+      "change",
       () => {
+
+        const file =
+          avatarFileInput.files?.[0];
+
+
+        if (!file) {
+          return;
+        }
+
+
+        const allowedTypes = [
+          "image/jpeg",
+          "image/png",
+          "image/webp"
+        ];
+
+
+        if (
+          !allowedTypes.includes(
+            file.type
+          )
+        ) {
+
+          setProfileStatus(
+            "Bitte wähle ein JPG-, PNG- oder WebP-Bild.",
+            "error"
+          );
+
+          avatarFileInput.value =
+            "";
+
+          return;
+        }
+
+
+        const maxSize =
+          5 * 1024 * 1024;
+
+
+        if (file.size > maxSize) {
+
+          setProfileStatus(
+            "Das Bild darf maximal 5 MB groß sein.",
+            "error"
+          );
+
+          avatarFileInput.value =
+            "";
+
+          return;
+        }
+
+
+        const previewUrl =
+          URL.createObjectURL(file);
+
 
         renderAvatar(
           displayNameInput.value,
-          avatarUrlInput.value.trim()
+          previewUrl
+        );
+
+
+        setProfileStatus(
+          "Bild ausgewählt. Klicke auf „Änderungen speichern“, um es hochzuladen.",
+          "success"
+        );
+      }
+    );
+
+
+    /* ==================================================
+       UPLOAD AVATAR
+    ================================================== */
+
+    async function uploadAvatar(
+      file
+    ) {
+
+      if (!currentUser) {
+        throw new Error(
+          "Keine aktive Sitzung."
+        );
+      }
+
+
+      const extension =
+        getFileExtension(file);
+
+
+      const fileName =
+        `${crypto.randomUUID()}.${extension}`;
+
+
+      const filePath =
+        `${currentUser.id}/${fileName}`;
+
+
+      const {
+        error: uploadError
+      } =
+        await supabaseClient
+          .storage
+          .from("avatars")
+          .upload(
+            filePath,
+            file,
+            {
+              cacheControl: "3600",
+              upsert: false,
+              contentType: file.type
+            }
+          );
+
+
+      if (uploadError) {
+        throw uploadError;
+      }
+
+
+      const {
+        data: publicUrlData
+      } =
+        supabaseClient
+          .storage
+          .from("avatars")
+          .getPublicUrl(
+            filePath
+          );
+
+
+      const publicUrl =
+        publicUrlData.publicUrl;
+
+
+      const {
+        error: profileError
+      } =
+        await supabaseClient
+          .from("profiles")
+          .update({
+            avatar_url:
+              publicUrl
+          })
+          .eq(
+            "id",
+            currentUser.id
+          );
+
+
+      if (profileError) {
+
+        await supabaseClient
+          .storage
+          .from("avatars")
+          .remove([
+            filePath
+          ]);
+
+        throw profileError;
+      }
+
+
+      currentAvatarUrl =
+        publicUrl;
+
+
+      return publicUrl;
+    }
+
+
+    /* ==================================================
+       DELETE OLD AVATAR
+    ================================================== */
+
+    async function deleteOldAvatar(
+      oldAvatarUrl
+    ) {
+
+      if (
+        !oldAvatarUrl ||
+        !currentUser
+      ) {
+        return;
+      }
+
+
+      try {
+
+        const marker =
+          "/storage/v1/object/public/avatars/";
+
+
+        const index =
+          oldAvatarUrl.indexOf(
+            marker
+          );
+
+
+        if (index === -1) {
+          return;
+        }
+
+
+        const filePath =
+          oldAvatarUrl
+            .substring(
+              index + marker.length
+            );
+
+
+        if (
+          !filePath.startsWith(
+            currentUser.id + "/"
+          )
+        ) {
+          return;
+        }
+
+
+        await supabaseClient
+          .storage
+          .from("avatars")
+          .remove([
+            filePath
+          ]);
+
+      } catch (error) {
+
+        console.warn(
+          "Altes Profilbild konnte nicht gelöscht werden:",
+          error
         );
 
       }
-    );
-
-
-    displayNameInput.addEventListener(
-      "input",
-      () => {
-
-        sideName.textContent =
-          displayNameInput.value ||
-          "—";
-
-        renderAvatar(
-          displayNameInput.value,
-          avatarUrlInput.value.trim()
-        );
-
-      }
-    );
-
-
-    usernameInput.addEventListener(
-      "input",
-      () => {
-
-        sideUsername.textContent =
-          usernameInput.value.trim()
-            ? "@" + usernameInput.value.trim()
-            : "Miles Apart Member";
-
-      }
-    );
+    }
 
 
     /* ==================================================
@@ -1074,13 +1559,16 @@
 
         setProfileStatus("");
 
+
         const {
           data: sessionData
         } =
           await supabaseClient.auth.getSession();
 
+
         const session =
           sessionData.session;
+
 
         if (!session) {
 
@@ -1091,21 +1579,30 @@
         }
 
 
+        currentUser =
+          session.user;
+
+
         const displayName =
           displayNameInput.value.trim();
 
+
         const username =
-          usernameInput.value.trim()
+          usernameInput.value
+            .trim()
             .toLowerCase();
 
-        const avatarUrl =
-          avatarUrlInput.value.trim();
 
         const bio =
           bioInput.value.trim();
 
+
         const location =
           locationInput.value.trim();
+
+
+        const selectedFile =
+          avatarFileInput.files?.[0];
 
 
         if (!displayName) {
@@ -1121,8 +1618,10 @@
 
         if (
           username &&
-          (username.length < 3 ||
-           username.length > 30)
+          (
+            username.length < 3 ||
+            username.length > 30
+          )
         ) {
 
           setProfileStatus(
@@ -1138,74 +1637,136 @@
           true;
 
         saveProfileButton.textContent =
-          "Wird gespeichert …";
+          selectedFile
+            ? "Profil wird gespeichert …"
+            : "Wird gespeichert …";
 
 
-        const {
-          error
-        } = await supabaseClient
-          .from("profiles")
-          .update({
-            display_name:
+        try {
+
+          /*
+            1. Neues Profilbild hochladen,
+            falls eines ausgewählt wurde.
+          */
+
+          if (selectedFile) {
+
+            const oldAvatarUrl =
+              currentAvatarUrl;
+
+
+            const newAvatarUrl =
+              await uploadAvatar(
+                selectedFile
+              );
+
+
+            renderAvatar(
               displayName,
+              newAvatarUrl
+            );
 
-            username:
-              username || null,
 
-            avatar_url:
-              avatarUrl || null,
+            /*
+              Altes Bild anschließend löschen.
+            */
 
-            bio:
-              bio || null,
+            if (
+              oldAvatarUrl &&
+              oldAvatarUrl !==
+                newAvatarUrl
+            ) {
 
-            location:
-              location || null
-          })
-          .eq(
-            "id",
-            session.user.id
+              await deleteOldAvatar(
+                oldAvatarUrl
+              );
+
+            }
+
+          }
+
+
+          /*
+            2. Profilinformationen speichern.
+          */
+
+          const {
+            error
+          } =
+            await supabaseClient
+              .from("profiles")
+              .update({
+                display_name:
+                  displayName,
+
+                username:
+                  username || null,
+
+                bio:
+                  bio || null,
+
+                location:
+                  location || null
+              })
+              .eq(
+                "id",
+                currentUser.id
+              );
+
+
+          if (error) {
+            throw error;
+          }
+
+
+          sideName.textContent =
+            displayName;
+
+
+          sideUsername.textContent =
+            username
+              ? "@" + username
+              : "Miles Apart Member";
+
+
+          renderAvatar(
+            displayName,
+            currentAvatarUrl
           );
 
 
-        saveProfileButton.disabled =
-          false;
+          avatarFileInput.value =
+            "";
 
-        saveProfileButton.textContent =
-          "Änderungen speichern";
-
-
-        if (error) {
-
-          console.error(error);
 
           setProfileStatus(
-            translateProfileError(error),
+            "Dein Profil wurde erfolgreich gespeichert.",
+            "success"
+          );
+
+
+        } catch (error) {
+
+          console.error(
+            error
+          );
+
+
+          setProfileStatus(
+            translateProfileError(
+              error
+            ),
             "error"
           );
 
-          return;
+        } finally {
+
+          saveProfileButton.disabled =
+            false;
+
+          saveProfileButton.textContent =
+            "Änderungen speichern";
         }
-
-
-        sideName.textContent =
-          displayName;
-
-        sideUsername.textContent =
-          username
-            ? "@" + username
-            : "Miles Apart Member";
-
-
-        renderAvatar(
-          displayName,
-          avatarUrl
-        );
-
-
-        setProfileStatus(
-          "Dein Profil wurde gespeichert.",
-          "success"
-        );
       }
     );
 
@@ -1222,14 +1783,18 @@
 
         setPasswordStatus("");
 
+
         const password =
           newPasswordInput.value;
+
 
         const confirmation =
           newPasswordConfirmInput.value;
 
 
-        if (password.length < 8) {
+        if (
+          password.length < 8
+        ) {
 
           setPasswordStatus(
             "Das Passwort muss mindestens 8 Zeichen lang sein.",
@@ -1240,7 +1805,10 @@
         }
 
 
-        if (password !== confirmation) {
+        if (
+          password !==
+          confirmation
+        ) {
 
           setPasswordStatus(
             "Die beiden Passwörter stimmen nicht überein.",
@@ -1262,7 +1830,8 @@
           error
         } =
           await supabaseClient.auth.updateUser({
-            password: password
+            password:
+              password
           });
 
 
@@ -1275,7 +1844,9 @@
 
         if (error) {
 
-          console.error(error);
+          console.error(
+            error
+          );
 
           setPasswordStatus(
             error.message ||
@@ -1325,7 +1896,10 @@
 
         if (error) {
 
-          console.error(error);
+          console.error(
+            error
+          );
+
 
           logoutButton.disabled =
             false;
@@ -1360,6 +1934,7 @@
               "index.html"
             )
           ) {
+
             window.location.href =
               "index.html";
           }
@@ -1373,6 +1948,7 @@
     ================================================== */
 
     loadProfile();
+
   </script>
 
 </body>
