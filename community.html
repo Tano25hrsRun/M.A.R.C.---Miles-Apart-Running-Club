@@ -3,17 +3,11 @@
 
 <head>
   <meta charset="utf-8">
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1"
-  >
+  <meta name="viewport" content="width=device-width,initial-scale=1">
 
   <title>Community — Miles Apart Running Club</title>
 
-  <link
-    rel="stylesheet"
-    href="style.css"
-  >
+  <link rel="stylesheet" href="style.css">
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
@@ -51,19 +45,17 @@
       min-height: 130px;
       resize: vertical;
       padding: 16px;
-
       border: 1px solid #ddd;
       background: #fff;
-
       font: inherit;
       line-height: 1.5;
       outline: none;
+      box-sizing: border-box;
     }
 
     .post-form textarea:focus {
       border-color: #18b8c7;
-      box-shadow:
-        0 0 0 3px rgba(24,184,199,.12);
+      box-shadow: 0 0 0 3px rgba(24,184,199,.12);
     }
 
     .post-form-actions {
@@ -87,18 +79,89 @@
       color: #1199a6;
     }
 
+    /* =====================================================
+       POSTS
+    ===================================================== */
+
     .post {
       margin-bottom: 22px;
+      min-width: 0;
+      overflow: hidden;
+    }
+
+    .post > .row {
+      display: flex;
+      align-items: flex-start;
+      width: 100%;
+      min-width: 0;
+    }
+
+    .post .person {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      min-width: 0;
+      flex: 1;
+    }
+
+    /* WICHTIG:
+       Überschreibt die globale .pavatar-Regel aus style.css.
+       Dadurch wird das Bild nicht mehr zusammengedrückt. */
+    .post .pavatar {
+      width: 48px !important;
+      height: 48px !important;
+      min-width: 48px !important;
+      max-width: 48px !important;
+      flex: 0 0 48px !important;
+
+      border-radius: 50%;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      overflow: hidden;
+
+      background: #eefafa;
+      color: #18b8c7;
+
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .post .pavatar img {
+      width: 100% !important;
+      height: 100% !important;
+      min-width: 100%;
+      min-height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .person-info {
+      min-width: 0;
+      flex: 1;
+    }
+
+    .person-info b {
+      display: block;
+      font-size: 17px;
+      line-height: 1.25;
+    }
+
+    .person-info .small {
+      line-height: 1.35;
     }
 
     .post-content {
-      margin: 18px 0;
+      margin: 20px 0;
 
       font-size: 18px;
       line-height: 1.55;
 
       white-space: pre-wrap;
       overflow-wrap: anywhere;
+      word-break: break-word;
     }
 
     .post-meta {
@@ -106,6 +169,7 @@
       align-items: center;
       justify-content: space-between;
       gap: 12px;
+
       margin-top: 17px;
       padding-top: 15px;
 
@@ -127,6 +191,7 @@
       color: #555;
       font-weight: 700;
       cursor: pointer;
+      font: inherit;
     }
 
     .post-action:hover {
@@ -145,10 +210,13 @@
       color: #c83b3b;
     }
 
+    /* =====================================================
+       COMMENTS
+    ===================================================== */
+
     .post-comments {
       margin-top: 18px;
       padding-top: 18px;
-
       border-top: 1px solid #eee;
     }
 
@@ -162,12 +230,14 @@
       display: flex;
       gap: 10px;
       align-items: flex-start;
+      min-width: 0;
     }
 
     .comment-avatar {
-      width: 34px;
-      height: 34px;
-      flex: 0 0 34px;
+      width: 42px;
+      height: 42px;
+      min-width: 42px;
+      flex: 0 0 42px;
 
       border-radius: 50%;
 
@@ -188,6 +258,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+      display: block;
     }
 
     .comment-body {
@@ -212,16 +283,20 @@
 
     .comment-text {
       margin-top: 5px;
+
       font-size: 14px;
       line-height: 1.45;
+
       white-space: pre-wrap;
       overflow-wrap: anywhere;
+      word-break: break-word;
     }
 
     .comment-form {
       display: flex;
       gap: 8px;
       margin-top: 14px;
+      min-width: 0;
     }
 
     .comment-form input {
@@ -233,6 +308,9 @@
       border: 1px solid #ddd;
       outline: none;
       background: #fff;
+
+      font: inherit;
+      box-sizing: border-box;
     }
 
     .comment-form input:focus {
@@ -248,11 +326,16 @@
 
       font-weight: 800;
       cursor: pointer;
+      white-space: nowrap;
     }
 
     .comment-form button:hover {
       background: #18b8c7;
     }
+
+    /* =====================================================
+       EMPTY STATE
+    ===================================================== */
 
     .empty-community {
       padding: 55px 20px;
@@ -261,6 +344,8 @@
 
       text-align: center;
       color: #777;
+
+      box-sizing: border-box;
     }
 
     .empty-community strong {
@@ -270,6 +355,10 @@
       color: #111;
       font-size: 20px;
     }
+
+    /* =====================================================
+       RUN BUDDIES
+    ===================================================== */
 
     .member-avatar {
       width: 42px;
@@ -295,26 +384,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-    }
-
-    .person {
-      display: flex;
-      align-items: center;
-      gap: 11px;
-      min-width: 0;
-    }
-
-    .person-info {
-      min-width: 0;
-    }
-
-    .person-info b {
       display: block;
-    }
-
-    .person-location {
-      color: #777;
-      font-size: 13px;
     }
 
     .no-buddies {
@@ -322,10 +392,51 @@
       line-height: 1.5;
     }
 
+    /* =====================================================
+       MOBILE
+    ===================================================== */
+
     @media (max-width: 700px) {
 
       .hero {
         gap: 20px;
+      }
+
+      .post {
+        padding: 24px;
+      }
+
+      .post .pavatar {
+        width: 48px !important;
+        height: 48px !important;
+        min-width: 48px !important;
+        max-width: 48px !important;
+        flex-basis: 48px !important;
+      }
+
+      .post-content {
+        margin-top: 20px;
+        font-size: 18px;
+        line-height: 1.5;
+      }
+
+      .post-meta {
+        flex-direction: row;
+        align-items: center;
+      }
+
+      .post-actions {
+        width: 100%;
+      }
+
+      .post-action {
+        padding-left: 0;
+        padding-right: 15px;
+      }
+
+      .delete-post {
+        margin-left: auto;
+        padding-right: 0;
       }
 
       .post-form-actions {
@@ -333,22 +444,31 @@
         align-items: stretch;
       }
 
-      .post-form-actions .btn {
+      .post-form-actions > div:last-child {
         width: 100%;
       }
 
-      .post-meta {
-        flex-direction: column;
-        align-items: flex-start;
+      .post-form-actions .btn {
+        flex: 1;
       }
 
       .comment-form {
         flex-direction: column;
       }
 
-      .comment-form button {
-        min-height: 42px;
+      .comment-form input {
+        width: 100%;
       }
+
+      .comment-form button {
+        min-height: 46px;
+        width: 100%;
+      }
+
+      .comment {
+        align-items: flex-start;
+      }
+
     }
 
   </style>
@@ -864,9 +984,7 @@
      HELPERS
   ====================================================== */
 
-  function getInitials(
-    name
-  ) {
+  function getInitials(name) {
 
     if (!name) {
       return "M";
@@ -878,7 +996,6 @@
         .split(/\s+/)
         .filter(Boolean);
 
-
     if (parts.length === 1) {
 
       return parts[0]
@@ -887,7 +1004,6 @@
 
     }
 
-
     return (
       parts[0][0] +
       parts[parts.length - 1][0]
@@ -895,9 +1011,7 @@
   }
 
 
-  function escapeHtml(
-    value
-  ) {
+  function escapeHtml(value) {
 
     if (
       value === null ||
@@ -905,7 +1019,6 @@
     ) {
       return "";
     }
-
 
     return String(value)
       .replaceAll("&", "&amp;")
@@ -916,28 +1029,22 @@
   }
 
 
-  function formatTime(
-    dateString
-  ) {
+  function formatTime(dateString) {
 
     const date =
       new Date(dateString);
 
-
     const now =
       new Date();
-
 
     const diff =
       Math.floor(
         (now - date) / 1000
       );
 
-
     if (diff < 60) {
       return "gerade eben";
     }
-
 
     if (diff < 3600) {
 
@@ -945,9 +1052,7 @@
         Math.floor(diff / 60);
 
       return `vor ${minutes} Min`;
-
     }
-
 
     if (diff < 86400) {
 
@@ -955,14 +1060,11 @@
         Math.floor(diff / 3600);
 
       return `vor ${hours} Std`;
-
     }
-
 
     if (diff < 172800) {
       return "gestern";
     }
-
 
     return date.toLocaleDateString(
       "de-DE",
@@ -984,10 +1086,8 @@
       profile?.display_name ||
       "Miles Apart Member";
 
-
     const avatarUrl =
       profile?.avatar_url;
-
 
     if (avatarUrl) {
 
@@ -1002,7 +1102,6 @@
 
     }
 
-
     return `
       <div class="${className}">
         ${escapeHtml(
@@ -1013,9 +1112,7 @@
   }
 
 
-  function showError(
-    message
-  ) {
+  function showError(message) {
 
     communityError.textContent =
       message;
@@ -1047,11 +1144,9 @@
     } =
       await supabaseClient.auth.getSession();
 
-
     if (error) {
       throw error;
     }
-
 
     if (!data.session) {
 
@@ -1060,7 +1155,6 @@
 
       return false;
     }
-
 
     currentUser =
       data.session.user;
@@ -1146,6 +1240,12 @@
       image.style.objectFit =
         "cover";
 
+      image.style.borderRadius =
+        "50%";
+
+      image.style.display =
+        "block";
+
       topAvatar.appendChild(
         image
       );
@@ -1230,9 +1330,7 @@
      RENDER POSTS
   ====================================================== */
 
-  function renderPosts(
-    posts
-  ) {
+  function renderPosts(posts) {
 
     postsContainer.innerHTML =
       "";
@@ -1288,9 +1386,7 @@
      CREATE POST ELEMENT
   ====================================================== */
 
-  function createPostElement(
-    post
-  ) {
+  function createPostElement(post) {
 
     const profile =
       post.profiles || {};
@@ -1478,9 +1574,7 @@
             required
           >
 
-          <button
-            type="submit"
-          >
+          <button type="submit">
             Senden
           </button>
 
@@ -1498,9 +1592,7 @@
      COMMENT HTML
   ====================================================== */
 
-  function createCommentHtml(
-    comment
-  ) {
+  function createCommentHtml(comment) {
 
     const profile =
       comment.profiles || {};
@@ -1576,7 +1668,9 @@
           .from(
             "community_post_likes"
           )
-          .select("post_id, user_id")
+          .select(
+            "post_id, user_id"
+          )
           .eq(
             "post_id",
             postId
@@ -1665,9 +1759,7 @@
      DELETE POST
   ====================================================== */
 
-  async function deletePost(
-    postId
-  ) {
+  async function deletePost(postId) {
 
     const confirmed =
       window.confirm(
@@ -1882,7 +1974,6 @@
           "none"
             ? "block"
             : "none";
-
       }
 
     }
@@ -1921,6 +2012,7 @@
         postId,
         input
       );
+
     }
   );
 
@@ -1946,6 +2038,7 @@
         behavior:
           "smooth"
       });
+
     }
   );
 
@@ -1965,6 +2058,7 @@
 
       postFormMessage.className =
         "post-form-message";
+
     }
   );
 
@@ -2060,6 +2154,7 @@
         submitPostButton.textContent =
           "Post veröffentlichen";
       }
+
     }
   );
 
@@ -2074,6 +2169,7 @@
 
       window.location.href =
         "profile.html";
+
     }
   );
 
