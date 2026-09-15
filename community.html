@@ -79,48 +79,91 @@
       color: #1199a6;
     }
 
+
     /* =====================================================
-       POSTS
+       POST CONTAINER
     ===================================================== */
 
-    .post {
-      margin-bottom: 22px;
+    #postsContainer {
+      display: grid;
+    }
+
+    /*
+      Sehr wichtig:
+      Ein einzelner Post darf NICHT selbst als Grid
+      oder Flex-Container aus style.css übernommen werden.
+    */
+
+    #postsContainer .post {
+      display: block !important;
+      width: 100%;
       min-width: 0;
+      box-sizing: border-box;
       overflow: hidden;
     }
 
-    .post > .row {
-      display: flex;
-      align-items: flex-start;
+
+    /* =====================================================
+       POST HEADER
+    ===================================================== */
+
+    .post-header {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: flex-start !important;
+
       width: 100%;
       min-width: 0;
+
+      margin: 0;
+      padding: 0;
     }
 
-    .post .person {
-      display: flex;
-      align-items: center;
-      gap: 11px;
+    .post-header .person {
+      display: flex !important;
+      align-items: center !important;
+
+      width: 100%;
       min-width: 0;
       flex: 1;
     }
 
-    /* WICHTIG:
-       Überschreibt die globale .pavatar-Regel aus style.css.
-       Dadurch wird das Bild nicht mehr zusammengedrückt. */
+    .post .person-info {
+      min-width: 0;
+      flex: 1;
+    }
+
+    .post .person-info b {
+      display: block;
+      font-size: 17px;
+      line-height: 1.25;
+    }
+
+    .post .person-info .small {
+      line-height: 1.4;
+    }
+
+
+    /* =====================================================
+       POST AVATAR
+    ===================================================== */
+
     .post .pavatar {
-      width: 48px !important;
-      height: 48px !important;
-      min-width: 48px !important;
-      max-width: 48px !important;
-      flex: 0 0 48px !important;
+      width: 52px !important;
+      height: 52px !important;
 
-      border-radius: 50%;
+      min-width: 52px !important;
+      max-width: 52px !important;
 
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      flex: 0 0 52px !important;
 
-      overflow: hidden;
+      border-radius: 50% !important;
+
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+
+      overflow: hidden !important;
 
       background: #eefafa;
       color: #18b8c7;
@@ -130,68 +173,91 @@
     }
 
     .post .pavatar img {
+      display: block !important;
+
       width: 100% !important;
       height: 100% !important;
-      min-width: 100%;
-      min-height: 100%;
-      object-fit: cover;
-      display: block;
+
+      min-width: 100% !important;
+      min-height: 100% !important;
+
+      max-width: none !important;
+      max-height: none !important;
+
+      object-fit: cover !important;
+
+      border-radius: 50% !important;
     }
 
-    .person-info {
-      min-width: 0;
-      flex: 1;
-    }
 
-    .person-info b {
-      display: block;
-      font-size: 17px;
-      line-height: 1.25;
-    }
-
-    .person-info .small {
-      line-height: 1.35;
-    }
+    /* =====================================================
+       POST CONTENT
+    ===================================================== */
 
     .post-content {
-      margin: 20px 0;
+      display: block !important;
+
+      width: 100%;
+      min-width: 0;
+      box-sizing: border-box;
+
+      margin: 22px 0 24px 0 !important;
+      padding: 0 !important;
 
       font-size: 18px;
       line-height: 1.55;
 
       white-space: pre-wrap;
+
       overflow-wrap: anywhere;
       word-break: break-word;
     }
 
-    .post-meta {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
 
-      margin-top: 17px;
+    /* =====================================================
+       POST META
+    ===================================================== */
+
+    .post-meta {
+      display: flex !important;
+
+      align-items: center !important;
+      justify-content: space-between !important;
+
+      width: 100%;
+      min-width: 0;
+
+      margin: 0 !important;
       padding-top: 15px;
 
       border-top: 1px solid #eee;
+
+      box-sizing: border-box;
     }
 
     .post-actions {
-      display: flex;
-      align-items: center;
-      gap: 8px;
+      display: flex !important;
+
+      align-items: center !important;
       flex-wrap: wrap;
+
+      gap: 8px;
+
+      min-width: 0;
     }
 
     .post-action {
       border: 0;
       background: transparent;
+
       padding: 7px 9px;
 
       color: #555;
-      font-weight: 700;
-      cursor: pointer;
+
       font: inherit;
+      font-weight: 700;
+
+      cursor: pointer;
     }
 
     .post-action:hover {
@@ -210,38 +276,54 @@
       color: #c83b3b;
     }
 
+
     /* =====================================================
        COMMENTS
     ===================================================== */
 
     .post-comments {
+      display: block;
+
+      width: 100%;
+      box-sizing: border-box;
+
       margin-top: 18px;
       padding-top: 18px;
+
       border-top: 1px solid #eee;
     }
 
     .comments-list {
       display: flex;
       flex-direction: column;
+
       gap: 13px;
+
+      width: 100%;
     }
 
     .comment {
-      display: flex;
+      display: flex !important;
+
+      align-items: flex-start !important;
+
       gap: 10px;
-      align-items: flex-start;
+
+      width: 100%;
       min-width: 0;
     }
 
     .comment-avatar {
       width: 42px;
       height: 42px;
+
       min-width: 42px;
+
       flex: 0 0 42px;
 
       border-radius: 50%;
 
-      display: flex;
+      display: flex !important;
       align-items: center;
       justify-content: center;
 
@@ -255,18 +337,24 @@
     }
 
     .comment-avatar img {
+      display: block;
+
       width: 100%;
       height: 100%;
+
       object-fit: cover;
-      display: block;
     }
 
     .comment-body {
       flex: 1;
+
       min-width: 0;
 
       padding: 10px 12px;
+
       background: #f6f7f7;
+
+      box-sizing: border-box;
     }
 
     .comment-name {
@@ -276,7 +364,9 @@
 
     .comment-time {
       margin-left: 6px;
+
       color: #888;
+
       font-size: 11px;
       font-weight: 400;
     }
@@ -288,28 +378,37 @@
       line-height: 1.45;
 
       white-space: pre-wrap;
+
       overflow-wrap: anywhere;
       word-break: break-word;
     }
 
     .comment-form {
-      display: flex;
+      display: flex !important;
+
       gap: 8px;
-      margin-top: 14px;
+
+      width: 100%;
       min-width: 0;
+
+      margin-top: 14px;
     }
 
     .comment-form input {
       flex: 1;
+
       min-width: 0;
 
       padding: 11px 12px;
 
       border: 1px solid #ddd;
+
       outline: none;
+
       background: #fff;
 
       font: inherit;
+
       box-sizing: border-box;
     }
 
@@ -319,13 +418,16 @@
 
     .comment-form button {
       border: 0;
+
       background: #111;
       color: #fff;
 
       padding: 0 16px;
 
       font-weight: 800;
+
       cursor: pointer;
+
       white-space: nowrap;
     }
 
@@ -333,28 +435,36 @@
       background: #18b8c7;
     }
 
+
     /* =====================================================
        EMPTY STATE
     ===================================================== */
 
     .empty-community {
+      display: block !important;
+
+      width: 100%;
+      box-sizing: border-box;
+
       padding: 55px 20px;
 
       border: 1px dashed #ccc;
 
       text-align: center;
-      color: #777;
 
-      box-sizing: border-box;
+      color: #777;
     }
 
     .empty-community strong {
       display: block;
+
       margin-bottom: 8px;
 
       color: #111;
+
       font-size: 20px;
     }
+
 
     /* =====================================================
        RUN BUDDIES
@@ -363,6 +473,7 @@
     .member-avatar {
       width: 42px;
       height: 42px;
+
       flex: 0 0 42px;
 
       border-radius: 50%;
@@ -383,7 +494,9 @@
     .member-avatar img {
       width: 100%;
       height: 100%;
+
       object-fit: cover;
+
       display: block;
     }
 
@@ -391,6 +504,7 @@
       color: #777;
       line-height: 1.5;
     }
+
 
     /* =====================================================
        MOBILE
@@ -402,71 +516,122 @@
         gap: 20px;
       }
 
-      .post {
-        padding: 24px;
+
+      /*
+        Post bleibt auf Mobile vollständig vertikal.
+      */
+
+      #postsContainer .post {
+        display: block !important;
+
+        width: 100% !important;
+        min-width: 0 !important;
+
+        padding: 24px !important;
+
+        box-sizing: border-box !important;
       }
+
+
+      .post-header {
+        display: flex !important;
+
+        width: 100% !important;
+
+        align-items: center !important;
+      }
+
 
       .post .pavatar {
-        width: 48px !important;
-        height: 48px !important;
-        min-width: 48px !important;
-        max-width: 48px !important;
-        flex-basis: 48px !important;
+        width: 52px !important;
+        height: 52px !important;
+
+        min-width: 52px !important;
+        max-width: 52px !important;
+
+        flex: 0 0 52px !important;
       }
+
 
       .post-content {
-        margin-top: 20px;
-        font-size: 18px;
-        line-height: 1.5;
+        display: block !important;
+
+        width: 100% !important;
+
+        margin: 22px 0 24px 0 !important;
+
+        font-size: 18px !important;
+        line-height: 1.5 !important;
       }
+
 
       .post-meta {
-        flex-direction: row;
-        align-items: center;
+        display: flex !important;
+
+        width: 100% !important;
+
+        flex-direction: row !important;
+
+        align-items: center !important;
+        justify-content: space-between !important;
       }
+
 
       .post-actions {
-        width: 100%;
+        display: flex !important;
+
+        flex-direction: row !important;
+
+        align-items: center !important;
+
+        width: auto !important;
       }
 
-      .post-action {
-        padding-left: 0;
-        padding-right: 15px;
-      }
 
       .delete-post {
-        margin-left: auto;
-        padding-right: 0;
+        margin-left: auto !important;
       }
+
+
+      .post-comments {
+        width: 100% !important;
+      }
+
+
+      .comment-form {
+        display: flex !important;
+
+        flex-direction: column !important;
+
+        width: 100% !important;
+      }
+
+
+      .comment-form input {
+        width: 100% !important;
+      }
+
+
+      .comment-form button {
+        width: 100% !important;
+
+        min-height: 46px;
+      }
+
 
       .post-form-actions {
         flex-direction: column;
         align-items: stretch;
       }
 
+
       .post-form-actions > div:last-child {
         width: 100%;
       }
 
+
       .post-form-actions .btn {
         flex: 1;
-      }
-
-      .comment-form {
-        flex-direction: column;
-      }
-
-      .comment-form input {
-        width: 100%;
-      }
-
-      .comment-form button {
-        min-height: 46px;
-        width: 100%;
-      }
-
-      .comment {
-        align-items: flex-start;
       }
 
     }
@@ -487,12 +652,16 @@
   <aside class="sidebar">
 
     <div class="brand">
+
       <a href="index.html">
+
         <img
           src="miles-apart-full-logo.png"
           alt="Miles Apart Running Club"
         >
+
       </a>
+
     </div>
 
 
@@ -876,9 +1045,11 @@
   const SUPABASE_PUBLISHABLE_KEY =
     "sb_publishable_wc3w2fSuj8ItwiF6XBoQgw_HeW5_rNW";
 
+
   const {
     createClient
   } = window.supabase;
+
 
   const supabaseClient =
     createClient(
@@ -990,11 +1161,13 @@
       return "M";
     }
 
+
     const parts =
       name
         .trim()
         .split(/\s+/)
         .filter(Boolean);
+
 
     if (parts.length === 1) {
 
@@ -1003,6 +1176,7 @@
         .toUpperCase();
 
     }
+
 
     return (
       parts[0][0] +
@@ -1020,6 +1194,7 @@
       return "";
     }
 
+
     return String(value)
       .replaceAll("&", "&amp;")
       .replaceAll("<", "&lt;")
@@ -1034,17 +1209,21 @@
     const date =
       new Date(dateString);
 
+
     const now =
       new Date();
+
 
     const diff =
       Math.floor(
         (now - date) / 1000
       );
 
+
     if (diff < 60) {
       return "gerade eben";
     }
+
 
     if (diff < 3600) {
 
@@ -1054,6 +1233,7 @@
       return `vor ${minutes} Min`;
     }
 
+
     if (diff < 86400) {
 
       const hours =
@@ -1062,9 +1242,11 @@
       return `vor ${hours} Std`;
     }
 
+
     if (diff < 172800) {
       return "gestern";
     }
+
 
     return date.toLocaleDateString(
       "de-DE",
@@ -1086,8 +1268,10 @@
       profile?.display_name ||
       "Miles Apart Member";
 
+
     const avatarUrl =
       profile?.avatar_url;
+
 
     if (avatarUrl) {
 
@@ -1101,6 +1285,7 @@
       `;
 
     }
+
 
     return `
       <div class="${className}">
@@ -1144,9 +1329,11 @@
     } =
       await supabaseClient.auth.getSession();
 
+
     if (error) {
       throw error;
     }
+
 
     if (!data.session) {
 
@@ -1155,6 +1342,7 @@
 
       return false;
     }
+
 
     currentUser =
       data.session.user;
@@ -1225,26 +1413,34 @@
       const image =
         document.createElement("img");
 
+
       image.src =
         currentProfile.avatar_url;
+
 
       image.alt =
         "Mein Profilbild";
 
+
       image.style.width =
         "100%";
+
 
       image.style.height =
         "100%";
 
+
       image.style.objectFit =
         "cover";
+
 
       image.style.borderRadius =
         "50%";
 
+
       image.style.display =
         "block";
+
 
       topAvatar.appendChild(
         image
@@ -1343,6 +1539,7 @@
           class="empty-community"
           style="grid-column:1 / -1"
         >
+
           <strong>
             Sei der Erste in der Community.
           </strong>
@@ -1350,12 +1547,14 @@
           Teile deinen ersten Lauf,
           ein Ziel oder einfach ein paar Worte
           mit Miles Apart.
+
         </div>
       `;
 
 
       postsContainer.style.display =
         "grid";
+
 
       return;
     }
@@ -1368,6 +1567,7 @@
           createPostElement(
             post
           );
+
 
         postsContainer.appendChild(
           card
@@ -1421,7 +1621,9 @@
 
 
     const wrapper =
-      document.createElement("div");
+      document.createElement(
+        "div"
+      );
 
 
     wrapper.className =
@@ -1434,7 +1636,9 @@
 
     wrapper.innerHTML = `
 
-      <div class="row">
+      <!-- POST HEADER -->
+
+      <div class="post-header">
 
         <div class="person">
 
@@ -1474,12 +1678,18 @@
       </div>
 
 
+      <!-- POST CONTENT -->
+
       <div class="post-content">
+
         ${escapeHtml(
           post.content
         )}
+
       </div>
 
+
+      <!-- POST ACTIONS -->
 
       <div class="post-meta">
 
@@ -1495,6 +1705,7 @@
             data-action="like"
             data-post-id="${post.id}"
           >
+
             ${
               userLiked
                 ? "❤️"
@@ -1502,6 +1713,7 @@
             }
 
             ${likes.length}
+
           </button>
 
 
@@ -1511,7 +1723,9 @@
             data-action="comments"
             data-post-id="${post.id}"
           >
+
             💬 ${comments.length}
+
           </button>
 
         </div>
@@ -1534,6 +1748,8 @@
 
       </div>
 
+
+      <!-- COMMENTS -->
 
       <div
         class="post-comments"
@@ -1574,13 +1790,17 @@
             required
           >
 
-          <button type="submit">
+
+          <button
+            type="submit"
+          >
             Senden
           </button>
 
         </form>
 
       </div>
+
     `;
 
 
@@ -1618,29 +1838,37 @@
           <div>
 
             <span class="comment-name">
+
               ${escapeHtml(
                 name
               )}
+
             </span>
 
+
             <span class="comment-time">
+
               ${formatTime(
                 comment.created_at
               )}
+
             </span>
 
           </div>
 
 
           <div class="comment-text">
+
             ${escapeHtml(
               comment.content
             )}
+
           </div>
 
         </div>
 
       </div>
+
     `;
   }
 
@@ -1732,6 +1960,7 @@
         if (error) {
           throw error;
         }
+
       }
 
 
@@ -1743,6 +1972,7 @@
         error
       );
 
+
       showError(
         "Kudos konnte nicht gespeichert werden."
       );
@@ -1751,7 +1981,9 @@
 
       button.disabled =
         false;
+
     }
+
   }
 
 
@@ -1794,9 +2026,11 @@
         error
       );
 
+
       showError(
         "Der Post konnte nicht gelöscht werden."
       );
+
 
       return;
     }
@@ -1857,9 +2091,11 @@
         error
       );
 
+
       showError(
         "Die Antwort konnte nicht gespeichert werden."
       );
+
 
       return;
     }
@@ -1890,6 +2126,7 @@
       }
 
     }
+
   }
 
 
@@ -1929,6 +2166,7 @@
           button
         );
 
+
         return;
       }
 
@@ -1941,6 +2179,7 @@
           postId
         );
 
+
         return;
       }
 
@@ -1950,7 +2189,9 @@
       ) {
 
         const postElement =
-          button.closest(".post");
+          button.closest(
+            ".post"
+          );
 
 
         if (!postElement) {
@@ -1974,6 +2215,7 @@
           "none"
             ? "block"
             : "none";
+
       }
 
     }
@@ -2028,7 +2270,9 @@
       postFormCard.style.display =
         "block";
 
+
       postContent.focus();
+
 
       window.scrollTo({
         top:
@@ -2050,11 +2294,14 @@
       postContent.value =
         "";
 
+
       postFormCard.style.display =
         "none";
 
+
       postFormMessage.textContent =
         "";
+
 
       postFormMessage.className =
         "post-form-message";
@@ -2082,12 +2329,14 @@
       submitPostButton.disabled =
         true;
 
+
       submitPostButton.textContent =
         "Wird veröffentlicht …";
 
 
       postFormMessage.textContent =
         "";
+
 
       postFormMessage.className =
         "post-form-message";
@@ -2119,12 +2368,14 @@
         postContent.value =
           "";
 
+
         postFormCard.style.display =
           "none";
 
 
         postFormMessage.textContent =
           "Post veröffentlicht.";
+
 
         postFormMessage.className =
           "post-form-message success";
@@ -2139,20 +2390,25 @@
           error
         );
 
+
         postFormMessage.textContent =
           error.message ||
           "Der Post konnte nicht veröffentlicht werden.";
 
+
         postFormMessage.className =
           "post-form-message error";
+
 
       } finally {
 
         submitPostButton.disabled =
           false;
 
+
         submitPostButton.textContent =
           "Post veröffentlichen";
+
       }
 
     }
@@ -2210,11 +2466,16 @@
     if (!profiles.length) {
 
       runBuddies.innerHTML = `
+
         <p class="no-buddies">
+
           Du bist aktuell das erste Mitglied
           mit einem vollständigen Profil.
+
         </p>
+
       `;
+
 
       return;
     }
@@ -2235,14 +2496,18 @@
                 "pavatar"
               )}
 
+
               <div>
 
                 <b>
+
                   ${escapeHtml(
                     profile.display_name ||
                     "Miles Apart Member"
                   )}
+
                 </b>
+
 
                 <div class="small muted">
 
@@ -2261,6 +2526,7 @@
                 </div>
 
               </div>
+
 
               <span>
                 →
