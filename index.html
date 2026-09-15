@@ -1,21 +1,35 @@
 <!doctype html>
 <html lang="de">
+
 <head>
+
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Home — Miles Apart Running Club</title>
-  <link rel="stylesheet" href="style.css">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1"
+  >
+
+  <title>
+    Home — Miles Apart Running Club
+  </title>
+
+  <link
+    rel="stylesheet"
+    href="style.css"
+  >
+
 
   <style>
 
     /* =========================================================
        MILES APART — ACCENT COLOR
-       Einzige Änderung: Lime/Grün wird durch Türkisblau ersetzt.
        ========================================================= */
 
     :root {
       --miles-blue: #18b8c7;
     }
+
 
     .lime {
       background-color: var(--miles-blue) !important;
@@ -23,26 +37,32 @@
       color: #ffffff !important;
     }
 
+
     .lime:hover {
       background-color: #1199a6 !important;
       border-color: #1199a6 !important;
     }
 
+
     .label {
       color: var(--miles-blue);
     }
+
 
     .progress i {
       background-color: var(--miles-blue);
     }
 
+
     .mini-progress i {
       background-color: var(--miles-blue);
     }
 
+
     .bar i {
       background-color: var(--miles-blue);
     }
+
 
     .badge.lime {
       background-color: var(--miles-blue) !important;
@@ -50,13 +70,16 @@
       color: #ffffff !important;
     }
 
+
     .intro-eyebrow {
       color: var(--miles-blue);
     }
 
+
     .founder-kicker {
       color: var(--miles-blue);
     }
+
 
     .principle-number {
       color: var(--miles-blue);
@@ -71,6 +94,7 @@
       padding: 58px 0 35px;
     }
 
+
     .intro-eyebrow {
       font-size: 11px;
       font-weight: 800;
@@ -78,6 +102,7 @@
       text-transform: uppercase;
       margin-bottom: 18px;
     }
+
 
     .intro-title {
       max-width: 920px;
@@ -87,9 +112,11 @@
       margin: 0;
     }
 
+
     .intro-title span {
       color: var(--miles-blue);
     }
+
 
     .intro-copy {
       max-width: 680px;
@@ -98,6 +125,7 @@
       line-height: 1.65;
       color: #777;
     }
+
 
     .intro-actions {
       display: flex;
@@ -120,6 +148,7 @@
       background: #111;
     }
 
+
     .story-photo img {
       width: 100%;
       height: 100%;
@@ -127,6 +156,7 @@
       object-position: center 38%;
       display: block;
     }
+
 
     .story-photo::after {
       content: "";
@@ -142,6 +172,7 @@
       pointer-events: none;
     }
 
+
     .photo-caption {
       position: absolute;
       z-index: 2;
@@ -155,11 +186,13 @@
       color: #fff;
     }
 
+
     .photo-caption strong {
       font-size: clamp(25px, 3vw, 42px);
       line-height: 1;
       letter-spacing: -1.5px;
     }
+
 
     .photo-caption span {
       font-size: 11px;
@@ -171,12 +204,13 @@
 
 
     /* =========================================================
-       WHAT IS MILES APART
+       ABOUT PROJECT
        ========================================================= */
 
     .about-project {
       margin-top: 85px;
     }
+
 
     .about-project-grid {
       display: grid;
@@ -185,12 +219,14 @@
       align-items: start;
     }
 
+
     .about-project h2 {
       font-size: clamp(34px, 4vw, 56px);
       line-height: .98;
       letter-spacing: -2px;
       margin: 0;
     }
+
 
     .about-project-text {
       font-size: 18px;
@@ -199,9 +235,11 @@
       max-width: 760px;
     }
 
+
     .about-project-text p {
       margin: 0 0 22px;
     }
+
 
     .about-project-text strong {
       color: #222;
@@ -219,6 +257,7 @@
       margin-top: 45px;
     }
 
+
     .principle {
       padding: 28px;
       min-height: 190px;
@@ -226,16 +265,19 @@
       border: 1px solid #e4e4e0;
     }
 
+
     .principle-number {
       font-size: 11px;
       font-weight: 800;
       letter-spacing: 2px;
     }
 
+
     .principle h3 {
       font-size: 22px;
       margin: 38px 0 9px;
     }
+
 
     .principle p {
       margin: 0;
@@ -253,6 +295,7 @@
       margin-top: 100px;
     }
 
+
     .founder-head {
       display: flex;
       align-items: flex-end;
@@ -260,6 +303,7 @@
       gap: 25px;
       margin-bottom: 28px;
     }
+
 
     .founder-kicker {
       font-size: 11px;
@@ -269,12 +313,14 @@
       margin-bottom: 12px;
     }
 
+
     .founder-head h2 {
       font-size: clamp(40px, 5vw, 68px);
       line-height: .95;
       letter-spacing: -3px;
       margin: 0;
     }
+
 
     .founder-layout {
       display: grid;
@@ -284,10 +330,12 @@
       border: 1px solid #e2e2de;
     }
 
+
     .founder-image {
       min-height: 590px;
       overflow: hidden;
     }
+
 
     .founder-image img {
       width: 100%;
@@ -297,6 +345,7 @@
       display: block;
     }
 
+
     .founder-content {
       padding: 48px;
       display: flex;
@@ -304,11 +353,13 @@
       justify-content: center;
     }
 
+
     .founder-content h3 {
       font-size: 40px;
       letter-spacing: -1.5px;
       margin: 0 0 20px;
     }
+
 
     .founder-content p {
       color: #777;
@@ -317,9 +368,11 @@
       margin: 0 0 20px;
     }
 
+
     .founder-content p strong {
       color: #222;
     }
+
 
     .founder-tags {
       display: flex;
@@ -328,6 +381,7 @@
       margin-top: 10px;
       margin-bottom: 28px;
     }
+
 
     .founder-tag {
       border: 1px solid #d7d7d3;
@@ -338,6 +392,7 @@
       text-transform: uppercase;
       color: #666;
     }
+
 
     .founder-tag:hover {
       border-color: var(--miles-blue);
@@ -353,6 +408,7 @@
       margin-top: 100px;
     }
 
+
     .visual-story-head {
       display: flex;
       justify-content: space-between;
@@ -361,12 +417,14 @@
       margin-bottom: 25px;
     }
 
+
     .visual-story-head h2 {
       margin: 0;
       font-size: clamp(32px, 4vw, 52px);
       letter-spacing: -2px;
       line-height: 1;
     }
+
 
     .visual-story-head p {
       max-width: 420px;
@@ -376,6 +434,7 @@
       font-size: 14px;
     }
 
+
     .photo-grid {
       display: grid;
       grid-template-columns: 1.15fr .85fr;
@@ -383,14 +442,17 @@
       gap: 12px;
     }
 
+
     .photo-grid-item {
       overflow: hidden;
       background: #111;
     }
 
+
     .photo-grid-item:first-child {
       grid-row: 1 / 3;
     }
+
 
     .photo-grid-item img {
       width: 100%;
@@ -399,6 +461,7 @@
       display: block;
       transition: transform .5s ease;
     }
+
 
     .photo-grid-item:hover img {
       transform: scale(1.03);
@@ -416,6 +479,7 @@
       color: #fff;
     }
 
+
     .statement-label {
       font-size: 11px;
       font-weight: 900;
@@ -423,6 +487,7 @@
       text-transform: uppercase;
       margin-bottom: 22px;
     }
+
 
     .statement h2 {
       max-width: 950px;
@@ -432,6 +497,7 @@
       letter-spacing: -3px;
     }
 
+
     .statement p {
       max-width: 680px;
       margin: 28px 0 0;
@@ -439,12 +505,14 @@
       line-height: 1.6;
     }
 
+
     .statement .btn {
       margin-top: 28px;
       background: #111 !important;
       color: #fff !important;
       border-color: #111 !important;
     }
+
 
     .statement .btn:hover {
       background: #fff !important;
@@ -454,7 +522,7 @@
 
 
     /* =========================================================
-       CARDS / ACCENT ELEMENTS
+       CARDS
        ========================================================= */
 
     .card.lime {
@@ -462,30 +530,315 @@
       color: #fff !important;
     }
 
+
     .card.lime .label,
     .card.lime .small,
     .card.lime .kpi {
       color: #fff !important;
     }
 
+
     .progress {
       background: #ddd;
     }
+
 
     .progress i {
       background: var(--miles-blue);
     }
 
+
     .bar i {
       background: var(--miles-blue);
     }
+
 
     .mini-progress {
       background: #ddd;
     }
 
+
     .mini-progress i {
       background: var(--miles-blue);
+    }
+
+
+    /* =========================================================
+       TOP USER AREA
+       ========================================================= */
+
+    .top-right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+
+    .user-area {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+
+    .user-greeting {
+      font-size: 13px;
+      color: #666;
+      white-space: nowrap;
+    }
+
+
+    .login-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 38px;
+      padding: 0 16px;
+      border: 1px solid #d7d7d3;
+      background: #fff;
+      color: #222;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: .2s ease;
+    }
+
+
+    .login-button:hover {
+      border-color: var(--miles-blue);
+      color: var(--miles-blue);
+    }
+
+
+    .user-avatar-button {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      border: 2px solid var(--miles-blue);
+      background: #fff;
+      color: var(--miles-blue);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 13px;
+      cursor: pointer;
+    }
+
+
+    .account-menu {
+      position: absolute;
+      top: 52px;
+      right: 0;
+      width: 190px;
+      background: #fff;
+      border: 1px solid #ddd;
+      box-shadow: 0 15px 40px rgba(0,0,0,.12);
+      padding: 8px;
+      z-index: 50;
+      display: none;
+    }
+
+
+    .account-menu.open {
+      display: block;
+    }
+
+
+    .account-menu-name {
+      padding: 11px;
+      font-weight: 800;
+      border-bottom: 1px solid #eee;
+      margin-bottom: 5px;
+    }
+
+
+    .account-menu button {
+      width: 100%;
+      padding: 11px;
+      border: 0;
+      background: transparent;
+      text-align: left;
+      cursor: pointer;
+      font-size: 12px;
+    }
+
+
+    .account-menu button:hover {
+      background: #f5f5f3;
+      color: var(--miles-blue);
+    }
+
+
+    /* =========================================================
+       LOGIN MODAL
+       ========================================================= */
+
+    .auth-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.55);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      z-index: 100;
+    }
+
+
+    .auth-overlay.open {
+      display: flex;
+    }
+
+
+    .auth-modal {
+      position: relative;
+      width: min(440px, 100%);
+      background: #fff;
+      padding: 38px;
+      box-shadow: 0 25px 80px rgba(0,0,0,.25);
+    }
+
+
+    .auth-close {
+      position: absolute;
+      top: 15px;
+      right: 17px;
+      width: 32px;
+      height: 32px;
+      border: 0;
+      background: transparent;
+      font-size: 25px;
+      line-height: 1;
+      cursor: pointer;
+      color: #555;
+    }
+
+
+    .auth-close:hover {
+      color: var(--miles-blue);
+    }
+
+
+    .auth-eyebrow {
+      color: var(--miles-blue);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+
+    .auth-modal h2 {
+      font-size: 32px;
+      line-height: 1;
+      letter-spacing: -1px;
+      margin: 0 0 10px;
+    }
+
+
+    .auth-description {
+      color: #777;
+      font-size: 14px;
+      line-height: 1.5;
+      margin: 0 0 25px;
+    }
+
+
+    .auth-tabs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-bottom: 1px solid #ddd;
+      margin-bottom: 25px;
+    }
+
+
+    .auth-tab {
+      padding: 12px 8px;
+      border: 0;
+      background: transparent;
+      color: #888;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+    }
+
+
+    .auth-tab.active {
+      color: var(--miles-blue);
+      border-bottom-color: var(--miles-blue);
+    }
+
+
+    .auth-form {
+      display: none;
+    }
+
+
+    .auth-form.active {
+      display: block;
+    }
+
+
+    .form-group {
+      margin-bottom: 16px;
+    }
+
+
+    .form-group label {
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      margin-bottom: 7px;
+      color: #333;
+    }
+
+
+    .form-group input {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 13px 14px;
+      border: 1px solid #d7d7d3;
+      background: #fafaf8;
+      color: #222;
+      font-family: inherit;
+      font-size: 14px;
+      outline: none;
+    }
+
+
+    .form-group input:focus {
+      border-color: var(--miles-blue);
+      background: #fff;
+    }
+
+
+    .auth-submit {
+      width: 100%;
+      border: 1px solid var(--miles-blue);
+      background: var(--miles-blue);
+      color: #fff;
+      padding: 14px;
+      font-size: 12px;
+      font-weight: 800;
+      cursor: pointer;
+      margin-top: 4px;
+    }
+
+
+    .auth-submit:hover {
+      background: #1199a6;
+      border-color: #1199a6;
+    }
+
+
+    .auth-message {
+      min-height: 18px;
+      margin-top: 12px;
+      font-size: 12px;
+      color: #d34b4b;
     }
 
 
@@ -499,43 +852,53 @@
         padding-top: 38px;
       }
 
+
       .intro-title {
         letter-spacing: -2.5px;
       }
+
 
       .about-project-grid {
         grid-template-columns: 1fr;
         gap: 30px;
       }
 
+
       .principles {
         grid-template-columns: 1fr;
       }
+
 
       .founder-layout {
         grid-template-columns: 1fr;
       }
 
+
       .founder-image {
         min-height: 500px;
       }
 
+
       .founder-content {
         padding: 35px;
       }
+
 
       .photo-grid {
         grid-template-columns: 1fr;
         grid-template-rows: 430px 260px 260px;
       }
 
+
       .photo-grid-item:first-child {
         grid-row: auto;
       }
 
+
       .statement {
         padding: 50px 30px;
       }
+
     }
 
 
@@ -545,13 +908,16 @@
         font-size: 48px;
       }
 
+
       .intro-copy {
         font-size: 16px;
       }
 
+
       .story-photo {
         min-height: 400px;
       }
+
 
       .photo-caption {
         left: 20px;
@@ -559,9 +925,11 @@
         bottom: 20px;
       }
 
+
       .photo-caption strong {
         font-size: 26px;
       }
+
 
       .about-project,
       .founder,
@@ -570,32 +938,50 @@
         margin-top: 65px;
       }
 
+
       .founder-image {
         min-height: 430px;
       }
+
 
       .founder-content {
         padding: 28px 24px;
       }
 
+
       .founder-content h3 {
         font-size: 32px;
       }
+
 
       .photo-grid {
         grid-template-rows: 380px 230px 230px;
       }
 
+
       .statement {
         padding: 42px 24px;
       }
+
+
+      .top-right .user-greeting {
+        display: none;
+      }
+
+
+      .auth-modal {
+        padding: 30px 24px;
+      }
+
     }
 
   </style>
+
 </head>
 
 
 <body>
+
 
 <div class="shell">
 
@@ -605,6 +991,7 @@
        ======================================================= -->
 
   <aside class="sidebar">
+
 
     <div class="brand">
 
@@ -622,7 +1009,10 @@
 
     <nav class="nav">
 
-      <a class="active" href="index.html">
+      <a
+        class="active"
+        href="index.html"
+      >
         Home
       </a>
 
@@ -654,6 +1044,7 @@
       <small>
         THIS WEEK
       </small>
+
 
       <strong>
         23.4 / 30 KM
@@ -688,6 +1079,7 @@
 
     <div class="top">
 
+
       <div class="crumb">
         MILES APART / HOME
       </div>
@@ -695,13 +1087,75 @@
 
       <div class="top-right">
 
-        <span class="small muted">
-          Guten Morgen, Alex
-        </span>
+        <!--
+          Dieser Bereich wird automatisch durch JavaScript
+          angepasst:
+          Besucher = "Anmelden"
+          User = "Hallo, Name" + Avatar
+        -->
+
+        <div
+          id="guestArea"
+          class="user-area"
+        >
+
+          <button
+            class="login-button"
+            id="openLoginButton"
+            type="button"
+          >
+            Anmelden
+          </button>
+
+        </div>
 
 
-        <div class="avatar">
-          A
+        <div
+          id="loggedInArea"
+          class="user-area"
+          style="display:none; position:relative;"
+        >
+
+          <span
+            class="user-greeting"
+            id="userGreeting"
+          >
+            Hallo
+          </span>
+
+
+          <button
+            class="user-avatar-button"
+            id="avatarButton"
+            type="button"
+            aria-label="Account-Menü öffnen"
+          >
+            A
+          </button>
+
+
+          <div
+            class="account-menu"
+            id="accountMenu"
+          >
+
+            <div
+              class="account-menu-name"
+              id="accountMenuName"
+            >
+              User
+            </div>
+
+
+            <button
+              type="button"
+              id="logoutButton"
+            >
+              Abmelden
+            </button>
+
+          </div>
+
         </div>
 
       </div>
@@ -714,6 +1168,7 @@
          ===================================================== -->
 
     <section class="home-intro">
+
 
       <div class="intro-eyebrow">
         MILES APART RUNNING CLUB
@@ -742,6 +1197,7 @@
 
       <div class="intro-actions">
 
+
         <a
           class="btn lime"
           href="community.html"
@@ -768,6 +1224,7 @@
 
     <div class="story-photo">
 
+
       <img
         src="IMG_3005(1).jpeg"
         alt="Läufer beim Zieleinlauf"
@@ -775,6 +1232,7 @@
 
 
       <div class="photo-caption">
+
 
         <div>
 
@@ -808,6 +1266,7 @@
 
         <div>
 
+
           <div class="intro-eyebrow">
             WAS IST MILES APART?
           </div>
@@ -824,6 +1283,7 @@
 
 
         <div class="about-project-text">
+
 
           <p>
             Überall entstehen neue
@@ -867,6 +1327,7 @@
 
         <div class="principle">
 
+
           <div class="principle-number">
             01 / CONNECT
           </div>
@@ -887,6 +1348,7 @@
 
         <div class="principle">
 
+
           <div class="principle-number">
             02 / CHALLENGE
           </div>
@@ -906,6 +1368,7 @@
 
 
         <div class="principle">
+
 
           <div class="principle-number">
             03 / SUPPORT
@@ -941,6 +1404,7 @@
 
         <div>
 
+
           <div class="founder-kicker">
             WER STECKT DAHINTER?
           </div>
@@ -964,6 +1428,7 @@
 
 
         <div class="founder-image">
+
 
           <img
             src="IMG_9227.jpeg"
@@ -1016,21 +1481,26 @@
 
           <div class="founder-tags">
 
+
             <span class="founder-tag">
               Running
             </span>
+
 
             <span class="founder-tag">
               Ultra Running
             </span>
 
+
             <span class="founder-tag">
               Hyrox
             </span>
 
+
             <span class="founder-tag">
               Hybrid Athlete
             </span>
+
 
             <span class="founder-tag">
               Strength
@@ -1064,6 +1534,7 @@
 
 
         <div>
+
 
           <div class="intro-eyebrow">
             THE ATHLETE LIFE
@@ -1749,5 +2220,775 @@
 
 </div>
 
+
+<!-- =========================================================
+     LOGIN / REGISTRATION MODAL
+     ========================================================= -->
+
+<div
+  class="auth-overlay"
+  id="authOverlay"
+>
+
+
+  <div
+    class="auth-modal"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="authTitle"
+  >
+
+
+    <button
+      class="auth-close"
+      id="closeAuthButton"
+      type="button"
+      aria-label="Schließen"
+    >
+      ×
+    </button>
+
+
+    <div class="auth-eyebrow">
+      MILES APART
+    </div>
+
+
+    <h2 id="authTitle">
+      Willkommen zurück.
+    </h2>
+
+
+    <p
+      class="auth-description"
+      id="authDescription"
+    >
+      Melde dich an und werde Teil der Community.
+    </p>
+
+
+    <div class="auth-tabs">
+
+
+      <button
+        class="auth-tab active"
+        id="loginTab"
+        type="button"
+      >
+        Anmelden
+      </button>
+
+
+      <button
+        class="auth-tab"
+        id="registerTab"
+        type="button"
+      >
+        Konto erstellen
+      </button>
+
+    </div>
+
+
+    <!-- LOGIN -->
+
+    <form
+      class="auth-form active"
+      id="loginForm"
+    >
+
+
+      <div class="form-group">
+
+        <label for="loginEmail">
+          E-Mail
+        </label>
+
+        <input
+          id="loginEmail"
+          type="email"
+          placeholder="deine@email.de"
+          autocomplete="email"
+          required
+        >
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label for="loginPassword">
+          Passwort
+        </label>
+
+        <input
+          id="loginPassword"
+          type="password"
+          placeholder="••••••••"
+          autocomplete="current-password"
+          required
+        >
+
+      </div>
+
+
+      <button
+        class="auth-submit"
+        type="submit"
+      >
+        Anmelden →
+      </button>
+
+
+      <div
+        class="auth-message"
+        id="loginMessage"
+      ></div>
+
+    </form>
+
+
+    <!-- REGISTRATION -->
+
+    <form
+      class="auth-form"
+      id="registerForm"
+    >
+
+
+      <div class="form-group">
+
+        <label for="registerName">
+          Dein Name
+        </label>
+
+        <input
+          id="registerName"
+          type="text"
+          placeholder="z. B. Tano"
+          autocomplete="name"
+          required
+        >
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label for="registerEmail">
+          E-Mail
+        </label>
+
+        <input
+          id="registerEmail"
+          type="email"
+          placeholder="deine@email.de"
+          autocomplete="email"
+          required
+        >
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label for="registerPassword">
+          Passwort
+        </label>
+
+        <input
+          id="registerPassword"
+          type="password"
+          placeholder="Mindestens 6 Zeichen"
+          minlength="6"
+          autocomplete="new-password"
+          required
+        >
+
+      </div>
+
+
+      <button
+        class="auth-submit"
+        type="submit"
+      >
+        Konto erstellen →
+      </button>
+
+
+      <div
+        class="auth-message"
+        id="registerMessage"
+      ></div>
+
+    </form>
+
+  </div>
+
+</div>
+
+
+<!-- =========================================================
+     LOGIN / USER JAVASCRIPT
+     ========================================================= -->
+
+<script>
+
+  /*
+   * ==========================================================
+   * MILES APART — SIMPLE FRONTEND AUTH
+   *
+   * Diese Version speichert den Demo-Account lokal im Browser.
+   * Für den späteren Live-Betrieb wird dieser Bereich durch
+   * eine echte Benutzerverwaltung / Datenbank ersetzt.
+   * ==========================================================
+   */
+
+
+  const AUTH_USER_KEY = "milesApartUser";
+  const AUTH_ACCOUNT_KEY = "milesApartAccount";
+
+
+  const guestArea =
+    document.getElementById("guestArea");
+
+
+  const loggedInArea =
+    document.getElementById("loggedInArea");
+
+
+  const userGreeting =
+    document.getElementById("userGreeting");
+
+
+  const avatarButton =
+    document.getElementById("avatarButton");
+
+
+  const accountMenu =
+    document.getElementById("accountMenu");
+
+
+  const accountMenuName =
+    document.getElementById("accountMenuName");
+
+
+  const logoutButton =
+    document.getElementById("logoutButton");
+
+
+  const openLoginButton =
+    document.getElementById("openLoginButton");
+
+
+  const authOverlay =
+    document.getElementById("authOverlay");
+
+
+  const closeAuthButton =
+    document.getElementById("closeAuthButton");
+
+
+  const loginTab =
+    document.getElementById("loginTab");
+
+
+  const registerTab =
+    document.getElementById("registerTab");
+
+
+  const loginForm =
+    document.getElementById("loginForm");
+
+
+  const registerForm =
+    document.getElementById("registerForm");
+
+
+  const authTitle =
+    document.getElementById("authTitle");
+
+
+  const authDescription =
+    document.getElementById("authDescription");
+
+
+  const loginMessage =
+    document.getElementById("loginMessage");
+
+
+  const registerMessage =
+    document.getElementById("registerMessage");
+
+
+  /* =========================================================
+     MODAL
+     ========================================================= */
+
+
+  function openAuth() {
+
+    authOverlay.classList.add("open");
+
+    document.body.style.overflow = "hidden";
+
+    showLogin();
+
+  }
+
+
+  function closeAuth() {
+
+    authOverlay.classList.remove("open");
+
+    document.body.style.overflow = "";
+
+    loginMessage.textContent = "";
+
+    registerMessage.textContent = "";
+
+  }
+
+
+  openLoginButton.addEventListener(
+    "click",
+    openAuth
+  );
+
+
+  closeAuthButton.addEventListener(
+    "click",
+    closeAuth
+  );
+
+
+  authOverlay.addEventListener(
+    "click",
+    function(event) {
+
+      if (event.target === authOverlay) {
+        closeAuth();
+      }
+
+    }
+  );
+
+
+  document.addEventListener(
+    "keydown",
+    function(event) {
+
+      if (
+        event.key === "Escape" &&
+        authOverlay.classList.contains("open")
+      ) {
+
+        closeAuth();
+
+      }
+
+    }
+  );
+
+
+  /* =========================================================
+     LOGIN / REGISTER TABS
+     ========================================================= */
+
+
+  function showLogin() {
+
+    loginTab.classList.add("active");
+
+    registerTab.classList.remove("active");
+
+    loginForm.classList.add("active");
+
+    registerForm.classList.remove("active");
+
+    authTitle.textContent =
+      "Willkommen zurück.";
+
+    authDescription.textContent =
+      "Melde dich an und werde Teil der Community.";
+
+    loginMessage.textContent = "";
+
+  }
+
+
+  function showRegister() {
+
+    registerTab.classList.add("active");
+
+    loginTab.classList.remove("active");
+
+    registerForm.classList.add("active");
+
+    loginForm.classList.remove("active");
+
+    authTitle.textContent =
+      "Werde Teil der Community.";
+
+    authDescription.textContent =
+      "Erstelle dein Konto und starte deine Miles-Apart-Reise.";
+
+    registerMessage.textContent = "";
+
+  }
+
+
+  loginTab.addEventListener(
+    "click",
+    showLogin
+  );
+
+
+  registerTab.addEventListener(
+    "click",
+    showRegister
+  );
+
+
+  /* =========================================================
+     USER DISPLAY
+     ========================================================= */
+
+
+  function getInitials(name) {
+
+    if (!name) {
+      return "A";
+    }
+
+    const parts =
+      name
+        .trim()
+        .split(/\s+/);
+
+    if (parts.length === 1) {
+
+      return parts[0]
+        .substring(0, 1)
+        .toUpperCase();
+
+    }
+
+    return (
+      parts[0].substring(0, 1) +
+      parts[parts.length - 1].substring(0, 1)
+    ).toUpperCase();
+
+  }
+
+
+  function getFirstName(name) {
+
+    if (!name) {
+      return "Runner";
+    }
+
+    return name
+      .trim()
+      .split(/\s+/)[0];
+
+  }
+
+
+  function updateUserInterface() {
+
+    const storedUser =
+      localStorage.getItem(AUTH_USER_KEY);
+
+
+    if (!storedUser) {
+
+      guestArea.style.display = "flex";
+
+      loggedInArea.style.display = "none";
+
+      return;
+
+    }
+
+
+    const user =
+      JSON.parse(storedUser);
+
+
+    const firstName =
+      getFirstName(user.name);
+
+
+    const initials =
+      getInitials(user.name);
+
+
+    guestArea.style.display = "none";
+
+    loggedInArea.style.display = "flex";
+
+
+    userGreeting.textContent =
+      "Hallo, " + firstName;
+
+
+    avatarButton.textContent =
+      initials;
+
+
+    accountMenuName.textContent =
+      user.name;
+
+  }
+
+
+  /* =========================================================
+     REGISTRATION
+     ========================================================= */
+
+
+  registerForm.addEventListener(
+    "submit",
+    function(event) {
+
+      event.preventDefault();
+
+
+      const name =
+        document
+          .getElementById("registerName")
+          .value
+          .trim();
+
+
+      const email =
+        document
+          .getElementById("registerEmail")
+          .value
+          .trim()
+          .toLowerCase();
+
+
+      const password =
+        document
+          .getElementById("registerPassword")
+          .value;
+
+
+      if (
+        !name ||
+        !email ||
+        !password
+      ) {
+
+        registerMessage.textContent =
+          "Bitte fülle alle Felder aus.";
+
+        return;
+
+      }
+
+
+      if (password.length < 6) {
+
+        registerMessage.textContent =
+          "Das Passwort muss mindestens 6 Zeichen haben.";
+
+        return;
+
+      }
+
+
+      const account = {
+
+        name: name,
+
+        email: email,
+
+        password: password
+
+      };
+
+
+      /*
+       * Demo-Speicherung.
+       * Später wird das durch eine echte Authentifizierung ersetzt.
+       */
+
+      localStorage.setItem(
+        AUTH_ACCOUNT_KEY,
+        JSON.stringify(account)
+      );
+
+
+      localStorage.setItem(
+        AUTH_USER_KEY,
+        JSON.stringify({
+          name: name,
+          email: email
+        })
+      );
+
+
+      registerForm.reset();
+
+
+      closeAuth();
+
+
+      updateUserInterface();
+
+    }
+  );
+
+
+  /* =========================================================
+     LOGIN
+     ========================================================= */
+
+
+  loginForm.addEventListener(
+    "submit",
+    function(event) {
+
+      event.preventDefault();
+
+
+      const email =
+        document
+          .getElementById("loginEmail")
+          .value
+          .trim()
+          .toLowerCase();
+
+
+      const password =
+        document
+          .getElementById("loginPassword")
+          .value;
+
+
+      const storedAccount =
+        localStorage.getItem(AUTH_ACCOUNT_KEY);
+
+
+      if (!storedAccount) {
+
+        loginMessage.textContent =
+          "Noch kein Konto vorhanden. Erstelle zuerst eines.";
+
+        return;
+
+      }
+
+
+      const account =
+        JSON.parse(storedAccount);
+
+
+      if (
+        email !== account.email ||
+        password !== account.password
+      ) {
+
+        loginMessage.textContent =
+          "E-Mail oder Passwort ist nicht korrekt.";
+
+        return;
+
+      }
+
+
+      localStorage.setItem(
+        AUTH_USER_KEY,
+        JSON.stringify({
+          name: account.name,
+          email: account.email
+        })
+      );
+
+
+      loginForm.reset();
+
+
+      closeAuth();
+
+
+      updateUserInterface();
+
+    }
+  );
+
+
+  /* =========================================================
+     ACCOUNT MENU
+     ========================================================= */
+
+
+  avatarButton.addEventListener(
+    "click",
+    function(event) {
+
+      event.stopPropagation();
+
+      accountMenu.classList.toggle("open");
+
+    }
+  );
+
+
+  document.addEventListener(
+    "click",
+    function(event) {
+
+      if (
+        !loggedInArea.contains(event.target)
+      ) {
+
+        accountMenu.classList.remove("open");
+
+      }
+
+    }
+  );
+
+
+  /* =========================================================
+     LOGOUT
+     ========================================================= */
+
+
+  logoutButton.addEventListener(
+    "click",
+    function() {
+
+      localStorage.removeItem(
+        AUTH_USER_KEY
+      );
+
+
+      accountMenu.classList.remove(
+        "open"
+      );
+
+
+      updateUserInterface();
+
+    }
+  );
+
+
+  /* =========================================================
+     INITIALIZE
+     ========================================================= */
+
+
+  updateUserInterface();
+
+</script>
+
+
 </body>
+
 </html>
