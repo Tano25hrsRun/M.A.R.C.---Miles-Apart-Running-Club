@@ -25,7 +25,6 @@
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-
   <style>
 
     /* =========================================================
@@ -36,39 +35,32 @@
       --miles-blue: #18b8c7;
     }
 
-
     .lime {
       background-color: var(--miles-blue) !important;
       border-color: var(--miles-blue) !important;
       color: #ffffff !important;
     }
 
-
     .lime:hover {
       background-color: #1199a6 !important;
       border-color: #1199a6 !important;
     }
 
-
     .label {
       color: var(--miles-blue);
     }
-
 
     .progress i {
       background-color: var(--miles-blue);
     }
 
-
     .mini-progress i {
       background-color: var(--miles-blue);
     }
 
-
     .bar i {
       background-color: var(--miles-blue);
     }
-
 
     .badge.lime {
       background-color: var(--miles-blue) !important;
@@ -76,21 +68,17 @@
       color: #ffffff !important;
     }
 
-
     .intro-eyebrow {
       color: var(--miles-blue);
     }
-
 
     .founder-kicker {
       color: var(--miles-blue);
     }
 
-
     .principle-number {
       color: var(--miles-blue);
     }
-
 
     /* =========================================================
        HOME INTRO
@@ -100,7 +88,6 @@
       padding: 58px 0 35px;
     }
 
-
     .intro-eyebrow {
       font-size: 11px;
       font-weight: 800;
@@ -108,7 +95,6 @@
       text-transform: uppercase;
       margin-bottom: 18px;
     }
-
 
     .intro-title {
       max-width: 920px;
@@ -118,11 +104,9 @@
       margin: 0;
     }
 
-
     .intro-title span {
       color: var(--miles-blue);
     }
-
 
     .intro-copy {
       max-width: 680px;
@@ -132,40 +116,74 @@
       color: #777;
     }
 
-
-    /* =========================================================
-       THREE IMAGE STRIP
-       ========================================================= */
-
-    .three-photo-strip {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
+    .intro-actions {
+      display: flex;
       gap: 12px;
+      flex-wrap: wrap;
       margin-top: 28px;
     }
 
+    /* =========================================================
+       BIG PHOTO
+       ========================================================= */
 
-    .three-photo-item {
-      height: 420px;
+    .story-photo {
+      position: relative;
+      height: min(62vw, 620px);
+      min-height: 420px;
       overflow: hidden;
+      margin-top: 28px;
       background: #111;
     }
 
-
-    .three-photo-item img {
+    .story-photo img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: center;
+      object-position: center 38%;
       display: block;
-      transition: transform .5s ease;
     }
 
-
-    .three-photo-item:hover img {
-      transform: scale(1.03);
+    .story-photo::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(
+          to top,
+          rgba(0,0,0,.72) 0%,
+          rgba(0,0,0,.08) 50%,
+          rgba(0,0,0,.02) 100%
+        );
+      pointer-events: none;
     }
 
+    .photo-caption {
+      position: absolute;
+      z-index: 2;
+      left: 30px;
+      right: 30px;
+      bottom: 26px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 20px;
+      color: #fff;
+    }
+
+    .photo-caption strong {
+      font-size: clamp(25px, 3vw, 42px);
+      line-height: 1;
+      letter-spacing: -1.5px;
+    }
+
+    .photo-caption span {
+      font-size: 11px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #bbb;
+      text-align: right;
+    }
 
     /* =========================================================
        ABOUT PROJECT
@@ -175,14 +193,12 @@
       margin-top: 85px;
     }
 
-
     .about-project-grid {
       display: grid;
       grid-template-columns: 1fr 1.45fr;
       gap: 70px;
       align-items: start;
     }
-
 
     .about-project h2 {
       font-size: clamp(34px, 4vw, 56px);
@@ -191,7 +207,6 @@
       margin: 0;
     }
 
-
     .about-project-text {
       font-size: 18px;
       line-height: 1.75;
@@ -199,16 +214,13 @@
       max-width: 760px;
     }
 
-
     .about-project-text p {
       margin: 0 0 22px;
     }
 
-
     .about-project-text strong {
       color: #222;
     }
-
 
     /* =========================================================
        THREE PRINCIPLES
@@ -221,7 +233,6 @@
       margin-top: 45px;
     }
 
-
     .principle {
       padding: 28px;
       min-height: 190px;
@@ -229,19 +240,16 @@
       border: 1px solid #e4e4e0;
     }
 
-
     .principle-number {
       font-size: 11px;
       font-weight: 800;
       letter-spacing: 2px;
     }
 
-
     .principle h3 {
       font-size: 22px;
       margin: 38px 0 9px;
     }
-
 
     .principle p {
       margin: 0;
@@ -249,7 +257,6 @@
       line-height: 1.55;
       font-size: 14px;
     }
-
 
     /* =========================================================
        FOUNDER
@@ -259,7 +266,6 @@
       margin-top: 100px;
     }
 
-
     .founder-head {
       display: flex;
       align-items: flex-end;
@@ -267,7 +273,6 @@
       gap: 25px;
       margin-bottom: 28px;
     }
-
 
     .founder-kicker {
       font-size: 11px;
@@ -277,14 +282,12 @@
       margin-bottom: 12px;
     }
 
-
     .founder-head h2 {
       font-size: clamp(40px, 5vw, 68px);
       line-height: .95;
       letter-spacing: -3px;
       margin: 0;
     }
-
 
     .founder-layout {
       display: grid;
@@ -294,12 +297,10 @@
       border: 1px solid #e2e2de;
     }
 
-
     .founder-image {
       min-height: 590px;
       overflow: hidden;
     }
-
 
     .founder-image img {
       width: 100%;
@@ -309,7 +310,6 @@
       display: block;
     }
 
-
     .founder-content {
       padding: 48px;
       display: flex;
@@ -317,13 +317,11 @@
       justify-content: center;
     }
 
-
     .founder-content h3 {
       font-size: 40px;
       letter-spacing: -1.5px;
       margin: 0 0 20px;
     }
-
 
     .founder-content p {
       color: #777;
@@ -332,11 +330,9 @@
       margin: 0 0 20px;
     }
 
-
     .founder-content p strong {
       color: #222;
     }
-
 
     .founder-tags {
       display: flex;
@@ -345,7 +341,6 @@
       margin-top: 10px;
       margin-bottom: 28px;
     }
-
 
     .founder-tag {
       border: 1px solid #d7d7d3;
@@ -357,21 +352,18 @@
       color: #666;
     }
 
-
     .founder-tag:hover {
       border-color: var(--miles-blue);
       color: var(--miles-blue);
     }
 
-
     /* =========================================================
-       PHOTO STORY
+       PHOTO STRIP
        ========================================================= */
 
     .visual-story {
       margin-top: 100px;
     }
-
 
     .visual-story-head {
       display: flex;
@@ -381,14 +373,12 @@
       margin-bottom: 25px;
     }
 
-
     .visual-story-head h2 {
       margin: 0;
       font-size: clamp(32px, 4vw, 52px);
       letter-spacing: -2px;
       line-height: 1;
     }
-
 
     .visual-story-head p {
       max-width: 420px;
@@ -398,7 +388,6 @@
       font-size: 14px;
     }
 
-
     .photo-grid {
       display: grid;
       grid-template-columns: 1.15fr .85fr;
@@ -406,17 +395,14 @@
       gap: 12px;
     }
 
-
     .photo-grid-item {
       overflow: hidden;
       background: #111;
     }
 
-
     .photo-grid-item:first-child {
       grid-row: 1 / 3;
     }
-
 
     .photo-grid-item img {
       width: 100%;
@@ -426,11 +412,9 @@
       transition: transform .5s ease;
     }
 
-
     .photo-grid-item:hover img {
       transform: scale(1.03);
     }
-
 
     /* =========================================================
        COMMUNITY STATEMENT
@@ -443,7 +427,6 @@
       color: #fff;
     }
 
-
     .statement-label {
       font-size: 11px;
       font-weight: 900;
@@ -451,7 +434,6 @@
       text-transform: uppercase;
       margin-bottom: 22px;
     }
-
 
     .statement h2 {
       max-width: 950px;
@@ -461,14 +443,12 @@
       letter-spacing: -3px;
     }
 
-
     .statement p {
       max-width: 680px;
       margin: 28px 0 0;
       font-size: 17px;
       line-height: 1.6;
     }
-
 
     .statement .btn {
       margin-top: 28px;
@@ -477,13 +457,11 @@
       border-color: #111 !important;
     }
 
-
     .statement .btn:hover {
       background: #fff !important;
       color: #111 !important;
       border-color: #fff !important;
     }
-
 
     /* =========================================================
        CARDS
@@ -494,38 +472,31 @@
       color: #fff !important;
     }
 
-
     .card.lime .label,
     .card.lime .small,
     .card.lime .kpi {
       color: #fff !important;
     }
 
-
     .progress {
       background: #ddd;
     }
-
 
     .progress i {
       background: var(--miles-blue);
     }
 
-
     .bar i {
       background: var(--miles-blue);
     }
-
 
     .mini-progress {
       background: #ddd;
     }
 
-
     .mini-progress i {
       background: var(--miles-blue);
     }
-
 
     /* =========================================================
        TOP USER AREA
@@ -537,20 +508,17 @@
       gap: 12px;
     }
 
-
     .user-area {
       display: flex;
       align-items: center;
       gap: 10px;
     }
 
-
     .user-greeting {
       font-size: 13px;
       color: #666;
       white-space: nowrap;
     }
-
 
     .login-button {
       display: inline-flex;
@@ -567,12 +535,10 @@
       transition: .2s ease;
     }
 
-
     .login-button:hover {
       border-color: var(--miles-blue);
       color: var(--miles-blue);
     }
-
 
     .user-avatar-button {
       width: 38px;
@@ -591,14 +557,12 @@
       padding: 0;
     }
 
-
     .user-avatar-button img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       display: block;
     }
-
 
     .account-menu {
       position: absolute;
@@ -613,11 +577,9 @@
       display: none;
     }
 
-
     .account-menu.open {
       display: block;
     }
-
 
     .account-menu-name {
       padding: 11px;
@@ -625,7 +587,6 @@
       border-bottom: 1px solid #eee;
       margin-bottom: 5px;
     }
-
 
     .account-menu-email {
       padding: 4px 11px 10px;
@@ -635,7 +596,6 @@
       margin-bottom: 5px;
       word-break: break-word;
     }
-
 
     .account-menu a,
     .account-menu button {
@@ -652,13 +612,11 @@
       text-decoration: none;
     }
 
-
     .account-menu a:hover,
     .account-menu button:hover {
       background: #f5f5f3;
       color: var(--miles-blue);
     }
-
 
     /* =========================================================
        LOGIN MODAL
@@ -676,11 +634,9 @@
       overflow-y: auto;
     }
 
-
     .auth-overlay.open {
       display: flex;
     }
-
 
     .auth-modal {
       position: relative;
@@ -691,7 +647,6 @@
       padding: 38px;
       box-shadow: 0 25px 80px rgba(0,0,0,.25);
     }
-
 
     .auth-close {
       position: absolute;
@@ -707,11 +662,9 @@
       color: #555;
     }
 
-
     .auth-close:hover {
       color: var(--miles-blue);
     }
-
 
     .auth-eyebrow {
       color: var(--miles-blue);
@@ -722,14 +675,12 @@
       margin-bottom: 10px;
     }
 
-
     .auth-modal h2 {
       font-size: 32px;
       line-height: 1;
       letter-spacing: -1px;
       margin: 0 0 10px;
     }
-
 
     .auth-description {
       color: #777;
@@ -738,14 +689,12 @@
       margin: 0 0 25px;
     }
 
-
     .auth-tabs {
       display: grid;
       grid-template-columns: 1fr 1fr;
       border-bottom: 1px solid #ddd;
       margin-bottom: 25px;
     }
-
 
     .auth-tab {
       padding: 12px 8px;
@@ -758,27 +707,22 @@
       border-bottom: 2px solid transparent;
     }
 
-
     .auth-tab.active {
       color: var(--miles-blue);
       border-bottom-color: var(--miles-blue);
     }
 
-
     .auth-form {
       display: none;
     }
-
 
     .auth-form.active {
       display: block;
     }
 
-
     .form-group {
       margin-bottom: 16px;
     }
-
 
     .form-group label {
       display: block;
@@ -787,7 +731,6 @@
       margin-bottom: 7px;
       color: #333;
     }
-
 
     .form-group input {
       width: 100%;
@@ -801,12 +744,10 @@
       outline: none;
     }
 
-
     .form-group input:focus {
       border-color: var(--miles-blue);
       background: #fff;
     }
-
 
     .auth-submit {
       width: 100%;
@@ -820,18 +761,15 @@
       margin-top: 4px;
     }
 
-
     .auth-submit:hover {
       background: #1199a6;
       border-color: #1199a6;
     }
 
-
     .auth-submit:disabled {
       opacity: .6;
       cursor: wait;
     }
-
 
     .auth-message {
       min-height: 18px;
@@ -841,11 +779,9 @@
       color: #d34b4b;
     }
 
-
     .auth-message.success {
       color: #248b63;
     }
-
 
     .forgot-password {
       display: block;
@@ -859,11 +795,9 @@
       cursor: pointer;
     }
 
-
     .forgot-password:hover {
       color: var(--miles-blue);
     }
-
 
     .auth-back {
       display: inline-flex;
@@ -876,11 +810,9 @@
       cursor: pointer;
     }
 
-
     .auth-back:hover {
       color: var(--miles-blue);
     }
-
 
     .auth-note {
       margin-top: 14px;
@@ -892,7 +824,6 @@
       line-height: 1.5;
     }
 
-
     /* =========================================================
        RESPONSIVE
        ========================================================= */
@@ -903,59 +834,39 @@
         padding-top: 38px;
       }
 
-
       .intro-title {
         letter-spacing: -2.5px;
       }
-
-
-      .three-photo-strip {
-        grid-template-columns: 1fr;
-        gap: 10px;
-      }
-
-
-      .three-photo-item {
-        height: 430px;
-      }
-
 
       .about-project-grid {
         grid-template-columns: 1fr;
         gap: 30px;
       }
 
-
       .principles {
         grid-template-columns: 1fr;
       }
-
 
       .founder-layout {
         grid-template-columns: 1fr;
       }
 
-
       .founder-image {
         min-height: 500px;
       }
 
-
       .founder-content {
         padding: 35px;
       }
-
 
       .photo-grid {
         grid-template-columns: 1fr;
         grid-template-rows: 430px 260px 260px;
       }
 
-
       .photo-grid-item:first-child {
         grid-row: auto;
       }
-
 
       .statement {
         padding: 50px 30px;
@@ -963,23 +874,29 @@
 
     }
 
-
     @media (max-width: 600px) {
 
       .intro-title {
         font-size: 48px;
       }
 
-
       .intro-copy {
         font-size: 16px;
       }
 
-
-      .three-photo-item {
-        height: 390px;
+      .story-photo {
+        min-height: 400px;
       }
 
+      .photo-caption {
+        left: 20px;
+        right: 20px;
+        bottom: 20px;
+      }
+
+      .photo-caption strong {
+        font-size: 26px;
+      }
 
       .about-project,
       .founder,
@@ -988,36 +905,29 @@
         margin-top: 65px;
       }
 
-
       .founder-image {
         min-height: 430px;
       }
-
 
       .founder-content {
         padding: 28px 24px;
       }
 
-
       .founder-content h3 {
         font-size: 32px;
       }
-
 
       .photo-grid {
         grid-template-rows: 380px 230px 230px;
       }
 
-
       .statement {
         padding: 42px 24px;
       }
 
-
       .top-right .user-greeting {
         display: none;
       }
-
 
       .auth-modal {
         padding: 30px 24px;
@@ -1029,19 +939,15 @@
 
 </head>
 
-
 <body>
 
-
 <div class="shell">
-
 
   <!-- =======================================================
        SIDEBAR
        ======================================================= -->
 
   <aside class="sidebar">
-
 
     <div class="brand">
 
@@ -1055,7 +961,6 @@
       </a>
 
     </div>
-
 
     <nav class="nav">
 
@@ -1088,23 +993,19 @@
 
     </nav>
 
-
     <div class="side-bottom">
 
       <small>
         THIS WEEK
       </small>
 
-
       <strong>
         23.4 / 30 KM
       </strong>
 
-
       <div class="mini-progress">
         <i></i>
       </div>
-
 
       <p
         class="small"
@@ -1117,26 +1018,21 @@
 
   </aside>
 
-
   <!-- =======================================================
        MAIN CONTENT
        ======================================================= -->
 
   <main class="main">
 
-
     <!-- TOP BAR -->
 
     <div class="top">
-
 
       <div class="crumb">
         MILES APART / HOME
       </div>
 
-
       <div class="top-right">
-
 
         <!-- GUEST -->
 
@@ -1155,7 +1051,6 @@
 
         </div>
 
-
         <!-- LOGGED IN -->
 
         <div
@@ -1171,7 +1066,6 @@
             Hallo
           </span>
 
-
           <button
             class="user-avatar-button"
             id="avatarButton"
@@ -1180,7 +1074,6 @@
           >
             A
           </button>
-
 
           <div
             class="account-menu"
@@ -1194,7 +1087,6 @@
               User
             </div>
 
-
             <div
               class="account-menu-email"
               id="accountMenuEmail"
@@ -1202,11 +1094,9 @@
               user@email.de
             </div>
 
-
             <a href="profile.html">
               Mein Profil
             </a>
-
 
             <button
               type="button"
@@ -1223,18 +1113,15 @@
 
     </div>
 
-
     <!-- =====================================================
          INTRO
          ===================================================== -->
 
     <section class="home-intro">
 
-
       <div class="intro-eyebrow">
         MILES APART RUNNING CLUB
       </div>
-
 
       <h1 class="intro-title">
 
@@ -1246,55 +1133,64 @@
 
       </h1>
 
-
       <p class="intro-copy">
 
-        MilesApart ist die virtuelle Running Community.
+        Miles Apart ist eine virtuelle Running-Community für alle,
+        die laufen, trainieren und gemeinsam besser werden wollen.
+        Egal, wo du gerade bist.
 
       </p>
 
+      <div class="intro-actions">
+
+        <a
+          class="btn lime"
+          href="community.html"
+        >
+          Community entdecken →
+        </a>
+
+        <a
+          class="btn ghost"
+          href="challenges.html"
+        >
+          Challenges ansehen
+        </a>
+
+      </div>
 
     </section>
 
-
     <!-- =====================================================
-         THREE IMAGE STRIP
+         HERO IMAGE
          ===================================================== -->
 
-    <div class="three-photo-strip">
+    <div class="story-photo">
 
+      <img
+        src="IMG_3005(1).jpeg"
+        alt="Läufer beim Zieleinlauf"
+      >
 
-      <div class="three-photo-item">
+      <div class="photo-caption">
 
-        <img
-          src="IMG_3005(1).jpeg"
-          alt="Tano beim Lauf"
-        >
+        <div>
 
-      </div>
+          <strong>
+            ONE COMMUNITY.<br>
+            COUNTLESS MILES.
+          </strong>
 
+        </div>
 
-      <div class="three-photo-item">
-
-        <img
-          src="IMG_0111(1).jpeg"
-          alt="Tano beim Ultra Running"
-        >
-
-      </div>
-
-
-      <div class="three-photo-item">
-
-        <img
-          src="IMG_5573.jpeg"
-          alt="Tano nach einem Lauf in New York"
-        >
+        <span>
+          Run together<br>
+          from anywhere
+        </span>
 
       </div>
 
     </div>
-
 
     <!-- =====================================================
          WHAT IS MILES APART
@@ -1302,17 +1198,13 @@
 
     <section class="about-project">
 
-
       <div class="about-project-grid">
 
-
         <div>
-
 
           <div class="intro-eyebrow">
             WAS IST MILES APART?
           </div>
-
 
           <h2>
 
@@ -1323,9 +1215,7 @@
 
         </div>
 
-
         <div class="about-project-text">
-
 
           <p>
             Überall entstehen neue
@@ -1335,13 +1225,11 @@
             motivieren sich gegenseitig.
           </p>
 
-
           <p>
             Wir glauben:
             Dieses Gefühl sollte nicht davon abhängen,
             <strong>wo du gerade wohnst.</strong>
           </p>
-
 
           <p>
             Miles Apart verbindet Läuferinnen und Läufer
@@ -1350,7 +1238,6 @@
             teilnehmen, deine Läufe teilen, Fragen stellen,
             neue Trainingspartner finden und dich gegenseitig pushen.
           </p>
-
 
           <p>
             Du läufst alleine los.
@@ -1361,24 +1248,19 @@
 
       </div>
 
-
       <!-- PRINCIPLES -->
 
       <div class="principles">
 
-
         <div class="principle">
-
 
           <div class="principle-number">
             01 / CONNECT
           </div>
 
-
           <h3>
             Menschen verbinden
           </h3>
-
 
           <p>
             Finde andere Runner, tausche dich aus und werde Teil
@@ -1387,19 +1269,15 @@
 
         </div>
 
-
         <div class="principle">
-
 
           <div class="principle-number">
             02 / CHALLENGE
           </div>
 
-
           <h3>
             Gemeinsam herausfordern
           </h3>
-
 
           <p>
             Challenges machen aus einzelnen Läufen gemeinsame Ziele.
@@ -1408,19 +1286,15 @@
 
         </div>
 
-
         <div class="principle">
-
 
           <div class="principle-number">
             03 / SUPPORT
           </div>
 
-
           <h3>
             Gegenseitig pushen
           </h3>
-
 
           <p>
             Gute Läufe feiern. Schlechte Tage teilen.
@@ -1433,24 +1307,19 @@
 
     </section>
 
-
     <!-- =====================================================
          FOUNDER
          ===================================================== -->
 
     <section class="founder">
 
-
       <div class="founder-head">
 
-
         <div>
-
 
           <div class="founder-kicker">
             WER STECKT DAHINTER?
           </div>
-
 
           <h2>
             Meet Tano.
@@ -1458,19 +1327,15 @@
 
         </div>
 
-
         <span class="badge lime">
           FOUNDER / ATHLETE
         </span>
 
       </div>
 
-
       <div class="founder-layout">
 
-
         <div class="founder-image">
-
 
           <img
             src="IMG_9227.jpeg"
@@ -1479,14 +1344,11 @@
 
         </div>
 
-
         <div class="founder-content">
-
 
           <h3>
             Tano Loew
           </h3>
-
 
           <p>
             Ich bin Tano –
@@ -1495,7 +1357,6 @@
             </strong>
           </p>
 
-
           <p>
             Ich liebe es zu laufen, ins Gym zu gehen und
             meinen Körper immer wieder vor neue Herausforderungen
@@ -1503,14 +1364,12 @@
             Ultra-Running bis hin zu Hyrox und Hybrid Training.
           </p>
 
-
           <p>
             Dabei habe ich gemerkt, wie stark Sport Menschen
             zusammenbringen kann. Gleichzeitig fehlte mir ein Ort,
             an dem diese Verbindung auch dann funktioniert,
             wenn man gerade nicht am selben Ort ist.
           </p>
-
 
           <p>
             Genau daraus ist Miles Apart entstanden:
@@ -1520,36 +1379,29 @@
             </strong>
           </p>
 
-
           <div class="founder-tags">
-
 
             <span class="founder-tag">
               Running
             </span>
 
-
             <span class="founder-tag">
               Ultra Running
             </span>
-
 
             <span class="founder-tag">
               Hyrox
             </span>
 
-
             <span class="founder-tag">
               Hybrid Athlete
             </span>
-
 
             <span class="founder-tag">
               Strength
             </span>
 
           </div>
-
 
           <a
             class="btn lime"
@@ -1564,24 +1416,19 @@
 
     </section>
 
-
     <!-- =====================================================
          VISUAL STORY
          ===================================================== -->
 
     <section class="visual-story">
 
-
       <div class="visual-story-head">
 
-
         <div>
-
 
           <div class="intro-eyebrow">
             THE ATHLETE LIFE
           </div>
-
 
           <h2>
             Mehr als nur<br>
@@ -1589,7 +1436,6 @@
           </h2>
 
         </div>
-
 
         <p>
           Laufen ist ein Teil des Ganzen.
@@ -1599,9 +1445,7 @@
 
       </div>
 
-
       <div class="photo-grid">
-
 
         <div class="photo-grid-item">
 
@@ -1612,7 +1456,6 @@
 
         </div>
 
-
         <div class="photo-grid-item">
 
           <img
@@ -1621,7 +1464,6 @@
           >
 
         </div>
-
 
         <div class="photo-grid-item">
 
@@ -1636,18 +1478,15 @@
 
     </section>
 
-
     <!-- =====================================================
          COMMUNITY STATEMENT
          ===================================================== -->
 
     <section class="statement">
 
-
       <div class="statement-label">
         THE IDEA
       </div>
-
 
       <h2>
         Du bist vielleicht alleine
@@ -1655,14 +1494,12 @@
         nicht allein unterwegs.
       </h2>
 
-
       <p>
         Miles Apart soll der virtuelle Ort für Läufer sein,
         die mehr wollen als nur ihre Kilometer aufzeichnen.
         Eine Community, in der wir uns gegenseitig motivieren,
         unterstützen und gemeinsam neue Ziele erreichen.
       </p>
-
 
       <a
         class="btn"
@@ -1673,13 +1510,11 @@
 
     </section>
 
-
     <!-- =====================================================
          COMMUNITY STATS
          ===================================================== -->
 
     <div class="section grid g4">
-
 
       <div class="card lime">
 
@@ -1687,11 +1522,9 @@
           Community
         </div>
 
-
         <div class="kpi">
           18,742
         </div>
-
 
         <div class="small">
           Runner in Deutschland
@@ -1699,18 +1532,15 @@
 
       </div>
 
-
       <div class="card">
 
         <div class="label">
           Diese Woche
         </div>
 
-
         <div class="kpi">
           23.4 km
         </div>
-
 
         <div class="small muted">
           +18% vs. letzte Woche
@@ -1718,18 +1548,15 @@
 
       </div>
 
-
       <div class="card">
 
         <div class="label">
           Streak
         </div>
 
-
         <div class="kpi">
           12 Tage 🔥
         </div>
-
 
         <div class="small muted">
           Dein längster: 19 Tage
@@ -1737,18 +1564,15 @@
 
       </div>
 
-
       <div class="card dark">
 
         <div class="label">
           Heute
         </div>
 
-
         <div class="kpi">
           1,284 km
         </div>
-
 
         <div class="small">
           von der Community gelaufen
@@ -1758,26 +1582,21 @@
 
     </div>
 
-
     <!-- =====================================================
          COMMUNITY RUN + WEEKLY GOAL
          ===================================================== -->
 
     <div class="section grid g2">
 
-
       <div class="card dark">
 
-
         <div class="row">
-
 
           <div>
 
             <div class="label">
               THE COMMUNITY RUN
             </div>
-
 
             <h2 style="font-size:29px;margin:8px 0">
 
@@ -1788,13 +1607,11 @@
 
           </div>
 
-
           <span class="badge lime">
             SAM 19.09.
           </span>
 
         </div>
-
 
         <p style="color:#bdbdb7">
 
@@ -1803,11 +1620,9 @@
 
         </p>
 
-
         <div class="progress">
           <i style="width:67%"></i>
         </div>
-
 
         <div
           class="row small"
@@ -1818,13 +1633,11 @@
             6,740 / 10,000 Runner
           </span>
 
-
           <b>
             67%
           </b>
 
         </div>
-
 
         <a
           class="btn lime"
@@ -1836,24 +1649,19 @@
 
       </div>
 
-
       <div class="card">
 
-
         <div class="section-head">
-
 
           <h2>
             Dein Wochenziel
           </h2>
-
 
           <span class="badge">
             30 KM
           </span>
 
         </div>
-
 
         <div
           class="kpi"
@@ -1871,7 +1679,6 @@
 
         </div>
 
-
         <div
           class="progress"
           style="margin:15px 0"
@@ -1881,20 +1688,17 @@
 
         </div>
 
-
         <div class="row small">
 
           <span>
             6.6 km fehlen
           </span>
 
-
           <b>
             78%
           </b>
 
         </div>
-
 
         <div
           class="bar"
@@ -1915,24 +1719,19 @@
 
     </div>
 
-
     <!-- =====================================================
          LOWER GRID
          ===================================================== -->
 
     <div class="section grid g3">
 
-
       <div class="card">
 
-
         <div class="section-head">
-
 
           <h2>
             Early Birds
           </h2>
-
 
           <span class="badge lime">
             vor 08:00
@@ -1940,29 +1739,23 @@
 
         </div>
 
-
         <div class="rank">
-
 
           <span class="ranknum">
             01
           </span>
 
-
           <div class="person">
-
 
             <div class="pavatar">
               LM
             </div>
-
 
             <div>
 
               <b>
                 Laura M.
               </b>
-
 
               <div class="small muted">
                 06:12 heute
@@ -1972,36 +1765,29 @@
 
           </div>
 
-
           <b>
             11.8 km
           </b>
 
         </div>
 
-
         <div class="rank">
-
 
           <span class="ranknum">
             02
           </span>
 
-
           <div class="person">
-
 
             <div class="pavatar">
               JS
             </div>
-
 
             <div>
 
               <b>
                 Jonas S.
               </b>
-
 
               <div class="small muted">
                 06:41 heute
@@ -2011,36 +1797,29 @@
 
           </div>
 
-
           <b>
             9.4 km
           </b>
 
         </div>
 
-
         <div class="rank">
-
 
           <span class="ranknum">
             03
           </span>
 
-
           <div class="person">
-
 
             <div class="pavatar">
               NK
             </div>
-
 
             <div>
 
               <b>
                 Nina K.
               </b>
-
 
               <div class="small muted">
                 07:05 heute
@@ -2050,7 +1829,6 @@
 
           </div>
 
-
           <b>
             7.2 km
           </b>
@@ -2059,17 +1837,13 @@
 
       </div>
 
-
       <div class="card">
 
-
         <div class="section-head">
-
 
           <h2>
             Heute in der Community
           </h2>
-
 
           <span class="badge">
             LIVE
@@ -2077,14 +1851,11 @@
 
         </div>
 
-
         <div class="post">
-
 
           <div class="pavatar">
             TB
           </div>
-
 
           <div>
 
@@ -2092,16 +1863,13 @@
               Tom B.
             </b>
 
-
             <p style="margin:5px 0">
               „Erster 5K unter 30 Minuten! 😭🔥“
             </p>
 
-
             <span class="tag">
               5 KM
             </span>
-
 
             <span class="tag">
               PB
@@ -2111,14 +1879,11 @@
 
         </div>
 
-
         <div class="post">
-
 
           <div class="pavatar">
             SK
           </div>
-
 
           <div>
 
@@ -2126,16 +1891,13 @@
               Sarah K.
             </b>
 
-
             <p style="margin:5px 0">
               „Wer läuft morgen früh in Mainz?“
             </p>
 
-
             <span class="tag">
               MAINZ
             </span>
-
 
             <span class="tag">
               PARTNER
@@ -2147,17 +1909,13 @@
 
       </div>
 
-
       <div class="card">
 
-
         <div class="section-head">
-
 
           <h2>
             Nächstes Event
           </h2>
-
 
           <span class="badge">
             34 Plätze
@@ -2165,9 +1923,7 @@
 
         </div>
 
-
         <div class="event">
-
 
           <div class="date">
 
@@ -2181,20 +1937,17 @@
 
           </div>
 
-
           <div>
 
             <b>
               THE COMMUNITY 10K
             </b>
 
-
             <div class="small muted">
               Virtuell · überall in DE
             </div>
 
           </div>
-
 
           <a
             class="btn ghost"
@@ -2205,12 +1958,10 @@
 
         </div>
 
-
         <div
           class="event"
           style="margin-top:18px"
         >
-
 
           <div class="date">
 
@@ -2224,20 +1975,17 @@
 
           </div>
 
-
           <div>
 
             <b>
               HALF MARATHON DAY
             </b>
 
-
             <div class="small muted">
               21.1 km · gemeinsam
             </div>
 
           </div>
-
 
           <a
             class="btn ghost"
@@ -2255,7 +2003,6 @@
   </main>
 
 </div>
-
 
 <!-- =========================================================
      AUTH MODAL
@@ -2282,16 +2029,13 @@
       ×
     </button>
 
-
     <div class="auth-eyebrow">
       MILES APART
     </div>
 
-
     <h2 id="authTitle">
       Willkommen zurück.
     </h2>
-
 
     <p
       class="auth-description"
@@ -2299,7 +2043,6 @@
     >
       Melde dich an und werde Teil der Community.
     </p>
-
 
     <!-- =====================================================
          NORMAL AUTH TABS
@@ -2318,7 +2061,6 @@
         Anmelden
       </button>
 
-
       <button
         class="auth-tab"
         id="registerTab"
@@ -2328,7 +2070,6 @@
       </button>
 
     </div>
-
 
     <!-- =====================================================
          LOGIN
@@ -2355,7 +2096,6 @@
 
       </div>
 
-
       <div class="form-group">
 
         <label for="loginPassword">
@@ -2372,7 +2112,6 @@
 
       </div>
 
-
       <button
         class="auth-submit"
         id="loginSubmit"
@@ -2380,7 +2119,6 @@
       >
         Anmelden →
       </button>
-
 
       <button
         class="forgot-password"
@@ -2390,14 +2128,12 @@
         Passwort vergessen?
       </button>
 
-
       <div
         class="auth-message"
         id="loginMessage"
       ></div>
 
     </form>
-
 
     <!-- =====================================================
          REGISTRATION
@@ -2424,7 +2160,6 @@
 
       </div>
 
-
       <div class="form-group">
 
         <label for="registerEmail">
@@ -2440,7 +2175,6 @@
         >
 
       </div>
-
 
       <div class="form-group">
 
@@ -2459,7 +2193,6 @@
 
       </div>
 
-
       <button
         class="auth-submit"
         id="registerSubmit"
@@ -2468,14 +2201,12 @@
         Konto erstellen →
       </button>
 
-
       <div
         class="auth-message"
         id="registerMessage"
       ></div>
 
     </form>
-
 
     <!-- =====================================================
          FORGOT PASSWORD
@@ -2494,7 +2225,6 @@
         ← Zurück zum Login
       </button>
 
-
       <div class="form-group">
 
         <label for="forgotEmail">
@@ -2511,7 +2241,6 @@
 
       </div>
 
-
       <button
         class="auth-submit"
         id="forgotSubmit"
@@ -2520,12 +2249,10 @@
         Reset-Link senden →
       </button>
 
-
       <div
         class="auth-message"
         id="forgotMessage"
       ></div>
-
 
       <div class="auth-note">
 
@@ -2535,7 +2262,6 @@
       </div>
 
     </form>
-
 
     <!-- =====================================================
          PASSWORD RECOVERY
@@ -2563,7 +2289,6 @@
 
       </div>
 
-
       <div class="form-group">
 
         <label for="newPasswordConfirm">
@@ -2581,7 +2306,6 @@
 
       </div>
 
-
       <button
         class="auth-submit"
         id="recoverySubmit"
@@ -2589,7 +2313,6 @@
       >
         Neues Passwort speichern →
       </button>
-
 
       <div
         class="auth-message"
@@ -2601,7 +2324,6 @@
   </div>
 
 </div>
-
 
 <!-- =========================================================
      MILES APART / SUPABASE AUTH
@@ -2616,22 +2338,18 @@
   const SUPABASE_URL =
     "https://orbrkdrsihsacsnprewf.supabase.co";
 
-
   const SUPABASE_PUBLISHABLE_KEY =
     "sb_publishable_wc3w2fSuj8ItwiF6XBoQgw_HeW5_rNW";
-
 
   const {
     createClient
   } = window.supabase;
-
 
   const supabaseClient =
     createClient(
       SUPABASE_URL,
       SUPABASE_PUBLISHABLE_KEY
     );
-
 
   /* =========================================================
      DOM ELEMENTS
@@ -2640,122 +2358,92 @@
   const guestArea =
     document.getElementById("guestArea");
 
-
   const loggedInArea =
     document.getElementById("loggedInArea");
-
 
   const userGreeting =
     document.getElementById("userGreeting");
 
-
   const avatarButton =
     document.getElementById("avatarButton");
-
 
   const accountMenu =
     document.getElementById("accountMenu");
 
-
   const accountMenuName =
     document.getElementById("accountMenuName");
-
 
   const accountMenuEmail =
     document.getElementById("accountMenuEmail");
 
-
   const logoutButton =
     document.getElementById("logoutButton");
-
 
   const openLoginButton =
     document.getElementById("openLoginButton");
 
-
   const authOverlay =
     document.getElementById("authOverlay");
-
 
   const closeAuthButton =
     document.getElementById("closeAuthButton");
 
-
   const authTabs =
     document.getElementById("authTabs");
-
 
   const loginTab =
     document.getElementById("loginTab");
 
-
   const registerTab =
     document.getElementById("registerTab");
-
 
   const loginForm =
     document.getElementById("loginForm");
 
-
   const registerForm =
     document.getElementById("registerForm");
-
 
   const forgotForm =
     document.getElementById("forgotForm");
 
-
   const recoveryForm =
     document.getElementById("recoveryForm");
-
 
   const authTitle =
     document.getElementById("authTitle");
 
-
   const authDescription =
     document.getElementById("authDescription");
-
 
   const loginMessage =
     document.getElementById("loginMessage");
 
-
   const registerMessage =
     document.getElementById("registerMessage");
-
 
   const forgotMessage =
     document.getElementById("forgotMessage");
 
-
   const recoveryMessage =
     document.getElementById("recoveryMessage");
-
 
   const forgotPasswordButton =
     document.getElementById("forgotPasswordButton");
 
-
   const backToLoginButton =
     document.getElementById("backToLoginButton");
-
 
   const loginSubmit =
     document.getElementById("loginSubmit");
 
-
   const registerSubmit =
     document.getElementById("registerSubmit");
-
 
   const forgotSubmit =
     document.getElementById("forgotSubmit");
 
-
   const recoverySubmit =
     document.getElementById("recoverySubmit");
-
 
   /* =========================================================
      AUTH STATE
@@ -2764,7 +2452,6 @@
   let currentUser = null;
 
   let currentProfile = null;
-
 
   /* =========================================================
      HELPERS
@@ -2776,12 +2463,10 @@
       return "M";
     }
 
-
     const parts =
       name
         .trim()
         .split(/\s+/);
-
 
     if (parts.length === 1) {
 
@@ -2791,7 +2476,6 @@
 
     }
 
-
     return (
       parts[0].substring(0, 1) +
       parts[parts.length - 1].substring(0, 1)
@@ -2799,13 +2483,11 @@
 
   }
 
-
   function getFirstName(name) {
 
     if (!name) {
       return "Runner";
     }
-
 
     return name
       .trim()
@@ -2813,13 +2495,11 @@
 
   }
 
-
   function getUserDisplayName(user, profile) {
 
     if (profile && profile.display_name) {
       return profile.display_name;
     }
-
 
     if (
       user &&
@@ -2831,7 +2511,6 @@
 
     }
 
-
     if (user && user.email) {
 
       return user.email
@@ -2839,11 +2518,9 @@
 
     }
 
-
     return "Runner";
 
   }
-
 
   function setMessage(element, text, success = false) {
 
@@ -2856,7 +2533,6 @@
 
   }
 
-
   function clearMessages() {
 
     setMessage(
@@ -2864,18 +2540,15 @@
       ""
     );
 
-
     setMessage(
       registerMessage,
       ""
     );
 
-
     setMessage(
       forgotMessage,
       ""
     );
-
 
     setMessage(
       recoveryMessage,
@@ -2883,7 +2556,6 @@
     );
 
   }
-
 
   function setButtonLoading(
     button,
@@ -2900,7 +2572,6 @@
 
   }
 
-
   /* =========================================================
      PROFILE
      ========================================================= */
@@ -2911,7 +2582,6 @@
       currentProfile = null;
       return null;
     }
-
 
     const {
       data,
@@ -2924,7 +2594,6 @@
       .eq("id", user.id)
       .maybeSingle();
 
-
     if (error) {
 
       console.error(
@@ -2932,20 +2601,17 @@
         error
       );
 
-
       currentProfile = null;
 
       return null;
 
     }
 
-
     currentProfile = data || null;
 
     return currentProfile;
 
   }
-
 
   /* =========================================================
      USER INTERFACE
@@ -2965,33 +2631,26 @@
 
     }
 
-
     const displayName =
       getUserDisplayName(
         currentUser,
         currentProfile
       );
 
-
     const firstName =
       getFirstName(displayName);
 
-
     const initials =
       getInitials(displayName);
-
 
     guestArea.style.display = "none";
 
     loggedInArea.style.display = "flex";
 
-
     userGreeting.textContent =
       "Hallo, " + firstName;
 
-
     avatarButton.innerHTML = "";
-
 
     if (
       currentProfile &&
@@ -3001,14 +2660,11 @@
       const image =
         document.createElement("img");
 
-
       image.src =
         currentProfile.avatar_url;
 
-
       image.alt =
         displayName;
-
 
       avatarButton.appendChild(
         image
@@ -3021,16 +2677,13 @@
 
     }
 
-
     accountMenuName.textContent =
       displayName;
-
 
     accountMenuEmail.textContent =
       currentUser.email || "";
 
   }
-
 
   /* =========================================================
      MODAL
@@ -3043,7 +2696,6 @@
     document.body.style.overflow =
       "hidden";
 
-
     if (
       recoveryForm.classList.contains("active")
     ) {
@@ -3052,11 +2704,9 @@
 
     }
 
-
     showLogin();
 
   }
-
 
   function closeAuth() {
 
@@ -3065,23 +2715,19 @@
     document.body.style.overflow =
       "";
 
-
     clearMessages();
 
   }
-
 
   openLoginButton.addEventListener(
     "click",
     openAuth
   );
 
-
   closeAuthButton.addEventListener(
     "click",
     closeAuth
   );
-
 
   authOverlay.addEventListener(
     "click",
@@ -3097,7 +2743,6 @@
 
     }
   );
-
 
   document.addEventListener(
     "keydown",
@@ -3115,7 +2760,6 @@
     }
   );
 
-
   /* =========================================================
      FORM VISIBILITY
      ========================================================= */
@@ -3132,35 +2776,28 @@
 
   }
 
-
   function showLogin() {
 
     hideAllForms();
 
     clearMessages();
 
-
     loginForm.classList.add("active");
-
 
     authTabs.style.display =
       "grid";
-
 
     loginTab.classList.add("active");
 
     registerTab.classList.remove("active");
 
-
     authTitle.textContent =
       "Willkommen zurück.";
-
 
     authDescription.textContent =
       "Melde dich an und werde Teil der Community.";
 
   }
-
 
   function showRegister() {
 
@@ -3168,28 +2805,22 @@
 
     clearMessages();
 
-
     registerForm.classList.add("active");
-
 
     authTabs.style.display =
       "grid";
-
 
     registerTab.classList.add("active");
 
     loginTab.classList.remove("active");
 
-
     authTitle.textContent =
       "Werde Teil der Community.";
-
 
     authDescription.textContent =
       "Erstelle dein Konto und starte deine Miles-Apart-Reise.";
 
   }
-
 
   function showForgotPassword() {
 
@@ -3197,23 +2828,18 @@
 
     clearMessages();
 
-
     forgotForm.classList.add("active");
-
 
     authTabs.style.display =
       "none";
 
-
     authTitle.textContent =
       "Passwort zurücksetzen.";
-
 
     authDescription.textContent =
       "Wir schicken dir einen Link, mit dem du ein neues Passwort festlegen kannst.";
 
   }
-
 
   function showRecovery() {
 
@@ -3221,47 +2847,38 @@
 
     clearMessages();
 
-
     recoveryForm.classList.add("active");
-
 
     authTabs.style.display =
       "none";
 
-
     authTitle.textContent =
       "Neues Passwort festlegen.";
-
 
     authDescription.textContent =
       "Wähle ein neues Passwort für dein Miles-Apart-Konto.";
 
   }
 
-
   loginTab.addEventListener(
     "click",
     showLogin
   );
-
 
   registerTab.addEventListener(
     "click",
     showRegister
   );
 
-
   forgotPasswordButton.addEventListener(
     "click",
     showForgotPassword
   );
 
-
   backToLoginButton.addEventListener(
     "click",
     showLogin
   );
-
 
   /* =========================================================
      REGISTER
@@ -3273,16 +2890,13 @@
 
       event.preventDefault();
 
-
       clearMessages();
-
 
       const name =
         document
           .getElementById("registerName")
           .value
           .trim();
-
 
       const email =
         document
@@ -3291,12 +2905,10 @@
           .trim()
           .toLowerCase();
 
-
       const password =
         document
           .getElementById("registerPassword")
           .value;
-
 
       if (
         name.length < 2
@@ -3311,7 +2923,6 @@
 
       }
 
-
       if (
         password.length < 6
       ) {
@@ -3325,13 +2936,11 @@
 
       }
 
-
       setButtonLoading(
         registerSubmit,
         true,
         "Konto erstellen →"
       );
-
 
       const {
         data,
@@ -3357,13 +2966,11 @@
 
       });
 
-
       setButtonLoading(
         registerSubmit,
         false,
         "Konto erstellen →"
       );
-
 
       if (error) {
 
@@ -3372,20 +2979,22 @@
           error
         );
 
-
         setMessage(
           registerMessage,
           translateAuthError(error)
         );
 
-
         return;
 
       }
 
-
       registerForm.reset();
 
+      /*
+       * Wenn E-Mail-Bestätigung aktiviert ist,
+       * gibt Supabase zunächst keinen aktiven
+       * Session-Login zurück.
+       */
 
       if (
         data &&
@@ -3398,12 +3007,10 @@
           true
         );
 
-
         setTimeout(
           closeAuth,
           900
         );
-
 
       } else {
 
@@ -3418,7 +3025,6 @@
     }
   );
 
-
   /* =========================================================
      LOGIN
      ========================================================= */
@@ -3429,9 +3035,7 @@
 
       event.preventDefault();
 
-
       clearMessages();
-
 
       const email =
         document
@@ -3440,19 +3044,16 @@
           .trim()
           .toLowerCase();
 
-
       const password =
         document
           .getElementById("loginPassword")
           .value;
-
 
       setButtonLoading(
         loginSubmit,
         true,
         "Anmelden →"
       );
-
 
       const {
         data,
@@ -3465,13 +3066,11 @@
 
       });
 
-
       setButtonLoading(
         loginSubmit,
         false,
         "Anmelden →"
       );
-
 
       if (error) {
 
@@ -3480,38 +3079,30 @@
           error
         );
 
-
         setMessage(
           loginMessage,
           translateAuthError(error)
         );
 
-
         return;
 
       }
 
-
       loginForm.reset();
-
 
       currentUser =
         data.user;
-
 
       await loadProfile(
         currentUser
       );
 
-
       updateUserInterface();
-
 
       closeAuth();
 
     }
   );
-
 
   /* =========================================================
      PASSWORD RESET REQUEST
@@ -3523,9 +3114,7 @@
 
       event.preventDefault();
 
-
       clearMessages();
-
 
       const email =
         document
@@ -3534,17 +3123,14 @@
           .trim()
           .toLowerCase();
 
-
       setButtonLoading(
         forgotSubmit,
         true,
         "Reset-Link senden →"
       );
 
-
       const redirectUrl =
         window.location.href.split("#")[0];
-
 
       const {
         error
@@ -3556,13 +3142,11 @@
           }
         );
 
-
       setButtonLoading(
         forgotSubmit,
         false,
         "Reset-Link senden →"
       );
-
 
       if (error) {
 
@@ -3571,17 +3155,14 @@
           error
         );
 
-
         setMessage(
           forgotMessage,
           translateAuthError(error)
         );
 
-
         return;
 
       }
-
 
       setMessage(
         forgotMessage,
@@ -3591,7 +3172,6 @@
 
     }
   );
-
 
   /* =========================================================
      PASSWORD RECOVERY
@@ -3603,21 +3183,17 @@
 
       event.preventDefault();
 
-
       clearMessages();
-
 
       const password =
         document
           .getElementById("newPassword")
           .value;
 
-
       const passwordConfirm =
         document
           .getElementById("newPasswordConfirm")
           .value;
-
 
       if (
         password.length < 6
@@ -3632,7 +3208,6 @@
 
       }
 
-
       if (
         password !== passwordConfirm
       ) {
@@ -3646,13 +3221,11 @@
 
       }
 
-
       setButtonLoading(
         recoverySubmit,
         true,
         "Neues Passwort speichern →"
       );
-
 
       const {
         error
@@ -3662,13 +3235,11 @@
 
       });
 
-
       setButtonLoading(
         recoverySubmit,
         false,
         "Neues Passwort speichern →"
       );
-
 
       if (error) {
 
@@ -3677,27 +3248,22 @@
           error
         );
 
-
         setMessage(
           recoveryMessage,
           translateAuthError(error)
         );
 
-
         return;
 
       }
 
-
       recoveryForm.reset();
-
 
       setMessage(
         recoveryMessage,
         "Dein Passwort wurde erfolgreich geändert.",
         true
       );
-
 
       setTimeout(
         closeAuth,
@@ -3706,7 +3272,6 @@
 
     }
   );
-
 
   /* =========================================================
      ACCOUNT MENU
@@ -3718,14 +3283,12 @@
 
       event.stopPropagation();
 
-
       accountMenu.classList.toggle(
         "open"
       );
 
     }
   );
-
 
   document.addEventListener(
     "click",
@@ -3746,7 +3309,6 @@
     }
   );
 
-
   /* =========================================================
      LOGOUT
      ========================================================= */
@@ -3759,7 +3321,6 @@
         error
       } = await supabaseClient.auth.signOut();
 
-
       if (error) {
 
         console.error(
@@ -3767,11 +3328,9 @@
           error
         );
 
-
         return;
 
       }
-
 
       accountMenu.classList.remove(
         "open"
@@ -3779,7 +3338,6 @@
 
     }
   );
-
 
   /* =========================================================
      SUPABASE AUTH STATE
@@ -3797,19 +3355,15 @@
             ? session.user
             : null;
 
-
         updateUserInterface();
-
 
         openAuth();
 
         showRecovery();
 
-
         return;
 
       }
-
 
       if (
         session &&
@@ -3819,11 +3373,14 @@
         currentUser =
           session.user;
 
+        /*
+         * Das Profil wird nach dem Auth-Event
+         * geladen.
+         */
 
         await loadProfile(
           currentUser
         );
-
 
       } else {
 
@@ -3833,12 +3390,10 @@
 
       }
 
-
       updateUserInterface();
 
     }
   );
-
 
   /* =========================================================
      INITIAL SESSION
@@ -3851,14 +3406,12 @@
       error
     } = await supabaseClient.auth.getSession();
 
-
     if (error) {
 
       console.error(
         "Session konnte nicht geladen werden:",
         error
       );
-
 
       currentUser = null;
 
@@ -3870,7 +3423,6 @@
 
     }
 
-
     if (
       data &&
       data.session &&
@@ -3879,7 +3431,6 @@
 
       currentUser =
         data.session.user;
-
 
       await loadProfile(
         currentUser
@@ -3893,11 +3444,9 @@
 
     }
 
-
     updateUserInterface();
 
   }
-
 
   /* =========================================================
      ERROR TRANSLATION
@@ -3909,12 +3458,10 @@
       return "Es ist ein unbekannter Fehler aufgetreten.";
     }
 
-
     const message =
       String(
         error.message || ""
       ).toLowerCase();
-
 
     if (
       message.includes(
@@ -3926,7 +3473,6 @@
 
     }
 
-
     if (
       message.includes(
         "email not confirmed"
@@ -3936,7 +3482,6 @@
       return "Bitte bestätige zuerst deine E-Mail-Adresse.";
 
     }
-
 
     if (
       message.includes(
@@ -3948,7 +3493,6 @@
 
     }
 
-
     if (
       message.includes(
         "rate limit"
@@ -3958,7 +3502,6 @@
       return "Zu viele Versuche. Bitte warte kurz und versuche es erneut.";
 
     }
-
 
     if (
       message.includes(
@@ -3970,14 +3513,12 @@
 
     }
 
-
     return (
       error.message ||
       "Es ist ein Fehler aufgetreten. Bitte versuche es erneut."
     );
 
   }
-
 
   /* =========================================================
      START
@@ -3987,7 +3528,4 @@
 
 </script>
 
-
 </body>
-
-</html>
